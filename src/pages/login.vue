@@ -115,8 +115,12 @@ export default {
         padding: 20px 0;
       }
       .main{
-         background-color: #1ea167;//#FF9000备选
+         background-color: #c91a21;
          position: relative;
+         .wrapper{
+            background: url(../../static/img/bg-login.jpg) no-repeat;
+         }
+        
          
         .banner{
             position: relative;
@@ -129,9 +133,9 @@ export default {
             margin-bottom: 50px;
             padding: 50px 30px 10px;
             width: 300px;
-            background-color:rgb(238, 233, 194);
+            background-color: #fff;//rgb(238, 233, 194);
             border-radius: 4px;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,.1);
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,.1); 
             .login-title{
               height: 54px;
               line-height: 37px;
