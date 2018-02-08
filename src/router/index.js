@@ -6,7 +6,7 @@ import total from '@/pages/total'
 import mainContainer from '@/pages/mainContainer'
 import t1 from '@/components/t1'
 import test from '@/pages/test'
-
+import entry from '@/pages/entry/entry'
 Vue.use(Router)
 
 export default new Router({
@@ -29,7 +29,8 @@ export default new Router({
       children:[
         {path: 't1',name: 't1',component:t1},
         {path: 'total', name:'total',component:total},
-        {path: 'test', name:'test',component:test}
+        {path: 'test', name:'test',component:test},
+        {path: 'entry', name:'entry',component:entry}
       ]
     
     },

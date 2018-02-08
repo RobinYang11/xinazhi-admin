@@ -10,7 +10,7 @@
               <div class="nav-list">
                 <ul>
                   <li>
-                   <router-link to="/main/total"><i class="el-icon-news"></i>销售统计</router-link>
+                    <router-link to="/main/total"><i class="el-icon-news"></i>销售统计</router-link>
                   </li>
                   <li>
                     <a href="#"><i class="el-icon-sold-out"></i>商家入驻</a>
@@ -52,10 +52,10 @@
         <el-container>
           <el-header style="height: 40px;"> 
             <el-row>
-              <el-col :span="20" style="color:white">
+              <el-col :span="16" style="color:white">
               /
               </el-col>
-               <el-col :span="4">
+               <el-col :span="8">
                   <ul>
                     <li>个人中心</li>
                     <li>消息提示</li>
@@ -65,7 +65,22 @@
             </el-row>
             </el-header>
           <el-main>
-            <router-view></router-view>
+              <el-row gutter="10">
+                 <el-col :span="18">
+                    <router-view></router-view>
+                 </el-col>
+                 <el-col :span="6">
+                     <el-card class="box-card sold-count">
+                      <div slot="header" class="clearfix">
+                          <span>用户信息列表</span>
+                          <el-button style="float: right; padding: 3px 0" type="text">关闭对话</el-button>
+                      </div>
+                      <div>
+                          <div id="myChart" :style="{width: '400px', height: '300px'}"></div>
+                      </div>
+                  </el-card>
+                 </el-col>
+              </el-row>
           </el-main>
         </el-container>
       </el-container>
