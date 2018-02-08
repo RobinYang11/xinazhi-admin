@@ -13,7 +13,7 @@
                     <router-link to="/main/total"><i class="el-icon-news"></i>销售统计</router-link>
                   </li>
                   <li>
-                    <a href="#"><i class="el-icon-sold-out"></i>商家入驻</a>
+                    <router-link to="/main/entry"><i class="el-icon-sold-out"></i>商家入驻</router-link>
                   </li>
                   <li>
                     <a href="#"><i class="el-icon-setting"></i>系统管理</a>
@@ -65,7 +65,15 @@
             </el-row>
             </el-header>
           <el-main>
-              <el-row gutter="10">
+               <div style="margin-bottom:10px;">
+                 <el-breadcrumb separator="/">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                  </el-breadcrumb>
+               </div>
+              <el-row :gutter="10">
                  <el-col :span="18">
                     <router-view></router-view>
                  </el-col>
