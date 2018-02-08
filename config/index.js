@@ -32,8 +32,18 @@ module.exports = {
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
-
-    cssSourceMap: true
+     //设置数据代理服务器
+    proxyTable:{
+      '/api/': {
+           target: 'http://localhost:3000',
+           changeOrigin: true,
+           pathRewrite: {
+               '^/api/': ''
+           }
+       }
+    },
+    cssSourceMap: true,
+   
   },
 
   build: {

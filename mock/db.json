@@ -1,0 +1,40 @@
+{
+   
+  "shop":[
+      {
+          "shop_id":"NX234525423",
+          "shop_name":"银川华信智金凤店",
+          "shop_area":"宁夏银川市金凤区",
+          "shop_status":"未审核"
+      },
+      {
+        "shop_id":"NX234525423",
+        "shop_name":"银川华信智金凤店",
+        "shop_area":"宁夏银川市金凤区",
+        "shop_status":"未审核"
+    }, {
+        "shop_id":"NX234525423",
+        "shop_name":"银川华信智金凤店",
+        "shop_area":"宁夏银川市金凤区",
+        "shop_status":"未审核"
+    }
+  ],
+
+
+
+
+  
+  "list": [{
+      "id": 1,
+      "url": "#",
+      "title": "文艺"
+  }, {
+      "id": 2,
+      "url": "#",
+      "title": "经管"
+  }, {
+      "id": 3,
+      "url": "#",
+      "title": "社科"
+  }]
+}
