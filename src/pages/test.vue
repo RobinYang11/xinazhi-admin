@@ -16,12 +16,64 @@
                 <p>22555555</p>
             </div>
         </div> 
+        <!--computed计算属性-->
+        <div class="com">
+            <h5>本店外卖起送价格￥30</h5>
+            <p>您购买了{{good.name}}共{{good.count}}份===￥{{good.price}}/份</p>
+            <p>总价:{{totalprice}}</p>
+        </div>
+        <!--computed计算属性结束-->
+        <div v-for="(item,index) in peoples">
+            {{index}}---{{item.name}}
+            <span>{{facedstatus(item)}}</span>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
   name:"test",
+  data:function(){
+      return{
+          good:{
+              name:"大盘鸡",
+              count:"3",
+              price:"20"
+          },
+          peoples:[
+            //是否发送过简历  是否同意面试   是否面试过   面试人员名字
+            {sended:false,agree:false,faced:false,name:"唐森"},
+            {sended:true,agree:false,faced:false,name:"沙僧"},
+            {sended:true,agree:true,faced:false,name:"天蓬"},
+            {sended:true,agree:true,faced:true,name:"悟空"},
+            ],
+          dilver:0.8,
+          lwf:5
+      }
+  },
+  computed:{
+      totalprice(){
+          return(this.good.price*this.good.count)*this.dilver+this.lwf;
+      }
+  },
+  methods:{
+      facedstatus(item){
+          var status_label="面试状态未可知";
+          if(!item.sended){
+              status_label="未发送简历"
+          }
+          if(item.sended&&!item.agree){
+              status_label="已发送简历，未同意面试"
+          }
+          if(item.sended&&item.agree&&!item.faced){
+        status_label='已发送简历，已同意面试，但未面试';
+      }
+      if(item.sended&&item.agree&&item.faced){
+        status_label='已发送简历，并同意面试，已经面试过';
+      }
+      return status_label;
+      }
+  }
 }
 </script>
 <style lang="less" scoped>

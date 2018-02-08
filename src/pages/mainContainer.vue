@@ -67,7 +67,7 @@
           <el-main>
               <el-row gutter="10">
                  <el-col :span="18">
-                    <router-view></router-view>
+                    <router-view></router-view>&nbsp
                  </el-col>
                  <el-col :span="6">
                      <el-card class="box-card sold-count">
