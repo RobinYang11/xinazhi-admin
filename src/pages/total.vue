@@ -1,19 +1,8 @@
 <template>
    <div>
        <el-row :gutter="10">
-            <el-col :span="18">
+            <el-col :span="24">
                  <el-card class="box-card sold-count">
-                    <div slot="header" class="clearfix">
-                        <span>总体销售数据统计</span>
-                        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-                    </div>
-                    <div>
-                        <div id="myChart" :style="{width: '400px', height: '300px'}"></div>
-                    </div>
-                </el-card>
-            </el-col>
-            <el-col :span="6" >
-                <el-card class="box-card sold-count">
                     <div slot="header" class="clearfix">
                         <span>总体销售数据统计</span>
                         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
