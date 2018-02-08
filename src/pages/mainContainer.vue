@@ -5,7 +5,7 @@
         <el-aside width="120px">
             <div class="content">
               <div class="img">
-                <img src="../assets/timg.jpg"   alt="">
+                <img src="../assets/timg.jpg"  alt="个人头像">
               </div> 
               <div class="nav-list">
                 <ul>
@@ -107,10 +107,13 @@ export default {
               ul>li{
                   float: left;
                   list-style: none;
-                  margin-right: 10px;
+                  margin:0 10px;
                   font-size: 12px;
                   font-weight: 600;
-                  color: #151515;
+                  color: rgba(0,0,0,0.55);
+                  &:hover{
+                    color: rgba(0,0,0,1)
+                  }
               }
            }
          }
@@ -121,8 +124,6 @@ export default {
             width: 120px;
             height: 100%;
            .img{
-              line-height: 100px;
-              height: 100px;
               text-align: center;
               img{
                 width:33%;
@@ -130,13 +131,14 @@ export default {
                 border: 2px solid #2b7f7f;
                 border-radius: 50%;
                 padding: 2px;
+                margin: 20px auto;
               }
            }
            .nav-list{  
               display: inline-block;
               width: 100%;
               position: absolute;
-              top: 100px;
+              top: 80px;
               bottom: 80px;
               
               ul{

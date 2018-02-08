@@ -1,0 +1,44 @@
+body{
+    color: #2e2f30;
+    background-color: #fff;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, ;
+    margin:0;
+    box-sizing:border-box;
+}
+ul, li, ol, dl, dt, dd {
+    list-style-type: none;
+  }
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, input, button, textarea, th, td, p {
+    margin: 0;
+    padding: 0;
+  }
+img {
+	display: block;
+	border: none;
+}
+input{ outline:none;}
+a{
+    text-decoration: none;
+  }
+  /*浮动S*/
+  .fl{ float: left;}
+  .fr{ float: right;}
+  /*浮动E*/
+  /*字体库颜色S*/
+  .icon-green{ color: rgb(72, 180, 79); font-weight: 700;}
+  /*字体库颜色E*/
+
+
+  /*组件通用样式S*/
+  .el-input__inner:focus{
+      border-color: #10CE88!important;
+  }
+  /*组件通用样式E*/
+
+
+
+
+
+
+
+  
