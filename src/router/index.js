@@ -16,6 +16,7 @@ export default new Router({
       redirect: '/main',
     
     },
+    //登录路由
     {
       path: '/login',
       name: 'login',
@@ -30,6 +31,7 @@ export default new Router({
         {path: 't1',name: 't1',component:t1},
         {path: 'total', name:'total',component:total},
         {path: 'test', name:'test',component:test},
+        //商家入驻路由
         {path: 'entry', name:'entry',component:entry}
       ]
     

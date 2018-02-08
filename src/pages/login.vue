@@ -16,10 +16,10 @@
                    <el-col :span="14">  
                         <div class="banner">
                           <h1>
-                             好新鲜 每一天
+                            &nbsp
                           </h1>
-                          <p>认真对待每个人的生活</p>
-                      </div>
+                          <p>&nbsp</p>
+                        </div>
                    </el-col>
                    <el-col :span="10">
                        <div class="login-form">

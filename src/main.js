@@ -9,15 +9,20 @@ import 'element-ui/lib/theme-chalk/display.css';
 import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts 
-// let echarts = require('echarts/lib/echarts')
-// // 引入柱状图组件
+//  let echarts = require('echarts/lib/echarts')
+// 引入柱状图组件
 // require('echarts/lib/chart/bar')
-// // 引入提示框和title组件
+//  引入提示框和title组件
 // require('echarts/lib/component/tooltip')
 // require('echarts/lib/component/title')
-
 Vue.use(ElementUI)
 
+//引入axios 
+import axios from 'axios'
+Vue.prototype.$http = axios
+
+//引入mockjs
+// require('./mock/mock.js')
 
 Vue.config.productionTip = false
 

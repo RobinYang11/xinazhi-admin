@@ -23,12 +23,20 @@ export default {
   a{
 
     text-decoration: none;
-    color:white;
+    /* color:white; */
     font-size:12px;
 
   }
+
   .wrapper{
      width: 1200px;
   }
 
+  /*修改el-card 标题 内编辑*/
+  .el-card>div:first-child{
+    padding: 10px !important;
+  }
+   .el-card>div:first-child>span{
+     font-weight: 800;
+   }
 </style>
