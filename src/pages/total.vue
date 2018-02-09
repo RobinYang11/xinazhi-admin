@@ -12,6 +12,7 @@
                     </div>
                 </el-card>
             </el-col>
+            
        </el-row>
    </div>
 </template>
@@ -21,7 +22,7 @@
         name:"total",
         data() {
             return {
-            msg: 'Welcome to Your Vue.js App'
+            msg: 'Welcome to Your Vue.js App',
             }
         },
         mounted() {
@@ -73,7 +74,7 @@
                     }
                    ]
                 });
-            }
+            },
         }
     }
 </script>
