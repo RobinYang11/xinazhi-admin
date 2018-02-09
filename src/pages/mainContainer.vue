@@ -50,10 +50,10 @@
             </div>
         </el-aside>
         <el-container>
-          <el-header style="height: 40px;"> 
+          <el-header  style="height: 40px;"> 
             <el-row>
               <el-col :span="16" style="color:white">
-              /
+              &nbsp
               </el-col>
                <el-col :span="8">
                   <ul class="fr">
@@ -175,7 +175,9 @@ export default {
     .el-header {
       width: 100%;
       box-shadow: 0 2px 20px 0 rgba(15, 12, 70, 0.1);
-      background-color: white;
+      background-color:#47c1a8;
+   
+     
       .el-row {
         .el-col {
           line-height: 40px;
@@ -186,8 +188,8 @@ export default {
         list-style: none;
         margin: 0 10px;
         font-size: 12px;
-        font-weight: 600;
-        color: rgba(0, 0, 0, 0.55);
+       
+        color:white;
         &:hover {
           color: rgba(0, 0, 0, 1);
         }

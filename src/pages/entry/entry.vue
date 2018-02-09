@@ -22,7 +22,7 @@
                     width="180">
                     <template slot-scope="scope">
                         <div>
-                            <router-link to="shopinfo">  {{ scope.row.shop_name}} </router-link>
+                            <router-link :to="'shopinfo'">  {{ scope.row.shop_name}} </router-link>
                         </div>
                     </template>
                     </el-table-column>
@@ -59,7 +59,7 @@
         data(){
             return {
                 shopList:null,
-                age:3,
+                age:3
             }
         },
         mounted(){
@@ -87,7 +87,6 @@
                 const property = column['property'];
                 return row[property] === value;
             }
-
         }
     }
 </script>
