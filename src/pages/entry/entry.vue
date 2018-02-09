@@ -22,20 +22,29 @@
                     width="180">
                     <template slot-scope="scope">
                         <div>
-                            <router-link to="#">  {{ scope.row.shop_name}} </router-link>
+                            <router-link to="shopinfo">  {{ scope.row.shop_name}} </router-link>
                         </div>
                     </template>
                     </el-table-column>
-                    <el-table-column label="操作">
-                    <template slot-scope="scope">
-                        <el-button
-                        size="mini"
-                        @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                        <el-button
-                        size="mini"
-                        type="danger"
-                        @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-                    </template>
+
+                    <el-table-column label="区域">
+                        <template slot-scope="scope">
+                            <div> {{ scope.row.shop_area}}</div>
+                        </template>
+                    </el-table-column>
+
+                     <el-table-column
+                    prop="tag"
+                    label="状态"
+                    width="100"
+                    :filters="[{ text: '未审核', value: '未审核' }, { text: '已审核', value: '已审核' }]"
+                    :filter-method="filterTag"
+                    filter-placement="bottom-end">
+                        <template slot-scope="scope">
+                            <el-tag
+                            :type="scope.row.shop_status === '未审核' ? 'primary' : 'success'"
+                            close-transition>{{scope.row.shop_status}}</el-tag>
+                        </template>
                     </el-table-column>
                 </el-table>
              
@@ -59,17 +68,25 @@
 
         methods:{
           //
-          getInfo()
-          {   
-              let _this=this
-              this.$http.get('/api/shop')
-                .then(function (response) {
-                    _this.shopList=response.data
-                })
-                .catch(function (error) {
-                    console.log(error);
-            });
-          }
+            getInfo()
+            {   
+                let _this=this
+                this.$http.get('/api/shop')
+                        .then(function (response) {
+                            _this.shopList=response.data
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                });
+            },
+            filterTag(value, row) {
+                return row.shop_status === value;
+            },
+            filterHandler(value, row, column)
+            {
+                const property = column['property'];
+                return row[property] === value;
+            }
         }
     }
 </script>
