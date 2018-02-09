@@ -7,6 +7,7 @@ import mainContainer from '@/pages/mainContainer'
 import t1 from '@/components/t1'
 import test from '@/pages/test'
 import entry from '@/pages/entry/entry'
+import shopinfo from '@/pages/entry/shopinfo'
 Vue.use(Router)
 
 export default new Router({
@@ -32,7 +33,8 @@ export default new Router({
         {path: 'total', name:'total',component:total},
         {path: 'test', name:'test',component:test},
         //商家入驻路由
-        {path: 'entry', name:'entry',component:entry}
+        {path: 'entry', name:'entry',component:entry},
+        {path: 'shopinfo', name:'shopinfo',component:shopinfo}
       ]
     
     },
