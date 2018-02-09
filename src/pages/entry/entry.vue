@@ -40,6 +40,9 @@
                 </el-table>
              
             </div>
+            <div v-for="n in people">
+                <p>{{n.name}} <span style="color:red">{{n.age}}</span> </p>
+            </div>
         </el-card>
    </div>
 </template>
@@ -50,11 +53,13 @@
         data(){
             return {
                 shopList:null,
-                age:3
+                age:3,
+                people:null,
             }
         },
         mounted(){
             this.getInfo();
+            this.shop();
         },
 
         methods:{
@@ -69,6 +74,17 @@
                 .catch(function (error) {
                     console.log(error);
             });
+          },
+          shop()
+          {
+              let _this=this
+              this.$http.get('/api/shoplist')
+              .then(function(response){
+                  _this.people=response.data
+              })
+              .catch(function(error){
+                  console.log(error)
+              })
           }
         }
     }

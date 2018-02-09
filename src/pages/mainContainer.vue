@@ -56,7 +56,7 @@
               /
               </el-col>
                <el-col :span="8">
-                  <ul>
+                  <ul class="fr">
                     <li>个人中心</li>
                     <li>消息提示</li>
                     <li>账户信息</li>
@@ -74,21 +74,22 @@
                   </el-breadcrumb>
                </div>
               <el-row :gutter="10">
-                 <el-col :span="18">
+                 <el-col :class="styleo">
                     <router-view></router-view>&nbsp
                  </el-col>
-                 <el-col :span="6">
+                 <el-col :class="stylet">
                      <el-card class="box-card sold-count">
                       <div slot="header" class="clearfix">
-                          <span>用户信息列表</span>
-                          <el-button style="float: right; padding: 3px 0" type="text">关闭对话</el-button>
+                          <span :class="styletr">用户信息列表</span>
+                          <el-button v-on:click='dolt' style="float: right; padding: 3px 0" type="text">{{btntext}}</el-button>
                       </div>
-                      <div>
+                      <div :class="styletr">
                           <div id="myChart" :style="{width: '400px', height: '300px'}"></div>
                       </div>
                   </el-card>
                  </el-col>
               </el-row>
+
           </el-main>
         </el-container>
       </el-container>
@@ -98,6 +99,16 @@
 import leftNav from "@/components/leftNav";
 export default {
   name: "mainContainer",
+  data:function(){
+    return{
+      ishundrend:true,
+      styleo:"el-col-18",
+      stylet:"el-col-6",
+      styletr:"block",
+      btntext:"关闭对话框",
+      isclass:true
+    }
+  },
   components: {
     leftNav
   },
@@ -110,6 +121,23 @@ export default {
     //展开侧边导航事件
     showLeftNav(e) {
       e.preventDefault();
+    },
+    dolt:function(){    
+      this.isclass=!this.isclass;
+      if(this.isclass){
+        this.styleo='el-col-22';
+        this.stylet='el-col-2';
+        this.styletr='none'
+      }else{
+        this.styleo='el-col-18';
+        this.stylet='el-col-6';
+        this.styletr='block'
+      }    
+      if(this.stylet=="el-col-6"){
+        this.btntext="关闭对话框"
+      }else{
+        this.btntext="打开对话框"
+      }
     }
   }
 };
@@ -119,6 +147,30 @@ export default {
   .el-container {
     .el-main {
       width: 100%;
+      .el-row{
+        .el-col-18{
+          width: 75%;
+        }
+        .el-col-6{
+          width: 25%;
+        }
+        .el-col-22{
+          width: 91.66667%;
+        }
+        .el-col-2{
+          width: 8.33333%;
+        }
+        .el-col{
+          .el-card{
+            .block{
+              display: inline-block;
+            }
+            .none{
+              display: none;
+            }
+          }
+        }
+      }
     }
     .el-header {
       width: 100%;
@@ -185,6 +237,9 @@ export default {
               i {
                 margin-right: 10px;
               }
+            }
+            .router-link-active{
+              color: white;
             }
           }
         }
