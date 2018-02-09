@@ -73,24 +73,17 @@
         "taxpayer_identification_number":"343433344U",
         "bank":"中国农业银行",
         "bank_account":"银川账户",
+        "bank_name":"146456154658479614",
         "registry_number":"09591545",
         "registor_name":"张全蛋",
         "registor_tel":"131325423",
         "registor_address":"银川金凤",
         "registor_address_detail":"新昌东路育成广告元2009",
-        "company_business_license":"./img/00011.img",
-        "Legal_identity_card_front":"./img/00010.img",
-        "Legal_identity_card_back":"./img/00011.img",
+        "company_business_license":"static/img/yyzz.jpg",
+        "Legal_identity_card_front":"static/img/sfzo.jpg",
+        "Legal_identity_card_back":"static/img/sfzt.jpg",
         "status_des":"对不起你的省份证图片太模糊，请重新上传！"
     }
-  ],
-
-
-  "shoplist":[
-      {"name":"李四","age":15},
-      {"name":"李四2","age":45},
-      {"name":"李四3","age":25},
-      {"name":"李四4","age":22}
   ],
 
 

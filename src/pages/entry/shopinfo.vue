@@ -58,13 +58,26 @@
                     </el-row>
                 </el-tab-pane>
                 <el-tab-pane label="商户发票信息">
-                    商户发票信息
+                    <Commercial :shop="basicShopInfoList"></Commercial>
                 </el-tab-pane>
                 <el-tab-pane label="联系人信息">
-                    联系人信息
+                    <contactinformation :contact="basicShopInfoList"></contactinformation>
                 </el-tab-pane>
-                <el-tab-pane label="企业信息">企业信息</el-tab-pane>
-                <el-tab-pane label="商户审核状态">商户审核状态</el-tab-pane>
+                <el-tab-pane label="企业信息">
+                    <Enterprise :enterprice="basicShopInfoList"></Enterprise>
+                </el-tab-pane>
+                <el-tab-pane label="商户审核状态">
+                     
+                    <el-alert v-if="shop_status=='未审核'"
+                        :title="'审核未通过,'+basicShopInfoList.status_des"
+                        type="error">
+                    </el-alert>
+                    <el-alert
+                        title="审核通过"
+                        type="success">
+                    </el-alert>
+                  
+                </el-tab-pane>
             </el-tabs>
         </div>
     </el-card>
@@ -72,11 +85,16 @@
    </div>
 </template>
 <script>
+import Commercial from '../../components/Commercial'
+import contactinformation from '../../components/contactinformation'
+import Enterprise from '../../components/Enterprise'
     export default {
         name:'shopinfo',
         data(){
             return {
                 basicShopInfoList:{},
+                isPassed:"",
+                shop_status:"未审核"
                 
             }
         },
@@ -104,6 +122,9 @@
                             console.log(error);
                 });
             }
+        },
+        components:{
+            Commercial,contactinformation,Enterprise
         }
     }
 </script>
