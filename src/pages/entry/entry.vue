@@ -49,9 +49,6 @@
                 </el-table>
              
             </div>
-            <div v-for="n in people">
-                <p>{{n.name}} <span style="color:red">{{n.age}}</span> </p>
-            </div>
         </el-card>
    </div>
 </template>
@@ -63,12 +60,10 @@
             return {
                 shopList:null,
                 age:3,
-                people:null,
             }
         },
         mounted(){
             this.getInfo();
-            this.shop();
         },
 
         methods:{

@@ -106,7 +106,7 @@ export default {
       stylet:"el-col-6",
       styletr:"block",
       btntext:"关闭对话框",
-      isclass:true
+      isclass:false
     }
   },
   components: {
