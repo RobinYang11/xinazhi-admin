@@ -30,12 +30,12 @@
           "status_des":"对不起你的省份证图片太模糊，请重新上传！"
       },
       {
-        "id":3,
+        "id":2,
         "seller_id":"Nj343433",
         "shop_id":"NX234525423",
-        "shop_name":"银川华信智金凤店",
-        "shop_area":"宁夏银川市金凤区",
-        "shop_status":"未审核",
+        "shop_name":"吴忠利通区店",
+        "shop_area":"吴忠利通区",
+        "shop_status":"已通过",
         "contract_start_time":"已驳回",
         "contract_end_time":"已驳回",
         "login_info":"已驳回",
@@ -54,14 +54,14 @@
         "company_business_license":"./img/00011.img",
         "Legal_identity_card_front":"./img/00010.img",
         "Legal_identity_card_back":"./img/00011.img",
-        "status_des":"对不起你的省份证图片太模糊，请重新上传！"
+        "status_des":"欢迎入驻鲜致"
     },
     {
         "id":3,
         "seller_id":"Nj343433",
         "shop_id":"NX234525423",
-        "shop_name":"银川华信智金凤店",
-        "shop_area":"宁夏银川市金凤区",
+        "shop_name":"固原原州区店",
+        "shop_area":"固原原州区",
         "shop_status":"未审核",
         "contract_start_time":"已驳回",
         "contract_end_time":"已驳回",
