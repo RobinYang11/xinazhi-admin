@@ -87,8 +87,8 @@
                            <ul>
                              <li v-for="i in progress">
                                 <h4>{{i.name}}</h4>
-                                <button>{{i.inchargor}}</button>
-                                <el-progress :text-inside="true"  status="exception" :percentage="i.percentage"></el-progress>
+                                <button :class="i.color">{{i.inchargor}}</button>
+                                <el-progress :text-inside="true"  :status="i.exception" :percentage="i.percentage"></el-progress>
                              </li>
                            </ul>
                       </div>
@@ -117,17 +117,23 @@ export default {
         {
           name:"前端架构",
           percentage:88,
-          inchargor:"杨国平"
+          inchargor:"杨国平",
+          color:"button-success",
+          exception:"success"
         },
          {
           name:"移动端前端架构",
           percentage:46,
-          inchargor:"张广之"
+          inchargor:"张广之",
+          color:"button-orange",
+          exception:"exception"
         },
           {
           name:"鲜致总后台原型",
           percentage:22,
-          inchargor:"张广之"
+          inchargor:"沈佳琪",
+          color:"button-warning",
+          exception:""
         }
       ]
     }
@@ -187,9 +193,34 @@ export default {
           .el-card{
             .block{
               display: inline-block;
+              width: 80%;
             }
             .none{
               display: none;
+            }
+          }
+          ul{
+            h4{
+              margin-bottom: 10px;
+            }
+            .el-progress{
+              margin: 8px 0;
+            }
+            button{
+              display: inline-block;
+              padding: 5px 15px;
+              border: none;
+              color: #fff;
+            }
+            .button-success{
+              background: #2ec748;
+              border: none;
+            }
+            .button-orange{
+              background: #993300;
+            }
+            .button-warning{
+              background:#e6a23c;
             }
           }
         }
