@@ -80,11 +80,17 @@
                  <el-col :class="stylet">
                      <el-card class="box-card sold-count">
                       <div slot="header" class="clearfix">
-                          <span :class="styletr">用户信息列表</span>
+                          <span :class="styletr">鲜致开发任务进展图</span>
                           <el-button v-on:click='dolt' style="float: right; padding: 3px 0" type="text">{{btntext}}</el-button>
                       </div>
                       <div :class="styletr">
-                          <div id="myChart" :style="{width: '400px', height: '300px'}"></div>
+                           <ul>
+                             <li v-for="i in progress">
+                                <h4>{{i.name}}</h4>
+                                <button>{{i.inchargor}}</button>
+                                <el-progress :text-inside="true"  status="exception" :percentage="i.percentage"></el-progress>
+                             </li>
+                           </ul>
                       </div>
                   </el-card>
                  </el-col>
@@ -106,7 +112,24 @@ export default {
       stylet:"el-col-6",
       styletr:"block",
       btntext:"关闭对话框",
-      isclass:false
+      isclass:false,
+      progress:[
+        {
+          name:"前端架构",
+          percentage:88,
+          inchargor:"杨国平"
+        },
+         {
+          name:"移动端前端架构",
+          percentage:46,
+          inchargor:"张广之"
+        },
+          {
+          name:"鲜致总后台原型",
+          percentage:22,
+          inchargor:"张广之"
+        }
+      ]
     }
   },
   components: {
