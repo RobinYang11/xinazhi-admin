@@ -20,15 +20,15 @@
                     <Enterprise :enterprice="basicShopInfoList"></Enterprise>
                 </el-tab-pane>
                 <el-tab-pane label="商户审核状态">
-                     
-                    <el-alert v-if="shop_status=='未审核'"
-                        :title="'审核未通过,'+basicShopInfoList.status_des"
-                        type="error">
-                    </el-alert>
-                    <el-alert
-                        title="审核通过"
-                        type="success">
-                    </el-alert>
+                    
+                    <div style="height:150px;line-height:150px;">
+                        <div v-if="shopStatus" style="color:green">
+                          <h4>恭喜你审核通过，欢迎你入驻鲜致！</h4>
+                        </div>
+                        <div v-else style="color:red">
+                            <h4>对不起,审核未通过！{{ basicShopInfoList.status_des }}</h4>
+                        </div>
+                    </div>
                   
                 </el-tab-pane>
             </el-tabs>
@@ -44,12 +44,20 @@ import contactinformation from '../../components/contactinformation'
 import Enterprise from '../../components/Enterprise'
     export default {
         name:'shopinfo',
+        computed:{
+            shopStatus(){
+                if (this.basicShopInfoList.shop_status=='未审核'){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+        },
         data(){
             return {
                 basicShopInfoList:{},
                 isPassed:"",
-                shop_status:"未审核"
-                
             }
         },
         mounted(){
