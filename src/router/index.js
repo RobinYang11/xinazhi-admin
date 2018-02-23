@@ -38,11 +38,11 @@ export default new Router({
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry},
         {path: 'shopinfo', name:'shopinfo',component:shopinfo},
-
-        {path: 'user',name:'user',component:user},
-        {path: 'userManagement',name:'userManagement',component:userManagement}
+        //会员管理模块
+        {path:'user',name:'user',component:user},
+        {path:'userManagement',name:'userManagement',component:userManagement},
+        {path:'rankManagement',name:'rankManagement',component:rankManagement}
       ]
-    
     },
   ]
  
