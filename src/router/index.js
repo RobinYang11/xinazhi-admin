@@ -8,6 +8,9 @@ import t1 from '@/components/t1'
 import test from '@/pages/test'
 import entry from '@/pages/entry/entry'
 import shopinfo from '@/pages/entry/shopinfo'
+import user from '@/pages/user/user'
+import userManagement from '@/pages/user/userManagement'
+
 Vue.use(Router)
 
 export default new Router({
@@ -34,7 +37,10 @@ export default new Router({
         {path: 'test', name:'test',component:test},
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry},
-        {path: 'shopinfo', name:'shopinfo',component:shopinfo}
+        {path: 'shopinfo', name:'shopinfo',component:shopinfo},
+
+        {path: 'user',name:'user',component:user},
+        {path: 'userManagement',name:'userManagement',component:userManagement}
       ]
     
     },

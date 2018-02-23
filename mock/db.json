@@ -85,8 +85,68 @@
         "status_des":"对不起你的省份证图片太模糊，请重新上传！"
     }
   ],
+ 
+  "users":[
+    {
+        "basicInfo":{
+            "user_id":1,
+            "order":33,
+            "rank":3,
+            "accunt":"robin@qq.com",
+            "password":"robin",
+            "name":"国平",
+            "address":"宁夏银川",
+            "sex":"男",
+            "age":333,
+            "phone":"15595469543",
+            "email":"756517553@qq.com",
+            "avatar":"a/b.png",
+            "register_time":"2018/2/23"
+        },
+        "invoiceInfo":{
+            "vat":"增值税发票信息",
+            "company":"银川华信智",
+            "code":"识别码",
+            "register-address":"注册地址",
+            "register_phone":"注册电话",
+            "bank_account":"银川账户",
+            "bank":"中国农业银行"
+        },
+        "companyInfo":{
+            "business_license":"营业执照",
+            "organization_code":"组织机构代码",
+            "legal_person":"法人",
+            "legal_id":"法人身份证号"
+        }
+    }
+  ],
 
-
+  "rank":[
+    {
+        "rank_id":1,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+    },
+    {
+        "rank_id":2,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      },
+      {
+        "rank_id":3,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      },
+      {
+        "rank_id":4,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      }
+  ],
   
   "list": [{
       "id": 1,
