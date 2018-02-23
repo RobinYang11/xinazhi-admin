@@ -12,6 +12,8 @@ import busineslit from '@/pages/busineslit/busineslit'
 import ecmsearch from '@/pages/ecm/ecmsearch'
 import ecmshow from '@/pages/ecm/ecmshow'
 import ecmadd from '@/pages/ecm/ecmadd'
+import user from '@/pages/user/user'
+import userManagement from '@/pages/user/userManagement'
 Vue.use(Router)
 
 export default new Router({
@@ -42,7 +44,9 @@ export default new Router({
         {path: 'busineslit',name:'busineslit',component:busineslit},
         {path: 'ecmsearch',name:'ecmsearch',component:ecmsearch},
         {path: 'ecmshow',name:'ecmshow',component:ecmshow},
-        {path: 'ecmadd',name:'ecmadd',component:ecmadd}
+        {path: 'ecmadd',name:'ecmadd',component:ecmadd},
+        {path: 'user',name:'user',component:user},
+        {path: 'userManagement',name:'userManagement',component:userManagement}
       ]
     },
   ]

@@ -30,12 +30,12 @@
           "status_des":"对不起你的省份证图片太模糊，请重新上传！"
       },
       {
-        "id":3,
+        "id":2,
         "seller_id":"Nj343433",
         "shop_id":"NX234525423",
-        "shop_name":"银川华信智金凤店",
-        "shop_area":"宁夏银川市金凤区",
-        "shop_status":"未审核",
+        "shop_name":"吴忠利通区店",
+        "shop_area":"吴忠利通区",
+        "shop_status":"已通过",
         "contract_start_time":"已驳回",
         "contract_end_time":"已驳回",
         "login_info":"已驳回",
@@ -54,14 +54,14 @@
         "company_business_license":"./img/00011.img",
         "Legal_identity_card_front":"./img/00010.img",
         "Legal_identity_card_back":"./img/00011.img",
-        "status_des":"对不起你的省份证图片太模糊，请重新上传！"
+        "status_des":"欢迎入驻鲜致"
     },
     {
         "id":3,
         "seller_id":"Nj343433",
         "shop_id":"NX234525423",
-        "shop_name":"银川华信智金凤店",
-        "shop_area":"宁夏银川市金凤区",
+        "shop_name":"固原原州区店",
+        "shop_area":"固原原州区",
         "shop_status":"未审核",
         "contract_start_time":"已驳回",
         "contract_end_time":"已驳回",
@@ -85,8 +85,68 @@
         "status_des":"对不起你的省份证图片太模糊，请重新上传！"
     }
   ],
+ 
+  "users":[
+    {
+        "basicInfo":{
+            "user_id":1,
+            "order":33,
+            "rank":3,
+            "accunt":"robin@qq.com",
+            "password":"robin",
+            "name":"国平",
+            "address":"宁夏银川",
+            "sex":"男",
+            "age":333,
+            "phone":"15595469543",
+            "email":"756517553@qq.com",
+            "avatar":"a/b.png",
+            "register_time":"2018/2/23"
+        },
+        "invoiceInfo":{
+            "vat":"增值税发票信息",
+            "company":"银川华信智",
+            "code":"识别码",
+            "register-address":"注册地址",
+            "register_phone":"注册电话",
+            "bank_account":"银川账户",
+            "bank":"中国农业银行"
+        },
+        "companyInfo":{
+            "business_license":"营业执照",
+            "organization_code":"组织机构代码",
+            "legal_person":"法人",
+            "legal_id":"法人身份证号"
+        }
+    }
+  ],
 
-
+  "rank":[
+    {
+        "rank_id":1,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+    },
+    {
+        "rank_id":2,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      },
+      {
+        "rank_id":3,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      },
+      {
+        "rank_id":4,
+        "rank_name":"白金",
+        "rank_score_range":"积分范围",
+        "transaction_amount":"交易金额"
+      }
+  ],
   
   "list": [{
       "id": 1,
