@@ -47,8 +47,18 @@
         </div>
         <div class="btn">
             <el-button type="primary">审核通过</el-button>
-            <el-button >驳回</el-button>
+            <el-button @click="dialogFormVisiblebh = true">驳回</el-button>
         </div>
+         <!--驳回弹框内容S-->
+            <el-dialog title="请描述驳回与原因:" :visible.sync="dialogFormVisiblebh">
+                <div>Nulla non viverra tellus, non lobortis leo. Curabitur tristique tempor ultricies. Mauris ut ante eu dui dapibus pulvinar ac id tellus. Nam rutrum nibh ac sem pretium, a malesuada nibh blandit. Curabitur rutrum ipsum nec nisl pretium dictum. Sed at magna id erat efficitur pulvinar. Duis et diam sit amet augue laoreet imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sit amet vehicula leo. Phasellus pellentesque sapien id tellus elementum, at tempor lectus fermentum. Pellentesque malesuada volutpat orci, at bibendum urna molestie at.
+</div>
+                 <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisiblebh = false">取 消</el-button>
+                    <el-button type="primary" @click="dialogFormVisiblebh = false">提交</el-button>
+                </div>
+            </el-dialog>
+        <!--驳回弹框内容E-->  
     </div>
 </template>
 <script>
@@ -60,6 +70,7 @@ export default {
            dialogFormVisible: false,
            dialogFormVisibleo: false,
            dialogFormVisiblet: false,
+           dialogFormVisiblebh:false
       }
   }
 };
