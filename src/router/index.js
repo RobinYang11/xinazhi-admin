@@ -8,6 +8,10 @@ import t1 from '@/components/t1'
 import test from '@/pages/test'
 import entry from '@/pages/entry/entry'
 import shopinfo from '@/pages/entry/shopinfo'
+import busineslit from '@/pages/busineslit/busineslit'
+import ecmsearch from '@/pages/ecm/ecmsearch'
+import ecmshow from '@/pages/ecm/ecmshow'
+import ecmadd from '@/pages/ecm/ecmadd'
 Vue.use(Router)
 
 export default new Router({
@@ -34,9 +38,12 @@ export default new Router({
         {path: 'test', name:'test',component:test},
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry},
-        {path: 'shopinfo', name:'shopinfo',component:shopinfo}
+        {path: 'shopinfo', name:'shopinfo',component:shopinfo},
+        {path: 'busineslit',name:'busineslit',component:busineslit},
+        {path: 'ecmsearch',name:'ecmsearch',component:ecmsearch},
+        {path: 'ecmshow',name:'ecmshow',component:ecmshow},
+        {path: 'ecmadd',name:'ecmadd',component:ecmadd}
       ]
-    
     },
   ]
  

@@ -124,7 +124,7 @@ export default {
          {
           name:"移动端前端架构",
           percentage:46,
-          inchargor:"张广之",
+          inchargor:"张广志",
           color:"button-orange",
           exception:"exception"
         },
