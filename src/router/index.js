@@ -8,9 +8,12 @@ import t1 from '@/components/t1'
 import test from '@/pages/test'
 import entry from '@/pages/entry/entry'
 import shopinfo from '@/pages/entry/shopinfo'
+import busineslit from '@/pages/busineslit/busineslit'
+import ecmsearch from '@/pages/ecm/ecmsearch'
+import ecmshow from '@/pages/ecm/ecmshow'
+import ecmadd from '@/pages/ecm/ecmadd'
 import user from '@/pages/user/user'
 import userManagement from '@/pages/user/userManagement'
-
 Vue.use(Router)
 
 export default new Router({
@@ -38,10 +41,15 @@ export default new Router({
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry},
         {path: 'shopinfo', name:'shopinfo',component:shopinfo},
+        {path: 'busineslit',name:'busineslit',component:busineslit},
+        {path: 'ecmsearch',name:'ecmsearch',component:ecmsearch},
+        {path: 'ecmshow',name:'ecmshow',component:ecmshow},
+        {path: 'ecmadd',name:'ecmadd',component:ecmadd},
         //会员管理模块
         {path:'user',name:'user',component:user},
         {path:'userManagement',name:'userManagement',component:userManagement},
         {path:'rankManagement',name:'rankManagement',component:rankManagement}
+      
       ]
     },
   ]
