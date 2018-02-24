@@ -90,7 +90,7 @@
     {
         "basicInfo":{
             "user_id":1,
-            "order":33,
+            "order":"普通会员",
             "rank":3,
             "accunt":"robin@qq.com",
             "password":"robin",

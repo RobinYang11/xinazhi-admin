@@ -14,6 +14,8 @@ import ecmshow from '@/pages/ecm/ecmshow'
 import ecmadd from '@/pages/ecm/ecmadd'
 import user from '@/pages/user/user'
 import userManagement from '@/pages/user/userManagement'
+import rankManagement from '@/pages/user/rankManagement'
+import infomanagement from '@/pages/user/infomanagement'
 Vue.use(Router)
 
 export default new Router({
@@ -48,7 +50,8 @@ export default new Router({
         //会员管理模块
         {path:'user',name:'user',component:user},
         {path:'userManagement',name:'userManagement',component:userManagement},
-        {path:'rankManagement',name:'rankManagement',component:rankManagement}
+        {path:'rankManagement',name:'rankManagement',component:rankManagement},
+        {path:'infomanagement',name:'infomanagement',component:infomanagement}
       
       ]
     },
