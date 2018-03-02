@@ -3,56 +3,51 @@
         <div class="panel">
             <div class="panel-header">
                 <div class="panel-title">
-                    <h4>基本信息</h4>
+                    <h4>商户信息</h4>
                 </div>
             </div>
             <div class="panel-body">
                     <el-form ref="form"  label-width="180px">
                     <el-row :gutter="20">
                         <el-col :span="10">
-                            <el-form-item label="账户名">
-                                    <el-input :value="baseinfo.name" :disabled="isEdit"></el-input>
+                            <el-form-item label="名称">
+                                    <el-input :value="merchantlist[0].Merchant_name"  :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
-                            <el-form-item label="会员所在地址">
-                                    <el-input :value="baseinfo.address" :disabled="isEdit"></el-input>
+                            <el-form-item label="店铺ID">
+                                    <el-input :value="merchantlist[0].Merchant_id" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>   
                     <el-row :gutter="20">
                         <el-col :span="10">
-                            <el-form-item label="手机号">
-                                    <el-input :value="baseinfo.phone" :disabled="isEdit"></el-input>
+                            <el-form-item label="商家ID">
+                                    <el-input :value="merchantlist[0].Shop_id" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
-                            <el-form-item label="会员邮箱">
-                                    <el-input :value="baseinfo.email" :disabled="isEdit"></el-input>
-                                </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row :gutter="20">
-                        <el-col :span="10">
-                            <el-form-item label="性别">
-                                    <el-input :value="baseinfo.sex" :disabled="isEdit"></el-input>
-                                </el-form-item>
-                        </el-col>
-                        <el-col :span="10">
-                            <el-form-item label="年龄">
-                                    <el-input :value="baseinfo.age" :disabled="isEdit"></el-input>
+                            <el-form-item label="合同时间">
+                                    <el-input :value="merchantlist[0].Contract_time" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20">
                         <el-col :span="10">
-                            <el-form-item label="密码修改">
-                                    <el-input :value="baseinfo.password" :disabled="isEdit"></el-input>
+                            <el-form-item label="登录信息">
+                                    <el-input :value="merchantlist[0].Login_information" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
-                            <el-form-item label="其他基本信息">
-                                    <el-input :value="baseinfo.name" :disabled="isEdit"></el-input>
+                            <el-form-item label="登录IP地址">
+                                    <el-input :value="merchantlist[0].Login_IP_address" :disabled="isEdit"></el-input>
+                                </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                        <el-col :span="10">
+                            <el-form-item label="客服热线">
+                                    <el-input :value="merchantlist[0].Customer_service" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
@@ -69,18 +64,33 @@
 
 <script>
 export default {
-  props:['baseinfo'],
   data:function(){
         return{
             isEdit:true,
+            merchantlist:[]
         }
     },
+    mounted(){
+      this.getlist();
+  },
     methods:{
         edit:function(){
             this.isEdit=false;
         },
         ok:function(){
             this.isEdit=true;
+        },
+        getlist()
+        {   
+            let _this=this
+            this.$http.get('/api/merchant')
+                    .then(function (response) {
+                        _this.merchantlist=response.data;
+                        console.log(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+            });
         }
     }
 }

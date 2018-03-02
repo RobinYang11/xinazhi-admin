@@ -28,27 +28,33 @@
                   </caption>
                   <thead>
                      <tr>
-                        <th>ID</th>
-                        <th>状态</th>
-                        <th>注册时间</th>
+                        <th>序号</th>
+                        <th>会员账号</th>
+                        <th>会员状态</th>
+                        <th>会员名</th>
                         <th width="140">手机号码</th>
+                        <th>会员邮箱</th>
+                        <th>会员等级</th>
                      </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr  v-for="(i ,index) in managementList">
+                      <td>{{index+1}}</td>
                       <td>
-                         {{managementList.user_id}}
+                         <router-link to="/main/infomanagement" class="accunt">{{i.basicInfo.accunt}}</router-link>
                       </td>
                       <td>
-                        <router-link to="/main/infomanagement">{{managementList.order}}</router-link>
+                            {{i.basicInfo.order}}
                       </td>
-                      <td>{{managementList.register_time}}</td>
-                      <td>{{managementList.phone}}</td>
+                      <td>{{i.basicInfo.name}}</td>
+                      <td>{{i.basicInfo.phone}}</td>
+                      <td>{{i.basicInfo.email}}</td>
+                      <td>{{i.basicInfo.rank}}</td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="4">
+                      <td colspan="7">
                         <div class="block">
                           <el-pagination
                             layout="prev, pager, next"
@@ -86,7 +92,7 @@ export default {
                 let _this=this
                 this.$http.get('/api/users')
                         .then(function (response) {
-                            _this.managementList=response.data[0].basicInfo
+                            _this.managementList=response.data
                         })
                         .catch(function (error) {
                             console.log(error);
@@ -139,6 +145,10 @@ export default {
               a{
                 font-size: 14px;
                 color: black;
+              }
+              .accunt{
+                text-decoration: underline;
+                color: #AAA173;
               }
             }
           }

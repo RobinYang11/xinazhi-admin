@@ -16,6 +16,10 @@ import user from '@/pages/user/user'
 import userManagement from '@/pages/user/userManagement'
 import rankManagement from '@/pages/user/rankManagement'
 import infomanagement from '@/pages/user/infomanagement'
+import orderlist from '@/pages/order/orderlist'
+import merchant from '@/pages/merchant/merchant'
+import merchantinfo from '@/pages/merchant/merchantinfo'
+import merchantzt from '@/pages/merchant/merchantzt'
 Vue.use(Router)
 
 export default new Router({
@@ -51,8 +55,14 @@ export default new Router({
         {path:'user',name:'user',component:user},
         {path:'userManagement',name:'userManagement',component:userManagement},
         {path:'rankManagement',name:'rankManagement',component:rankManagement},
-        {path:'infomanagement',name:'infomanagement',component:infomanagement}
-      
+        {path:'infomanagement',name:'infomanagement',component:infomanagement},
+        //订单管理模块
+        {path:'orderlist',name:'iorderlist',component:orderlist},
+        //商户管理模块
+        {path:'merchant',name:'merchant',component:merchant},
+        {path:'merchantinfo',name:'merchantinfo',component:merchantinfo},
+        {path:'merchantzt',name:'merchant',component:merchantzt}
+
       ]
     },
   ]

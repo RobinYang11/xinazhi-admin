@@ -19,33 +19,41 @@
             </caption>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>状态</th>
-                    <th>注册时间</th>
+                    <th>序号</th>
+                    <th>会员账号</th>
+                    <th>会员状态</th>
+                    <th>会员名</th>
                     <th width="140">手机号码</th>
+                    <th>会员邮箱</th>
+                    <th>会员等级</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr v-for="(i, index) in managementList">
                 <td>
-                    {{managementList.user_id}}
+                   {{index+1}}
                 </td>
                 <td>
-                <router-link to="/main/infomanagement">{{managementList.order}}</router-link>
+                   {{i.basicInfo.accunt}}
                 </td>
-                <td>{{managementList.register_time}}</td>
-                <td>{{managementList.phone}}</td>
                 <td>
-                    <el-button type="text" size="small" @click="ckperson">查看</el-button>
-                    <el-button type="text" size="small" @click="bjperson">编辑</el-button>
-                    <el-button type="text" size="small" @click="deDialogVisible = true">删除</el-button>
+                      {{i.basicInfo.order}}
+                </td>
+                <td>{{i.basicInfo.name}}</td>
+                <td>{{i.basicInfo.phone}}</td>
+                <td>{{i.basicInfo.email}}</td>
+                <td>{{i.basicInfo.rank}}</td>
+                <td>
+                    <el-button type="primary" size="small" @click="ckperson">查看</el-button>
+                    <el-button type="default" size="small" @click="bjperson">编辑</el-button>
+                    <el-button type="danger" size="small" @click="deDialogVisible = true">删除</el-button>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="5">
+                <td colspan="8">
                 <div class="block">
                     <el-pagination
                     layout="prev, pager, next"
@@ -65,34 +73,26 @@
                     <div>
                         <el-row>
                             <el-col :span="4">
-                                ID
+                                会员账号
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="managementList.user_id" :disabled="isedit"></el-input>
+                                 <el-input :placeholder="managementList[0].basicInfo.accunt" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row>
                             <el-col :span="4">
-                                会员状态
+                                会员名
                             </el-col>
                             <el-col :span="10">
-                                 <el-input :placeholder="managementList.order" :disabled="isedit"></el-input>
-                            </el-col>
-                        </el-row>
-                        <el-row>
-                            <el-col :span="4">
-                                注册时间
-                            </el-col>
-                            <el-col :span="10">
-                                 <el-date-picker type="date" :placeholder="managementList.register_time" v-model="form.date1" :disabled="isedit"></el-date-picker>
+                                 <el-date-picker type="date" :placeholder="managementList[0].basicInfo.name" v-model="form.date1" :disabled="isedit"></el-date-picker>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
                             <el-col :span="4">
-                                手机号
+                                手机号码
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="managementList.phone" :disabled="isedit"></el-input>
+                                <el-input :placeholder="managementList[0].basicInfo.phone" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                     </div>
@@ -117,7 +117,7 @@
                     </span>
                 </el-dialog>
         <!--删除E-->
-        <el-button @click="addperson">增加会员</el-button> 
+        <el-button @click="addperson"> <i class="el-icon-plus"></i> 增加会员</el-button> 
    </div>
 </template>
 <script>
@@ -177,7 +177,7 @@ export default {
       this.$http
         .get("/api/users")
         .then(function(response) {
-          _this.managementList = response.data[0].basicInfo;
+          _this.managementList = response.data;
         })
         .catch(function(error) {
           console.log(error);

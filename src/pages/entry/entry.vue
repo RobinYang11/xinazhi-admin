@@ -22,7 +22,7 @@
                     width="180">
                     <template slot-scope="scope">
                         <div>
-                            <router-link :to="'shopinfo'">  {{ scope.row.shop_name}} </router-link>
+                            <router-link :to="'shopinfo'" style="color:#AAA173;">  {{ scope.row.shop_name}} </router-link>
                         </div>
                     </template>
                     </el-table-column>

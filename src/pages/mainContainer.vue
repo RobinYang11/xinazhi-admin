@@ -22,10 +22,10 @@
                        <router-link to="/main/user"><i class="el-icon-location"></i>会员管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-printer"></i>商户管理</a>
+                    <router-link to="/main/merchant"><i class="el-icon-printer"></i>商户管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-tickets"></i>订单管理</a>
+                    <router-link to="/main/orderlist"><i class="el-icon-tickets"></i>订单管理</router-link>
                   </li>
                    <li>
                     <a href="#"><i class="el-icon-edit-outline"></i>评价管理</a>
