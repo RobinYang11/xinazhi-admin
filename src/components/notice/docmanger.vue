@@ -91,6 +91,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.fr{float: right;}
 .docmanger {
   .table {
     border-spacing: 0;

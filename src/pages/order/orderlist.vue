@@ -21,3 +21,30 @@ export default {
 }
 </script>
 
+<style lang="less" scoped>
+.panel{
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  .panel>.panel-header{
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .panel>.panel-header>.panel-title{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    border-bottom: 2px solid #e4e7ed;
+    padding: 0 10px 10px 15px;
+  }
+  .panel>.panel-body{
+    padding: 15px
+  }
+</style>

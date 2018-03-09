@@ -26,7 +26,7 @@
                         <th>活动时间</th>
                         <th>活动优惠</th>
                         <th>商品销量</th>
-                        <th>操作</th>
+                        <th width="180">操作</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -165,6 +165,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.fr{ float:right}
 .basicactvity {
   .table {
     border-spacing: 0;

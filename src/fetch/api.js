@@ -43,6 +43,12 @@ export async function fetch(url, params) {
 
 export default {
 
+
+    // 用户登录
+    login(){
+        return fetch('/api/login')
+    },
+
     /*商品信息*/
     shopList() {
         return fetch('/api/shop')
@@ -59,42 +65,42 @@ export default {
         return fetch('/api/admin_role')
     },
     permission(){
-        return fetch('./api/permission')
+        return fetch('/api/permission')
     },
     /*商品信息*/
     Commodity(){
-        return fetch('./api/Commodity')
+        return fetch('/api/Commodity')
     },
     /*促销/公告*/
     docclass(){
-        return fetch('./api/doc_class')
+        return fetch('/api/doc_class')
     },
     docs(){
-        return fetch('./api/docs')
+        return fetch('/api/docs')
     },
     news(){
-        return fetch('./api/news')
+        return fetch('/api/news')
     },
     /*活动广告*/
     Promotion(){
-        return fetch('./api/Promotion')
+        return fetch('/api/Promotion')
     },
     basicactvity(){
-        return fetch('./api/basic_activity')
+        return fetch('/api/basic_activity')
     },
     Coupon(){
-        return fetch('./api/Coupon')
+        return fetch('/api/Coupon')
     },
     /*订单评价*/
     orderval(){
-        return fetch('./api/Commodity_evaluation')
+        return fetch('/api/Commodity_evaluation')
     },
     /*商品评价*/
     shopeval(){
-        return fetch('./api/Commodity_shope_evaluation')
+        return fetch('/api/Commodity_shope_evaluation')
     },
     /*消息推送*/
     station(){
-        return fetch('./api/station_push')
+        return fetch('/api/station_push')
     }
 }

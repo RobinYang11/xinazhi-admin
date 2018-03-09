@@ -29,7 +29,7 @@
                         <th>领取时间</th>
                         <th>发行量</th>
                         <th>活动范围</th>
-                        <th>操作</th>
+                        <th width="180">操作</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -179,6 +179,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.fr{ float:right}
 .Coupon {
   .table {
     border-spacing: 0;

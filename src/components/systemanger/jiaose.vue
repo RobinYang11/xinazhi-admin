@@ -3,8 +3,8 @@
         <el-row :gutter="20">
             <el-col :span="24">
                  <table class="table">
-                  <caption>
-                      <el-button type="primary" class="fr"  @click="DialogVisible = true">添加用户</el-button>
+                  <caption style="text-align:right">
+                      <el-button type="primary"  @click="DialogVisible = true">添加用户</el-button>
                   </caption>
                   <thead>
                      <tr>

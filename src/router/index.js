@@ -29,14 +29,13 @@ import docmanclass from '@/pages/notice/docmanclass'
 import newsnotice from '@/pages/notice/newsnotice'
 import activity from '@/pages/campaignadv/activity'
 import messpush from '@/pages/message/messpush'
+
+import store from '../vuex/store'
+
 Vue.use(Router)
 const router = new Router({
   routes: [
-    {
-      path: '/',
-      redirect: '/main',
-    
-    },
+ 
     //登录路由
     {
       path: '/login',
@@ -47,68 +46,73 @@ const router = new Router({
     {
       path: '/main',
       name: 'main',
-      component: mainContainer,
+      component: mainContainer,meta:{ requireAuth: true},
       children:[
         {path: 't1',name: 't1',component:t1,  meta:{ requireAuth: true}},
-        {path: 'total', name:'total',component:total},
-        {path: 'test', name:'test',component:test},
+        {path: 'total', name:'total',meta:{ requireAuth: true},component:total},
+        {path: 'test', name:'test',meta:{ requireAuth: true},component:test},
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry,  meta:{ requireAuth: true}},
-        {path: 'shopinfo', name:'shopinfo',component:shopinfo},
-        {path: 'busineslit',name:'busineslit',component:busineslit},
-        {path: 'ecmsearch',name:'ecmsearch',component:ecmsearch},
-        {path: 'ecmshow',name:'ecmshow',component:ecmshow},
-        {path: 'ecmadd',name:'ecmadd',component:ecmadd},
+        {path: 'shopinfo', name:'shopinfo',meta:{ requireAuth: true},component:shopinfo},
+        {path: 'busineslit',name:'busineslit',meta:{ requireAuth: true},component:busineslit},
+        {path: 'ecmsearch',name:'ecmsearch',component:ecmsearch,meta:{ requireAuth: true}},
+        {path: 'ecmshow',name:'ecmshow',component:ecmshow,meta:{ requireAuth: true}},
+        {path: 'ecmadd',name:'ecmadd',component:ecmadd,meta:{ requireAuth: true}},
         //会员管理模块
-        {path:'user',name:'user',component:user},
-        {path:'userManagement',name:'userManagement',component:userManagement},
-        {path:'rankManagement',name:'rankManagement',component:rankManagement},
-        {path:'infomanagement',name:'infomanagement',component:infomanagement},
+        {path:'user',name:'user',component:user,meta:{ requireAuth: true}},
+        {path:'userManagement',name:'userManagement',component:userManagement,meta:{ requireAuth: true}},
+        {path:'rankManagement',name:'rankManagement',component:rankManagement,meta:{ requireAuth: true}},
+        {path:'infomanagement',name:'infomanagement',component:infomanagement,meta:{ requireAuth: true}},
         //订单管理模块
-        {path:'orderlist',name:'iorderlist',component:orderlist},
+        {path:'orderlist',name:'iorderlist',component:orderlist,meta:{ requireAuth: true}},
         //商户管理模块
-        {path:'merchant',name:'merchant',component:merchant},
-        {path:'merchantinfo',name:'merchantinfo',component:merchantinfo},
-        {path:'merchantzt',name:'merchant',component:merchantzt},
+        {path:'merchant',name:'merchant',component:merchant,meta:{ requireAuth: true}},
+        {path:'merchantinfo',name:'merchantinfo',component:merchantinfo,meta:{ requireAuth: true}},
+        {path:'merchantzt',name:'merchant',component:merchantzt,meta:{ requireAuth: true}},
         //商品管理模块
-        {path:'goodsatten',name:'goodsatten',component:goodsatten},
+        {path:'goodsatten',name:'goodsatten',component:goodsatten,meta:{ requireAuth: true}},
         //客户服务模块
-        {path:'service',name:'service',component:service},
+        {path:'service',name:'service',component:service,meta:{ requireAuth: true}},
         //系统管理模块
-        {path:'system',name:'system',component:system},
+        {path:'system',name:'system',component:system,meta:{ requireAuth: true}},
         //通知公告模块
-        {path:'notice',name:'notice',component:notice},
-        {path:'docmanclass',name:'docmanclass',component:docmanclass},
-        {path:'newsnotice',name:'newsnotice',component:newsnotice},
+        {path:'notice',name:'notice',component:notice,meta:{ requireAuth: true}},
+        {path:'docmanclass',name:'docmanclass',component:docmanclass,meta:{ requireAuth: true}},
+        {path:'newsnotice',name:'newsnotice',component:newsnotice,meta:{ requireAuth: true}},
         //评价管理模块
-        {path:'evaluate',name:'evaluate',component:evaluate},
+        {path:'evaluate',name:'evaluate',component:evaluate,meta:{ requireAuth: true}},
         //活动广告模块
-        {path:'activity',name:'activity',component:activity},
+        {path:'activity',name:'activity',component:activity,meta:{ requireAuth: true}},
         //消息推送
-        {path:'messpush',name:'messpush',component:messpush},
+        {path:'messpush',name:'messpush',component:messpush,meta:{ requireAuth: true}},
       ]
     },
-  ]
+  ],
+  mode:'history'
  
 })
 
 
 router.beforeEach(function(to,from,next){
    
+
+   //判断目标需不需要拦截
    if(to.matched.some(r=> r.meta.requireAuth))
    {
     console.log("需要校验")
+    //判断有没有令牌token
     if(store.state.token){
       next();
     }
+    //如果没有令牌,强制跳转到登录页面
     else
     {
       next({
         path:'/login',
-        query:{redirect:to.fullPath}
+        // query:{redirect:to.path}
       })
    }
-        
+   //如果需要拦截，直接跳转   
    }
    else{
      console.log("不需要校验")

@@ -63,6 +63,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.fr{float: right;}
 .flmanger {
   .table {
     border-spacing: 0;

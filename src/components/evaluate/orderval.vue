@@ -11,8 +11,8 @@
                 <!--搜索结束-->
           </el-col>
           <el-col :span="8">&nbsp</el-col>
-          <el-col :span="8">
-              <el-button type="primary" size="medium" class="fr" @click="addperson">
+          <el-col :span="8" style="text-align:right">
+              <el-button type="primary" size="medium" @click="addperson">
                    添加订单
               </el-button>
           </el-col>
@@ -27,7 +27,7 @@
                         <th>订单回复</th>
                         <th>追加评价</th>
                         <th>评价显示</th>
-                        <th>操作</th>
+                        <th width="180">操作</th>
                      </tr>
                   </thead>
                   <tbody>

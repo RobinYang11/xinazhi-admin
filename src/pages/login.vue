@@ -34,9 +34,11 @@
                                 <el-col :span="20">
                                     <el-input
                                     size="small"
-                                    placeholder="请输入内容"
+                                    v-model="username"
+                                    placeholder="请输入账号"
                                     suffix-icon="iconfont icon-people"
                                     >
+                              
                                   </el-input>
                                 </el-col>
                              </el-row>
@@ -48,7 +50,8 @@
                                 <el-col :span="20">
                                     <el-input
                                     size="small"
-                                    placeholder="请输入内容"
+                                    v-model="password"
+                                    placeholder="请输入账号"
                                     suffix-icon="iconfont icon-lock"
                                     >
                                   </el-input>
@@ -60,7 +63,7 @@
                                  </el-col>
                               </el-row>
                               <el-row>
-                                 <input type="submit" value="登录">
+                                 <button @click.prevent.stop="login()" class="input">登录</button>
                               </el-row>    
                            </form>
                            <div class="other">
@@ -103,6 +106,32 @@
 <script>
 export default {
   name:"login",
+  data:()=>{
+    return {
+      username:null,
+      password:null, 
+    }
+  },
+
+  methods:{
+    login(){
+       if(this.username=='' || this.username==null ||this.password=='' || this.password==null)
+       {
+           alert("请输入正确的信息")
+       }
+       else{
+
+        
+            //从后台请求login获取token
+            this.$store.dispatch('login');
+            this.$router.push({ path: '/main' })  
+            // if(this.$store.state.token)
+            // { 
+              
+            // }
+       }
+    }
+  }
 }
 </script>
 <style lang="less">
@@ -174,7 +203,7 @@ export default {
                     }
                   }
                   margin-bottom: 20px;
-                  input[type="submit"]{
+                  .input{
                         width: 100%;
                         border: none;
                         padding: 10px;

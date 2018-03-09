@@ -22,7 +22,9 @@
                       <td>{{index+1}}</td>
                       <td>{{i.id}}</td>
                       <td> <i class="el-icon-time"></i>{{i.seller_id}}</td>
-                      <td>{{i.company_name}}</td>
+                      <td>
+                          <router-link to="/main/shopinfo" class="accunt" >{{i.company_name}}</router-link>
+                      </td>
                       <td>{{i.company_registry_address}}</td>
                       <td>
                          <a href="#" style="color:#409EFF">{{i.shop_status}}</a> 
