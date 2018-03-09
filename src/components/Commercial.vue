@@ -4,43 +4,43 @@
           <el-row :gutter="20">
               <el-col :span="10">
                    <el-form-item label="单位名称">
-                        <el-input :value="shop.company_name" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.company_name" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
               <el-col :span="10">
                    <el-form-item label="公司注册地址">
-                        <el-input :value="shop.registor_address_detail" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.registor_address_detail" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
           </el-row>
           <el-row :gutter="20">
               <el-col :span="10">
                    <el-form-item label="纳税人识别号">
-                        <el-input :value="shop.taxpayer_identification_number" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.taxpayer_identification_number" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
               <el-col :span="10">
                    <el-form-item label="开户银行">
-                        <el-input :value="shop.bank" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.bank" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
           </el-row>
           <el-row :gutter="20">
               <el-col :span="10">
                    <el-form-item label="单位名称">
-                        <el-input :value="shop.company_name" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.company_name" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
               <el-col :span="10">
                    <el-form-item label="银行账号">
-                        <el-input :value="shop.bank_name" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.bank_name" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
           </el-row> 
           <el-row :gutter="20">
               <el-col :span="10">
                    <el-form-item label="注册电话">
-                        <el-input :value="shop.registor_tel" :disabled="isEdit"></el-input>
+                        <el-input :value="shop&&shop.registor_tel" :disabled="isEdit"></el-input>
                     </el-form-item>
               </el-col>
               <el-col :span="10"> 

@@ -3,10 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './vuex/store'
 import ElementUI from 'element-ui'
+import VueQuillEditor from 'vue-quill-editor'
+ 
 import 'element-ui/lib/theme-chalk/display.css';
 //全局引入echarts图标 ，不建议使用。应按需映入
 import 'element-ui/lib/theme-chalk/index.css'
+//富文本编辑器
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts 
 //  let echarts = require('echarts/lib/echarts')
@@ -16,7 +22,7 @@ Vue.prototype.$echarts = echarts
 // require('echarts/lib/component/tooltip')
 // require('echarts/lib/component/title')
 Vue.use(ElementUI)
-
+Vue.use(VueQuillEditor)
 //引入axios 
 import axios from 'axios'
 Vue.prototype.$http = axios
@@ -28,6 +34,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   el: '#app',
   router,
   components: { App },

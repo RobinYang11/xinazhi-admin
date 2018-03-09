@@ -16,34 +16,34 @@
                     <router-link to="/main/entry"><i class="el-icon-sold-out"></i>商家入驻</router-link>
                   </li>
                   <li>
-                    <a href="#"><i class="el-icon-setting"></i>系统管理</a>
+                    <router-link to="/main/system"><i class="el-icon-setting"></i>系统管理</router-link>
                   </li>
                   <li>
                        <router-link to="/main/user"><i class="el-icon-location"></i>会员管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-printer"></i>商户管理</a>
+                    <router-link to="/main/merchant"><i class="el-icon-printer"></i>商户管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-tickets"></i>订单管理</a>
+                    <router-link to="/main/orderlist"><i class="el-icon-tickets"></i>订单管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-edit-outline"></i>评价管理</a>
+                    <router-link to="/main/evaluate"><i class="el-icon-edit-outline"></i>评价管理</router-link>
                   </li>
                   <li>
-                    <a href="#"><i class="el-icon-service"></i>客户服务</a>
+                    <router-link to="/main/service"><i class="el-icon-service"></i>客户服务</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-message"></i>消息推送</a>
+                    <router-link to="/main/messpush"><i class="el-icon-message"></i>消息推送</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-bell"></i>通知公告</a>
+                    <router-link to="/main/notice"><i class="el-icon-bell"></i>通知公告</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-menu"></i>商品管理</a>
+                    <router-link to="/main/goodsatten"><i class="el-icon-menu"></i>商品管理</router-link>
                   </li>
                    <li>
-                    <a href="#"><i class="el-icon-share"></i>活动广告</a>
+                    <router-link to="/main/activity"><i class="el-icon-share"></i>活动广告</router-link>
                   </li>
                 </ul>
               </div>

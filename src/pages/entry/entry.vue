@@ -6,79 +6,70 @@
                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
             </div>
             <div>
-                <el-table
-                :data="shopList"
-                style="width: 100%">
-                <el-table-column
-                label="商户编号"
-                width="180">
-                    <template slot-scope="scope">
-                        <i class="el-icon-time"></i>
-                        <span style="margin-left: 10px">{{ scope.row.shop_id }}</span>
-                    </template>
-                    </el-table-column>
-                    <el-table-column
-                    label="商户名称"
-                    width="180">
-                    <template slot-scope="scope">
-                        <div>
-                            <router-link :to="'shopinfo'">  {{ scope.row.shop_name}} </router-link>
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>序号</th>
+                        <th>商户id</th>
+                        <th>商户编号</th>
+                        <th>商户名称</th>                      
+                        <th>区域</th>
+                        <th>状态</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(i,index) in shopList.slice((currentPage-1)*pagesize,currentPage*pagesize) ">
+                      <td>{{index+1}}</td>
+                      <td>{{i.id}}</td>
+                      <td> <i class="el-icon-time"></i>{{i.seller_id}}</td>
+                      <td>{{i.company_name}}</td>
+                      <td>{{i.company_registry_address}}</td>
+                      <td>
+                         <a href="#" style="color:#409EFF">{{i.shop_status}}</a> 
+                     </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="6">
+                        <div class="block">
+                          <el-pagination
+                              @size-change="handleSizeChange"
+                              @current-change="handleCurrentChange"
+                              :current-page="currentPage"
+                              :page-sizes="[10, 15, 25, 50]"
+                              :page-size="pagesize"
+                              layout="total, sizes, prev, pager, next, jumper"
+                              :total="shopList.length">
+                          </el-pagination>
                         </div>
-                    </template>
-                    </el-table-column>
-
-                    <el-table-column label="区域">
-                        <template slot-scope="scope">
-                            <div> {{ scope.row.shop_area}}</div>
-                        </template>
-                    </el-table-column>
-
-                     <el-table-column
-                    prop="tag"
-                    label="状态"
-                    width="100"
-                    :filters="[{ text: '未审核', value: '未审核' }, { text: '已审核', value: '已审核' }]"
-                    :filter-method="filterTag"
-                    filter-placement="bottom-end">
-                        <template slot-scope="scope">
-                            <el-tag
-                            :type="scope.row.shop_status === '未审核' ? 'primary' : 'success'"
-                            close-transition>{{scope.row.shop_status}}</el-tag>
-                        </template>
-                    </el-table-column>
-                </el-table>
-             
+                      </td>
+                    </tr>
+                  </tfoot>
+               </table>
             </div>
         </el-card>
    </div>
 </template>
 <script>
-    import axios from 'axios'
+    import { mapGetters } from 'vuex'
     export default {
         name:"entry",
         data(){
             return {
-                shopList:null,
-                age:3
+                currentPage: 1,
+                pagesize: 15,
             }
         },
-        mounted(){
-            this.getInfo();
-        },
-
-        methods:{
-          //
-            getInfo()
-            {   
-                let _this=this
-                this.$http.get('/api/shop')
-                        .then(function (response) {
-                            _this.shopList=response.data
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                });
+        created() {
+                if (this.shopList.length == 0) {
+                    this.$store.dispatch('shop')
+                }
             },
+            computed:mapGetters([
+                'shopList'
+            ]),
+        methods:{
             filterTag(value, row) {
                 return row.shop_status === value;
             },
@@ -86,7 +77,13 @@
             {
                 const property = column['property'];
                 return row[property] === value;
-            }
+            },
+             handleSizeChange: function(size) {
+            this.pagesize = size;
+            },
+            handleCurrentChange: function(currentPage) {
+            this.currentPage = currentPage;
+            },
         }
     }
 </script>
@@ -100,6 +97,54 @@
                     color:black;
                 }
             }
+            .table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    caption {
+      padding: 8px 0;
+      .el-form {
+        float: left;
+        .el-form-item {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    thead {
+      tr {
+        th {
+          padding: 8px;
+          line-height: 1.42857143;
+          border: 1px solid #ddd;
+          color: rgb(144, 147, 153);
+          font-weight: 500;
+        }
+      }
+    }
+    tbody,
+    tfoot {
+      tr {
+        td {
+          padding: 8px;
+          line-height: 1.42857143;
+          border: 1px solid #ddd;
+          text-align: center;
+          a {
+            font-size: 14px;
+            color: black;
+          }
+          .accunt {
+            text-decoration: underline;
+            color: #aaa173;
+          }
+        }
+      }
+    }
+  }
         }
     }
 </style>
