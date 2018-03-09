@@ -63,7 +63,7 @@
                                 商户名称
                             </el-col>
                             <el-col :span="10">
-                                 <el-input :placeholder="merchantlist[0].Merchant_name" :disabled="isedit"></el-input>
+                                 <el-input :placeholder="merchantlist[0]&&merchantlist[0].Merchant_name" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row>
@@ -71,7 +71,7 @@
                                 商户信息
                             </el-col>
                             <el-col :span="10">
-                                 <el-input :placeholder="merchantlist[0].Login_information" :disabled="isedit"></el-input>
+                                 <el-input :placeholder="merchantlist[0]&&merchantlist[0].Login_information" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
@@ -79,7 +79,7 @@
                                 手机号码
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="merchantlist[0].Contact_number" :disabled="isedit"></el-input>
+                                <el-input :placeholder="merchantlist[0]&&merchantlist[0].Contact_number" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
@@ -87,7 +87,7 @@
                                 送达时间
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="merchantlist[0].Delivery_time" :disabled="isedit"></el-input>
+                                <el-input :placeholder="merchantlist[0]&&merchantlist[0].Delivery_time" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                     </div>
@@ -117,31 +117,26 @@
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
-      merchantlist: {},
       centerDialogVisible: false,
       message: "增加信息",
       deDialogVisible: false,
       isedit: true
     };
   },
-  mounted() {
-    this.getlist();
+ created() {
+    if (this.merchantlist.length == 0) {
+      this.$store.dispatch("merchant");
+    }
+  },
+  computed: {
+    ...mapGetters(["merchantlist"])
   },
   methods: {
-    getlist() {
-      let _this = this;
-      this.$http
-        .get("/api/merchant")
-        .then(function(response) {
-          _this.merchantlist = response.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
+    
     addperson: function() {
       this.centerDialogVisible = true;
       this.message = "增加信息";

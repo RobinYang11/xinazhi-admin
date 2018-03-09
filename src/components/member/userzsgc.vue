@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-            <tr v-for="(i, index) in managementList">
+            <tr v-for="(i, index) in userList.slice((currentPage-1)*pagesize,currentPage*pagesize)">
                 <td>
                    {{index+1}}
                 </td>
@@ -56,8 +56,13 @@
                 <td colspan="8">
                 <div class="block">
                     <el-pagination
-                    layout="prev, pager, next"
-                    :total="1000">
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="[2, 5, 10, 15]"
+                        :page-size="pagesize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="userList.length">
                     </el-pagination>
                 </div>
                 </td>
@@ -76,7 +81,7 @@
                                 会员账号
                             </el-col>
                             <el-col :span="10">
-                                 <el-input :placeholder="managementList[0].basicInfo.accunt" :disabled="isedit"></el-input>
+                                 <el-input :placeholder="userList[0]&&userList[0].basicInfo.accunt" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row>
@@ -84,7 +89,7 @@
                                 会员名
                             </el-col>
                             <el-col :span="10">
-                                 <el-date-picker type="date" :placeholder="managementList[0].basicInfo.name" v-model="form.date1" :disabled="isedit"></el-date-picker>
+                                 <el-input  :placeholder="userList[0]&&userList[0].basicInfo.name"  :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
@@ -92,7 +97,7 @@
                                 手机号码
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="managementList[0].basicInfo.phone" :disabled="isedit"></el-input>
+                                <el-input :placeholder="userList[0]&&userList[0].basicInfo.phone" :disabled="isedit"></el-input>
                             </el-col>
                         </el-row>
                     </div>
@@ -121,6 +126,7 @@
    </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "userManagement",
   data() {
@@ -128,61 +134,55 @@ export default {
       form: {
         date1: ""
       },
-      managementList: [],
+       currentPage:1,
+       pagesize:2,
       centerDialogVisible: false,
       deDialogVisible: false,
-      message:"编辑信息",
-      isedit:true
+      message: "编辑信息",
+      isedit: true
     };
   },
-  mounted() {
-    this.getinfo();
+  created() {
+    if (this.userList.length == 0) {
+      this.$store.dispatch("user");
+    }
+  },
+  computed: {
+    ...mapGetters(["userList"])
   },
   methods: {
     onSubmit() {
       console.log("submit!");
     },
-     click:function()
-        {
-          this.isShowLogin=!this.isShowLogin;
-          if(this.isShowLogin)
-           {
-               this.clickName="取消"
-           }
-           else
-           {
-               this.clickName="添加更多"
-           }  
-        },
-        addperson:function()
-        {
-            this.centerDialogVisible=true;
-            this.message="增加会员";
-            this.isedit=false
-        },
-        ckperson:function()
-        {
-            this.centerDialogVisible=true;
-            this.message="查看会员信息";
-            this.isedit=true
-        },
-         bjperson:function()
-        {
-            this.centerDialogVisible=true;
-            this.message="编辑会员信息";
-            this.isedit=false
-        },
-    getinfo() {
-      let _this = this;
-      this.$http
-        .get("/api/users")
-        .then(function(response) {
-          _this.managementList = response.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
+    click: function() {
+      this.isShowLogin = !this.isShowLogin;
+      if (this.isShowLogin) {
+        this.clickName = "取消";
+      } else {
+        this.clickName = "添加更多";
+      }
+    },
+    addperson: function() {
+      this.centerDialogVisible = true;
+      this.message = "增加会员";
+      this.isedit = false;
+    },
+    ckperson: function() {
+      this.centerDialogVisible = true;
+      this.message = "查看会员信息";
+      this.isedit = true;
+    },
+    bjperson: function() {
+      this.centerDialogVisible = true;
+      this.message = "编辑会员信息";
+      this.isedit = false;
+    },
+    handleSizeChange: function (size) {
+          this.pagesize = size;
+      },
+      handleCurrentChange: function(currentPage){
+          this.currentPage = currentPage;
+      }
   }
 };
 </script>

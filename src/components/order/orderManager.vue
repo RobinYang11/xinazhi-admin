@@ -35,11 +35,11 @@
             <el-table-column
               prop="operation"
               label="操作"
-              :formatter="formatter">
+              :formatter="formattero">
             </el-table-column>
             <el-table-column
               prop="tag"
-              label="标签"
+              label="状态删选"
               width="100"
               :filters="[{ text: '待收货', value: '待收货' }, { text: '待评价', value: '待评价' },{ text: '待付款', value: '待付款' }]"
               :filter-method="filterTag"
@@ -75,33 +75,33 @@
           date: '2016-05-02',
           name: '华信智',
           money:100,
-          address: '待收货',
+          address: '订单已取消',
           tag: '待付款',
-          operation:'收货'
+          operation:'订单详情'
         }, {
           detail:'iphoneX-79001-huaxinzhi',
           date: '2016-05-04',
           name: '华信智',
           money:1000,
-          address: '待付款',
+          address: '订单已支付',
           tag: '待收货',
-           operation:'收货'
+           operation:'再来一份'
         }, {
           detail:'iphoneX-79001-huaxinzhi',
           date: '2016-05-01',
           name: '华信智',
           money:10000,
-          address: '已收货',
+          address: '订单已收货',
           tag: '待付款',
-           operation:'收货'
+           operation:'订单详情'
         }, {
           detail:'iphoneX-79001-huaxinzhi',
           date: '2016-05-03',
           name: '华信智',
           money:100000,
-          address: '待评价 ',
-          tag: '待收货',
-           operation:'收货'
+          address: '订单已取消 ',
+          tag: '待评价',
+           operation:'取消原因'
         }]
       };
     },

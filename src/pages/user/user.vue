@@ -12,14 +12,21 @@ export default {
 
 <style lang="less">
     .user-fl{
+          display: inline-block;
+          width: 100%;
+          margin: 280px auto;
         a{
-            display: inline-block;
+            display: block;
             height: 40px;
+            width: 50%;
             line-height: 40px;
             padding: 0 15px;
-            margin: 0 10px;
+            border-radius: 4px;
+            margin: 10px auto;
+            text-align: center;
             font-size: 16px;
-            color: #409EFF;
+            color: #fff;
+            background: #409eff;
         }
     }
 </style>

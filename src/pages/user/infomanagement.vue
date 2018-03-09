@@ -8,7 +8,7 @@
         <div >
             <el-tabs tab-position='left' style="height:auto;">
                 <el-tab-pane class="basic_info" label="基本信息">
-                    <baseinfo :baseinfo="basicmemberList"></baseinfo>
+                    <baseinfo :baseinfo="userList[0]&&userList[0].basicInfo"></baseinfo>
                 </el-tab-pane>
                 <el-tab-pane label="地址信息">
                      <addressinfo></addressinfo>
@@ -34,34 +34,23 @@
     import invoice from '../../components/member/invoice'
     import infopresentation from '../../components/member/infopresentation'
     import userzsgc from '../../components/member/userzsgc'
+    import { mapGetters } from "vuex";
     export default {
         name:'shopinfo',
         data(){
             return {
-                basicmemberList:[],
                 isPassed:"",
             }
         },
-        mounted(){
-           this.getmemberById();
-
+        created() {
+            if (this.userList.length == 0) {
+            this.$store.dispatch("user");
+            }
+        },
+        computed: {
+            ...mapGetters(["userList"])
         },
         methods:{
-            getmemberById()
-            {   
-                let _this=this
-             
-                this.$http.get('/api/users')
-                        .then(function (response) {
-                            _this.basicmemberList=response.data[0].basicInfo
-                            console.log( _this.basicShopInfoList);
-                            // debugger
-                            console.log("helo")
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                });
-            }
         },
         components:{
           baseinfo,addressinfo,invoice,infopresentation,userzsgc

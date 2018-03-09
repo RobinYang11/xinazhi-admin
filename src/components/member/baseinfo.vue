@@ -11,48 +11,48 @@
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="账户名">
-                                    <el-input :value="baseinfo.name" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.name" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="会员所在地址">
-                                    <el-input :value="baseinfo.address" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.address" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>   
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="手机号">
-                                    <el-input :value="baseinfo.phone" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.phone" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="会员邮箱">
-                                    <el-input :value="baseinfo.email" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.email" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="性别">
-                                    <el-input :value="baseinfo.sex" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.sex" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="年龄">
-                                    <el-input :value="baseinfo.age" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.age" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="密码修改">
-                                    <el-input :value="baseinfo.password" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.password" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="其他基本信息">
-                                    <el-input :value="baseinfo.name" :disabled="isEdit"></el-input>
+                                    <el-input :value="baseinfo&&baseinfo.name" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>

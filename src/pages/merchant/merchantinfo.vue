@@ -11,43 +11,43 @@
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="名称">
-                                    <el-input :value="merchantlist[0].Merchant_name"  :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Merchant_name"  :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="店铺ID">
-                                    <el-input :value="merchantlist[0].Merchant_id" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Merchant_id" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>   
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="商家ID">
-                                    <el-input :value="merchantlist[0].Shop_id" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Shop_id" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="合同时间">
-                                    <el-input :value="merchantlist[0].Contract_time" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Contract_time" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="登录信息">
-                                    <el-input :value="merchantlist[0].Login_information" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Login_information" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                         <el-col :span="10">
                             <el-form-item label="登录IP地址">
-                                    <el-input :value="merchantlist[0].Login_IP_address" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Login_IP_address" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20">
                         <el-col :span="10">
                             <el-form-item label="客服热线">
-                                    <el-input :value="merchantlist[0].Customer_service" :disabled="isEdit"></el-input>
+                                    <el-input :value="merchantlist[0]&&merchantlist[0].Customer_service" :disabled="isEdit"></el-input>
                                 </el-form-item>
                         </el-col>
                     </el-row>
@@ -63,15 +63,20 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data:function(){
         return{
             isEdit:true,
-            merchantlist:[]
         }
     },
-    mounted(){
-      this.getlist();
+    created() {
+    if (this.merchantlist.length == 0) {
+      this.$store.dispatch("merchant");
+    }
+  },
+  computed: {
+    ...mapGetters(["merchantlist"])
   },
     methods:{
         edit:function(){
@@ -80,18 +85,6 @@ export default {
         ok:function(){
             this.isEdit=true;
         },
-        getlist()
-        {   
-            let _this=this
-            this.$http.get('/api/merchant')
-                    .then(function (response) {
-                        _this.merchantlist=response.data;
-                        console.log(response.data)
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-            });
-        }
     }
 }
 </script>

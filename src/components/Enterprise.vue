@@ -3,7 +3,7 @@
         <p>企业营业执照</p>
         <div class="photo">
             <a href="#">
-                <img :src="enterprice.company_business_license" alt="营业执照">
+                <img :src="enterprice&&enterprice.company_business_license" alt="营业执照">
                 <div class="position">
                     <a @click="dialogFormVisibleo = true">
                         查看详情
@@ -12,14 +12,14 @@
             </a>  
              <!--弹框内容S-->
             <el-dialog title="" :visible.sync="dialogFormVisibleo">
-                <img :src="enterprice.company_business_license" alt="营业执照">
+                <img :src="enterprice&&enterprice.company_business_license" alt="营业执照">
             </el-dialog>
             <!--弹框内容E-->   
         </div>
         <p>法人身份证</p>
         <div class="photo">
             <a href="#">
-                <img :src="enterprice.Legal_identity_card_front" alt="身份证">
+                <img :src="enterprice&&enterprice.Legal_identity_card_front" alt="身份证">
                 <div class="position">
                     <a @click="dialogFormVisible = true">
                         查看详情
@@ -28,11 +28,11 @@
             </a> 
             <!--弹框内容S-->
             <el-dialog title="" :visible.sync="dialogFormVisible">
-                <img :src="enterprice.Legal_identity_card_front" alt="身份证">
+                <img :src="enterprice&&enterprice.Legal_identity_card_front" alt="身份证">
             </el-dialog>
             <!--弹框内容E-->
             <a href="#" style="margin-left:20px;">
-                <img :src="enterprice.Legal_identity_card_back" alt="营业执照">
+                <img :src="enterprice&&enterprice.Legal_identity_card_back" alt="营业执照">
                  <div class="position">
                     <a @click="dialogFormVisiblet = true">
                         查看详情
@@ -41,7 +41,7 @@
             </a> 
             <!--弹框内容S-->
             <el-dialog title="" :visible.sync="dialogFormVisiblet">
-                <img :src="enterprice.Legal_identity_card_back" alt="身份证">
+                <img :src="enterprice&&enterprice.Legal_identity_card_back" alt="身份证">
             </el-dialog>
             <!--弹框内容E-->   
         </div>

@@ -38,7 +38,7 @@
                      </tr>
                   </thead>
                   <tbody>
-                    <tr  v-for="(i ,index) in managementList">
+                    <tr  v-for="(i ,index) in userList&&userList.slice((currentPage-1)*pagesize,currentPage*pagesize)">
                       <td>{{index+1}}</td>
                       <td>
                          <router-link to="/main/infomanagement" class="accunt">{{i.basicInfo.accunt}}</router-link>
@@ -57,8 +57,13 @@
                       <td colspan="7">
                         <div class="block">
                           <el-pagination
-                            layout="prev, pager, next"
-                            :total="1000">
+                              @size-change="handleSizeChange"
+                              @current-change="handleCurrentChange"
+                              :current-page="currentPage"
+                              :page-sizes="[2, 5, 10, 15]"
+                              :page-size="pagesize"
+                              layout="total, sizes, prev, pager, next, jumper"
+                              :total="userList.length">
                           </el-pagination>
                         </div>
                       </td>
@@ -70,91 +75,95 @@
    </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
-  name:"userManagement",
-   data() {
-      return {
-        form:{
-          date1:''
-        },
-        managementList:[]
-      }
-    },
-    mounted(){
-      this.getinfo();
-    },
-    methods: {
-      onSubmit() {
-        console.log('submit!');
+  name: "userManagement",
+  data() {
+    return {
+      form: {
+        date1: ""
       },
-      getinfo()
-            {   
-                let _this=this
-                this.$http.get('/api/users')
-                        .then(function (response) {
-                            _this.managementList=response.data
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                });
-            }
+      currentPage:1,
+       pagesize:2
+    };
+  },
+  created() {
+    if (this.userList.length == 0) {
+      this.$store.dispatch("user");
+      console.log(userList)
     }
-}
+  },
+  computed: {
+    ...mapGetters(["userList"])
+  },
+  methods: {
+    onSubmit() {
+      console.log("submit!");
+    },
+    handleSizeChange: function (size) {
+          this.pagesize = size;
+      },
+      handleCurrentChange: function(currentPage){
+          this.currentPage = currentPage;
+      }
+  }
+};
 </script>
 <style lang="less">
-  .usermanagerment{
-    .box-card{
-      .table{
-        border-spacing: 0;
-        border-collapse: collapse;
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        font-size: 14px;
-        caption{
-          padding: 8px 0;
-          .el-form{
-            float: left;
-            .el-form-item {
-              margin-bottom: 10px;
-            }
+.usermanagerment {
+  .box-card {
+    .table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      caption {
+        padding: 8px 0;
+        .el-form {
+          float: left;
+          .el-form-item {
+            margin-bottom: 10px;
           }
         }
-        thead{
-          tr{
-            th{
-              padding: 8px;
-              line-height: 1.42857143;
-              vertical-align: top;
-              border: 1px solid #ddd;
-              vertical-align: bottom;
-              color: rgb(144, 147, 153);
-              font-weight: 500;
-            }
+      }
+      thead {
+        tr {
+          th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            vertical-align: bottom;
+            color: rgb(144, 147, 153);
+            font-weight: 500;
           }
         }
-        tbody,tfoot{
-          tr{
-            td{
-              padding: 8px;
-              line-height: 1.42857143;
-              vertical-align: top;
-              border: 1px solid #ddd;
-              text-align: center;
-              a{
-                font-size: 14px;
-                color: black;
-              }
-              .accunt{
-                text-decoration: underline;
-                color: #AAA173;
-              }
+      }
+      tbody,
+      tfoot {
+        tr {
+          td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            text-align: center;
+            a {
+              font-size: 14px;
+              color: black;
+            }
+            .accunt {
+              text-decoration: underline;
+              color: #aaa173;
             }
           }
         }
       }
     }
   }
+}
 </style>
 
