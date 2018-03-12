@@ -11,8 +11,8 @@
                 <!--搜索结束-->
           </el-col>
           <el-col :span="8">&nbsp</el-col>
-          <el-col :span="8">
-              <el-button type="primary" size="medium" class="fr" @click="addperson">
+          <el-col :span="8" style="text-align:right">
+              <el-button type="primary" size="medium" @click="addperson">
                    添加商品
               </el-button>
           </el-col>

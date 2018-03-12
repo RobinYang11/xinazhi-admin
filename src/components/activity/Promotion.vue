@@ -27,7 +27,7 @@
                         <th>活动规则</th>
                         <th>活动类型</th>
                         <th>活动状态</th>
-                        <th>操作</th>
+                        <th width="140">操作</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -175,6 +175,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.fr{ float:right}
 .Promotion {
   .table {
     border-spacing: 0;

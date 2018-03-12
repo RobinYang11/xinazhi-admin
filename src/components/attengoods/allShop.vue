@@ -29,7 +29,7 @@
                         <th>商铺销量</th>
                         <th>商品状态</th>
                         <th>活动类别</th>
-                        <th>操作</th>
+                        <th width="160">操作</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -179,6 +179,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.fr{ float:right;}
 .Commodity {
   .table {
     border-spacing: 0;

@@ -129,73 +129,98 @@
 
 
 <style lang="less" scoped>
-    .service{
-        .panel{
-            .panel-body{
-                h1{
-                    padding: 0 35px;
-                    font-size: 18px;
-                    font-weight: 500;
-                    color: #333;
-                    margin-bottom: 40px;
-                }
-                .clear-float{
-                    padding: 0 0 0 65px;
-                    margin-bottom: 20px;
-                    font-size:14px;
-                    color: #666;
-                   .el-col{
-                       .img{
-                            width: 54px;
-                            height: 54px;
-                            background-size: contain;
-                            display: inline-block;
-                            text-align: left;
-                            i{
-                                font-size: 55px;
-                                color: #409EFF;
-                            }
-                       }
-                       h3{
-                           font-size: 16px;
-                           margin-bottom: 15px;
-                           color: #666;
-                       }
-                       p{
-                            color: #999;
-                            font-size: 14px;
-                            font-weight: lighter;
-                       }
-                       h2{
-                            margin: 20px 0 30px;
-                            color: #666;
-                            font-weight: 500;
-                            font-size: 16px;
-                            width: 100%;
-                       }
-                       ul{
-                           display: inline-block;
-                           li{
-                                margin-bottom: 15px;
-                                line-height: 1;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                a{
-                                    color: #666;
-                                    &:hover{
-                                        color: #409EFF;
-                                    }
-                                }
-                           }
-                       }
-                   }
-                   .line{
-                       border-left: 1px solid #ddd;
-                       margin-left:-1px!important;
-                   }
-                }
+.service {
+  .panel {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  .panel > .panel-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .panel > .panel-header > .panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    border-bottom: 2px solid #e4e7ed;
+    padding: 0 10px 10px 15px;
+  }
+  .panel > .panel-body {
+    padding: 15px;
+  }
+  .panel {
+    .panel-body {
+      h1 {
+        padding: 0 35px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 40px;
+      }
+      .clear-float {
+        padding: 0 0 0 65px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #666;
+        .el-col {
+          .img {
+            width: 54px;
+            height: 54px;
+            background-size: contain;
+            display: inline-block;
+            text-align: left;
+            i {
+              font-size: 55px;
+              color: #409eff;
             }
+          }
+          h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #666;
+          }
+          p {
+            color: #999;
+            font-size: 14px;
+            font-weight: lighter;
+          }
+          h2 {
+            margin: 20px 0 30px;
+            color: #666;
+            font-weight: 500;
+            font-size: 16px;
+            width: 100%;
+          }
+          ul {
+            display: inline-block;
+            li {
+              margin-bottom: 15px;
+              line-height: 1;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              a {
+                color: #666;
+                &:hover {
+                  color: #409eff;
+                }
+              }
+            }
+          }
         }
+        .line {
+          border-left: 1px solid #ddd;
+          margin-left: -1px !important;
+        }
+      }
     }
+  }
+}
 </style>

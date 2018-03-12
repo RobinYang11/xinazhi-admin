@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="panel">
-            <div class="panel-body">
+            <div class="panel-body" style=" background:#fff; padding: 15px;"> 
                  <div class="attengooodsContent">
                         <el-tabs v-model="activeName" @tab-click="handleClick">
                             <el-tab-pane label="全部商品" name="first">

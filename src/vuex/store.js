@@ -9,9 +9,15 @@ import permission from './modules/permission'
 import docclass from './modules/docclass'
 import activity from './modules/activity'
 import message from './modules/message'
+
+import api from '../fetch/api'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    state:{
+        token:"robin"
+    },
     modules:{
         shoping,
         user,
@@ -20,6 +26,18 @@ export default new Vuex.Store({
         permission,
         docclass,
         activity,
-        message
+        message,
+
+    },
+    actions:{
+        login({ commit,state },param) {
+            if(true) {
+                // debugger;
+                api.login()
+                    .then(res => {
+                        this.state.token=res.token 
+                    })
+            }
+        }
     }
 })
