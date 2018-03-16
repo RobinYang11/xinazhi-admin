@@ -1,6 +1,7 @@
+
+
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 import shoping from './modules/shop'
 import user from './modules/user'
 import merchant from './modules/merchant'
@@ -16,7 +17,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        token:"robin"
+        token:null
     },
     modules:{
         shoping,
@@ -29,15 +30,18 @@ export default new Vuex.Store({
         message,
 
     },
+
     actions:{
-        login({ commit,state },param) {
-            if(true) {
-                // debugger;
-                api.login()
-                    .then(res => {
-                        this.state.token=res.token 
-                    })
-            }
+        async login({ commit,state },param){
+           await api.login(param).then(res => {
+           
+                this.state.token=res.data.token 
+            })
+        },
+        async logout({commit,state},param){
+            await api.logout(param).then(res=>{
+                this.state.token=null
+            })
         }
     }
 })

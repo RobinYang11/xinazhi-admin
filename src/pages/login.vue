@@ -113,6 +113,9 @@ export default {
     }
   },
 
+  computed:{
+  },
+
   methods:{
     login(){
        if(this.username=='' || this.username==null ||this.password=='' || this.password==null)
@@ -120,15 +123,20 @@ export default {
            alert("请输入正确的信息")
        }
        else{
-
-        
+          let param={
+              username:this.username,
+              password:this.password
+          }
             //从后台请求login获取token
-            this.$store.dispatch('login');
-            this.$router.push({ path: '/main' })  
-            // if(this.$store.state.token)
-            // { 
-              
-            // }
+          this.$store.dispatch('login',param).then(()=>{
+                //  debugger;
+                // this.$router.push({ path: '/main' })  
+                console.log(this.$store.state.token)
+                if( this.$store.state.token)
+                { 
+                  this.$router.push({ path: '/main' })  
+                }
+          })
        }
     }
   }

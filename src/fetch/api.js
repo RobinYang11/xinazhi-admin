@@ -1,54 +1,31 @@
 import axios from 'axios'
 import qs from 'qs'
 
+import request from './request'
+
 import * as _ from '../until/tool'
 
 
-axios.interceptors.request.use(function(config) {
-    console.log("haah")
-    return config;
-  }, function(error) {
-    return Promise.reject(error);
-  })
 
-//POST传参序列化
-axios.interceptors.request.use((config) => {
-    if(config.method  === 'post'){
-        config.data = qs.stringify(config.data);
-    }
-    return config;
-},(error) =>{
-     _.toast("错误的传参", 'fail');
-    return Promise.reject(error);
-});
-
-//返回状态判断
-axios.interceptors.response.use((res) =>{
-    if(!res.data.success){
-        // _.toast(res.data.msg);
-        return Promise.resolve(res.data);
-    }
-    return res.data;
-}, (error) => {
-    _.toast("网络异常", 'fail');
-    return Promise.reject(error);
-});
-
-
-export async function fetch(url, params) {
-   let res= await axios.get(url, params)   
-   console.log(res)  
-   return res;
-}
+// export async function fetch(url, params) {
+//     let res= await axios.get(url, params)   
+//    console.log(res)  
+//    return res;
+// }
 
 export default {
 
-
+    
     // 用户登录
-    login(){
-        return fetch('/api/login')
+    async login(params){
+        console.log("this is api params")
+        console.log(params)
+        return await request.post('/user/login',params)
     },
 
+    async  logout(params){
+        return  await  request.get('/user/logout',params)
+    },
     /*商品信息*/
     shopList() {
         return fetch('/api/shop')
@@ -103,4 +80,38 @@ export default {
     station(){
         return fetch('/api/station_push')
     }
+    // axios.defaults.baseURL="http://api.robinblog.cn/"
+    // axios.defaults.timeout = 5000;
+    // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+    
+    // axios.interceptors.request.use(function(config) {
+    //     console.log("haah")
+    //     return config;
+    //   }, function(error) {
+    //     return Promise.reject(error);
+    //   })
+    
+    //POST传参序列化
+    // axios.interceptors.request.use((config) => {
+    //     console.log("ddd")
+    //     if(config.method  === 'post'){
+    //         config.data = qs.stringify(config.data);
+    //     }
+    //     return config;
+    // },(error) =>{
+    //      _.toast("错误的传参", 'fail');
+    //     return Promise.reject(error);
+    // });
+    
+    //返回状态判断
+    // axios.interceptors.response.use((res) =>{
+    //     if(!res.data.success){
+    //         // _.toast(res.data.msg);
+    //         return Promise.resolve(res.data);
+    //     }
+    //     return res.data;
+    // }, (error) => {
+    //     _.toast("网络异常", 'fail');
+    //     return Promise.reject(error);
+    // });
 }
