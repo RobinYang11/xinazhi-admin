@@ -5,7 +5,6 @@ import * as _ from '../until/tool'
 
 
 axios.interceptors.request.use(function(config) {
-    console.log("haah")
     return config;
   }, function(error) {
     return Promise.reject(error);
@@ -41,9 +40,7 @@ export async function fetch(url, params) {
    return res;
 }
 
-export default {
-
-
+export default {  
     // 用户登录
     login(){
         return fetch('/api/login')

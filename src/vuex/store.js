@@ -16,7 +16,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        token:"robin"
+        token:null
     },
     modules:{
         shoping,
@@ -30,14 +30,12 @@ export default new Vuex.Store({
 
     },
     actions:{
-        login({ commit,state },param) {
-            if(true) {
+      async login({ commit,state },param) {
                 // debugger;
-                api.login()
+             await api.login()
                     .then(res => {
-                        this.state.token=res.token 
+                        state.token=res.token; 
                     })
-            }
         }
     }
 })

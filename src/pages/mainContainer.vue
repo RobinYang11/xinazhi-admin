@@ -45,6 +45,9 @@
                    <li>
                     <router-link to="/main/activity"><i class="el-icon-share"></i>活动广告</router-link>
                   </li>
+                  <li>
+                    <router-link to="/main/test"><i class="el-icon-share"></i>活动广告</router-link>
+                  </li>
                 </ul>
               </div>
             </div>

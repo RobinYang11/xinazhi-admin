@@ -29,7 +29,7 @@ const actions={
                 })
         }
     },
-    news({ commit,state }) {
+    news({ commit,state }) {               
         if(state.scroll) {
             api.news()
                 .then(res => {

@@ -4,7 +4,6 @@ import HelloWorld from '@/components/HelloWorld'
 import login from '@/pages/login'
 import total from '@/pages/total'
 import mainContainer from '@/pages/mainContainer'
-import t1 from '@/components/t1'
 import test from '@/pages/test'
 import entry from '@/pages/entry/entry'
 import shopinfo from '@/pages/entry/shopinfo'
@@ -48,7 +47,6 @@ const router = new Router({
       name: 'main',
       component: mainContainer,meta:{ requireAuth: true},
       children:[
-        {path: 't1',name: 't1',component:t1,  meta:{ requireAuth: true}},
         {path: 'total', name:'total',meta:{ requireAuth: true},component:total},
         {path: 'test', name:'test',meta:{ requireAuth: true},component:test},
         //商家入驻路由
