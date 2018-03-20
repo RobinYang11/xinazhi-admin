@@ -52,7 +52,8 @@
                                     <el-input
                                     size="small"
                                     v-model="password"
-                                    placeholder="请输入密码"
+                                    type="password"
+                                    placeholder="请输入账号"
                                     suffix-icon="iconfont icon-lock"
                                     @blur.stop="dlmm"
                                     >
@@ -111,7 +112,46 @@
    </div>
 
 </template>
+<script>
+import qs from 'qs'
+export default {
+  name:"login",
+  data:()=>{
+    return {
+      username:null,
+      password:null, 
+    }
+  },
 
+  computed:{
+  },
+
+  methods:{
+    login(){
+       if(this.username=='' || this.username==null ||this.password=='' || this.password==null)
+       {
+           alert("请输入正确的信息")
+       }
+       else{
+          let param={
+              "username":this.username,
+              "password":this.password
+          }
+            //从后台请求login获取token
+          this.$store.dispatch('login',param).then(()=>{
+                //  debugger;
+                // this.$router.push({ path: '/main' })  
+                console.log(this.$store.state.token)
+                if( this.$store.state.token)
+                { 
+                  this.$router.push({ path: '/main' })  
+                }
+          })
+       }
+    }
+  }
+}
+</script>
 <style lang="less">
     .login{
       .wrapper{
