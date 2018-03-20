@@ -22,6 +22,7 @@
 <script>
 import shopeval from '../../components/evaluate/shopeval'
 import orderval from '../../components/evaluate/orderval'
+import qs from 'qs'
 export default {
     name:"system",
     data:function(){
@@ -29,7 +30,24 @@ export default {
 
         }
     },
-  components:{
+    created(){
+        
+        
+             
+                let goods={
+                    goodName:"apple",
+                    goodOtherName:"苹果",
+                    goodPrice:33
+                }
+        
+                let param={}
+                // param['goodStr']=qs.stringify(goods)
+                // console.log(param)
+                this.$store.dispatch('addGood', goods)  
+                
+    },
+
+    components:{  
       shopeval,orderval
   }
 }

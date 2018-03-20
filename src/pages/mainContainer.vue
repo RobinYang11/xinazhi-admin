@@ -63,6 +63,9 @@
                     <li>个人中心</li>
                     <li>消息提示</li>
                     <li>账户信息</li>
+                    <li>
+                        <button @click.prevent.stop="logout()">退出</button> 
+                    </li>
                   </ul>
               </el-col>
             </el-row>
@@ -88,7 +91,7 @@
                       </div>
                       <div :class="styletr">
                            <ul>
-                             <li v-for="i in progress">
+                             <li v-for="i in progress" >
                                 <h4>{{i.name}}</h4>
                                 <button :class="i.color">{{i.inchargor}}</button>
                                 <el-progress :text-inside="true"  :status="i.exception" :percentage="i.percentage"></el-progress>
@@ -145,6 +148,12 @@ export default {
     leftNav
   },
   methods: {
+    logout(){
+      
+        this.$store.dispatch('logout',{}).then(()=>{
+           this.$router.push({ path: '/login' })
+        })
+    },
     //收起侧边导航事件
     collapseLeftNav(e) {
       e.preventDefault();

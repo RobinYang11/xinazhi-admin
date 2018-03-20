@@ -86,7 +86,7 @@ const router = new Router({
       ]
     },
   ],
-  mode:'history'
+
  
 })
 
@@ -107,7 +107,7 @@ router.beforeEach(function(to,from,next){
     {
       next({
         path:'/login',
-        // query:{redirect:to.path}
+        query:{redirect:to.path}
       })
    }
    //如果需要拦截，直接跳转   
