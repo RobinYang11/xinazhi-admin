@@ -51,6 +51,7 @@
                                     <el-input
                                     size="small"
                                     v-model="password"
+                                    type="password"
                                     placeholder="请输入账号"
                                     suffix-icon="iconfont icon-lock"
                                     >
@@ -104,6 +105,7 @@
 
 </template>
 <script>
+import qs from 'qs'
 export default {
   name:"login",
   data:()=>{
@@ -124,8 +126,8 @@ export default {
        }
        else{
           let param={
-              username:this.username,
-              password:this.password
+              "username":this.username,
+              "password":this.password
           }
             //从后台请求login获取token
           this.$store.dispatch('login',param).then(()=>{

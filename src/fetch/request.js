@@ -56,7 +56,7 @@ export default {
       method: 'post',
       baseURL: 'http://localhost:8080/api',
       url,
-      data: qs.stringify(data),
+      data:qs.stringify(data),
       timeout: 10000,
       headers: {
         'X-Requested-With': 'Authorization',
@@ -80,7 +80,7 @@ export default {
       params, // get 请求时带的参数
       timeout: 10000,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type': 'application/json; charset=UTF-8'
       }
     }).then(
       (response) => {

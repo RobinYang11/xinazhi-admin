@@ -26,6 +26,11 @@ export default {
     async  logout(params){
         return  await  request.get('/user/logout',params)
     },
+
+
+    async addGood(params){
+        return  await request.post('/good/addGood',params)
+    },
     /*商品信息*/
     shopList() {
         return fetch('/api/shop')

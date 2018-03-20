@@ -10,7 +10,7 @@ import permission from './modules/permission'
 import docclass from './modules/docclass'
 import activity from './modules/activity'
 import message from './modules/message'
-
+import goods from './modules/goods'
 import api from '../fetch/api'
 
 Vue.use(Vuex)
@@ -28,7 +28,7 @@ export default new Vuex.Store({
         docclass,
         activity,
         message,
-
+        goods
     },
 
     actions:{

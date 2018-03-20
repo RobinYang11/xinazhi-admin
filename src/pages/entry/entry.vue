@@ -64,11 +64,12 @@
             }
         },
         created() {
+                
                 if (this.shopList.length == 0) {
                     this.$store.dispatch('shop')
                 }
             },
-            computed:mapGetters([
+        computed:mapGetters([
                 'shopList'
             ]),
         methods:{
