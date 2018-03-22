@@ -2,12 +2,14 @@
 
 //商品信息
 export const GET_SHOP_LIST='GET_SHOP_LIST' //商品入驻
+export const GET_SHOP_TOTAL_LIST='GET_SHOP_TOTAL_LIST'//获取商铺总数
 
 //会员管理
 export const USER_LIST='USER_LIST'
 //商户/商品管理/商品评价
 export const MERCHANT_LIST='MERCHANT_LIST'
 export const COMMODITY_LIST='COMMODITY_LIST'//商品管理
+export const COMMODITY_TOTAL_LIST='COMMODITY_TOTAL_LIST'//商品总数
 export const ORDERVAL_LIST='ORDERVAL_LIST'//订单评价
 export const SHOPEVAL_LIST='SHOPEVAL_LIST'//商品评价
 //系统管理

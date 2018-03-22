@@ -37,13 +37,11 @@
                                     v-model="username"
                                     placeholder="请输入账号"
                                     suffix-icon="iconfont icon-people"
-                                    @blur.stop="dlzh"
                                     >
                               
                                   </el-input>
                                 </el-col>
                              </el-row>
-                             <p class="tips" :class="{'colol':istrue}">{{nameuser}}</p>
                              <el-row>
                                 <el-col :span="4">
                                    <label for="">密码</label>
@@ -55,19 +53,17 @@
                                     type="password"
                                     placeholder="请输入账号"
                                     suffix-icon="iconfont icon-lock"
-                                    @blur.stop="dlmm"
                                     >
                                   </el-input>
                                 </el-col>
                              </el-row>
-                            <p class="tips" :class="{'colol':istrueo}">{{passworduser}}</p>
                               <el-row>
                                  <el-col :span="24" class="password">
                                    <a href="#">忘记密码</a>
                                  </el-col>
                               </el-row>
                               <el-row>
-                                 <button class="input">登录</button>
+                                <button @click.prevent.stop="login()" class="input">登录</button>
                               </el-row>    
                            </form>
                            <div class="other">

@@ -1,5 +1,4 @@
 
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import shoping from './modules/shop'
@@ -32,14 +31,6 @@ export default new Vuex.Store({
     },
 
     actions:{
-<<<<<<< HEAD
-      async login({ commit,state },param) {
-                // debugger;
-             await api.login()
-                    .then(res => {
-                        state.token=res.token; 
-                    })
-=======
         async login({ commit,state },param){
            await api.login(param).then(res => {
            
@@ -50,7 +41,6 @@ export default new Vuex.Store({
             await api.logout(param).then(res=>{
                 this.state.token=null
             })
->>>>>>> 53d4d74f11c82f0087b099972bacf421d9fbf7bf
         }
     }
 })

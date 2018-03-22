@@ -77,13 +77,15 @@ export default {
       method: 'get',
       baseURL: 'http://localhost:8080/api',
       url,
-      params, // get 请求时带的参数
+      params:params, // get 请求时带的参数
       timeout: 10000,
       headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
+        'X-Requested-With': 'Authorization',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     }).then(
       (response) => {
+
         return checkStatus(response)
       }
     ).then(
