@@ -7,15 +7,12 @@
                             <el-tab-pane label="全部商品" name="first">
                                <allShop></allShop>
                             </el-tab-pane>
-                            <el-tab-pane label="降价(0)" name="second">
-                                <allShop></allShop>
+                            <el-tab-pane label="分类管理" name="second">
+                                <addGoodType></addGoodType>
                             </el-tab-pane>
-                            <el-tab-pane label="满减(0)" name="third">
-                                <allShop></allShop>
+                            <el-tab-pane label="单位管理" name="third">
+                                <addGoodUtil></addGoodUtil>
                             </el-tab-pane>
-                            <el-tab-pane label="赠品" name="fourth">
-                                <allShop></allShop>
-                            </el-tab-pane> 
                         </el-tabs>
                 </div> 
             </div> 
@@ -25,6 +22,8 @@
 
 <script>
 import allShop from "../../components/attengoods/allShop.vue"
+import addGoodType from "../../components/attengoods/addGoodType.vue"
+import addGoodUtil from "../../components/attengoods/addGoodUtil.vue"
 export default {
     name:"goodsatten",
     data:function(){
@@ -38,7 +37,7 @@ export default {
     }
   },
     components:{
-        allShop
+        allShop,addGoodType,addGoodUtil
     }
 }
 </script>

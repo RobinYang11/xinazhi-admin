@@ -27,7 +27,55 @@ a{
   /*字体库颜色S*/
   .icon-green{ color: rgb(72, 180, 79); font-weight: 700;}
   /*字体库颜色E*/
-
+  /*table表格样式S*/
+  .table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  .table caption{
+    padding: 8px 0;
+  }
+  .table thead tr th{
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    vertical-align: bottom;
+    color: rgb(144, 147, 153);
+    font-weight: 500;
+    background-color: rgb(246, 246, 246);
+  }
+  .table>tbody>tr>td{
+    padding: 8px;
+    line-height: 1.42857143;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  .table>tfoot>tr>td{
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  .table>tbody>tr>td>a{
+    font-size: 14px;
+    color: black;
+  }
+  .table>tfoot>tr>td>a{
+    font-size: 14px;
+    color: black;
+  }
+  .table>tbody>tr>td>.accunt {
+    text-decoration: underline;
+    color: #aaa173;
+  }
+  /*table表格样式E*/
 
   /*组件通用样式S*/
   .el-input__inner:focus{

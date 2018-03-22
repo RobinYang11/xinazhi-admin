@@ -3,10 +3,11 @@ import * as types from '../types.js'
 
 const state={
     //商户商品信息
-    merchantlist:[],
     Commodity:[],
-    orderval:[],
-    shopeval:[],
+    GoodTypeList:[],
+    addGoodType:[],
+    getALLGoodUnit:[],
+    updateGoodType:[],
     goodsTotal:null,
     scroll: true
 }
@@ -34,61 +35,94 @@ const actions={
                 })
         }
     },
+    /*请求所有商品分类*/
+    getAllGoodType({commit,state}){
+  
+        if(state.scroll){
+            api.getAllGoodType()
+            .then(res=>{
+                console.log(res.data)
+                commit(types.ADDGOOD_TYPE,res)
+            })
+        }
+    },
+    /*添加商品分类*/
+    addGoodType({commit,state},param){
+       
+        if(state.scroll){
+            api.addGoodType(param)
+            .then(res=>{
+                commit(types.GOOD_TYPE_LIST,res)
+            })
+        }
+    },
+    /*修改商品分类*/
+    updateGoodType({commit,state},param){
+        if(state.scroll){
+            api.updateGoodType(param)
+            .then(res=>{
+                commit(types.UNDATE_GOOD_TYPE,res)
+            })
+        }
+    },
+    /*删除商品分类*/
+    deleteGoodTypeById({commit,state},param){
+        if(state.scroll){
+            api.deleteGoodTypeById(param)
+            .then(res=>{
+                
+            })
+        }
+    },
+    /*获取商品所有单位*/
+    getAllGoodUnit({commit,state}){
+        if(state.scroll){
+            api.getAllGoodUnit()
+            .then(res=>{
+                console.log(res.data)
+                commit(types.GETALLGOOD_UNITL,res)
+            })
+        }
+    },
     //商品信息分页总数
     getTotalGoodSize({commit,state}){
         if(state.scroll) {
             api.getTotalGoodSize()
                 .then(res => {
-                    
-                    console.log(res)
                     commit(types.COMMODITY_TOTAL_LIST, res)
                 })
         } 
-    },
-    /*订单评价*/
-    orderval({ commit,state }) {
-        if(state.scroll) {
-            api.orderval()
-                .then(res => {
-                    commit(types.ORDERVAL_LIST, res)
-                })
-        }
-    },
-    /*商品评价*/
-    shopeval({ commit,state }) {
-        if(state.scroll) {
-            api.shopeval()
-                .then(res => {
-                    commit(types.SHOPEVAL_LIST, res)
-                })
-        }
     }
 }
 
 const mutations={
-    [types.MERCHANT_LIST](state,res){
-        state.merchantlist=res
-    },
     [types.COMMODITY_LIST](state,res){
         state.Commodity=res.data
     },
-    [types.ORDERVAL_LIST](state,res){
-        state.orderval=res
-    },
-    [types.SHOPEVAL_LIST](state,res){
-        state.shopeval=res
-    },
     [types.COMMODITY_TOTAL_LIST](state,res){
         state.goodsTotal=res.data
+    },
+    [types.ADDGOOD_TYPE](state,res){
+        state.GoodTypeList=res.data
+    },
+    [types.GOOD_TYPE_LIST](state,res){
+        state.addGoodType=res.data
+    },
+    [types.GETALLGOOD_UNITL](state,res){
+        state.getALLGoodUnit=res.data
+    },
+    [types.UNDATE_GOOD_TYPE](state,res){
+        state.updateGoodType=res.data
     }
 }
 
 const getters={
-    merchantlist:state=>state.merchantlist,
     Commodity:state=>state.Commodity,
-    orderval:state=>state.orderval,
-    shopeval:state=>state.shopeval,
-    goodsTotal:state=>state.goodsTotal
+    goodsTotal:state=>state.goodsTotal,
+    GoodTypeList:state=>state.GoodTypeList,
+    addGoodType:state=>state.addGoodType,
+    getALLGoodUnit:state=>state.getALLGoodUnit,
+    updateGoodType:state=>state.updateGoodType
 }
 
 export default{

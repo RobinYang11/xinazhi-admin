@@ -43,6 +43,26 @@ export default {
     async getGoodSByPage(params){
         return  await request.get('/good/getGoodSByPage',params)
     },
+    /*获取所有商品分类*/
+    async getAllGoodType(){
+        return await request.get('/good/getAllGoodType')
+    },
+    /*添加商品分类*/
+    async addGoodType(params){
+        return await request.post('/good/addGoodType',params)
+    },
+    /*获取所有商品单位*/
+    async getAllGoodUnit(){
+        return await request.get('/good/getAllGoodUnit')
+    },
+    /*修改商品分类*/
+    async updateGoodType(params){
+        return await request.post('/good/updateGoodType',params)
+    },
+    /*删除商品分类*/
+    async deleteGoodTypeById(params){
+        return await request.post('/good/deleteGoodTypeById',params)
+    },
     /*商品总数*/
     async getTotalGoodSize(){
         return await request.get('/good/getTotalGoodSize')
