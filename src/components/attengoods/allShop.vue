@@ -35,7 +35,7 @@
                         <th>商品有效期限</th>
                         <th>商品生产地</th>
                         <th>商品制造</th>
-                        <th>操作</th>
+                        <th width="180">操作</th>
                      </tr>
                   </thead>
                   <tbody>

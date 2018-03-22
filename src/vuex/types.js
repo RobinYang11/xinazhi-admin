@@ -10,8 +10,10 @@ export const USER_LIST='USER_LIST'
 export const MERCHANT_LIST='MERCHANT_LIST'
 export const COMMODITY_LIST='COMMODITY_LIST'//商品管理
 export const COMMODITY_TOTAL_LIST='COMMODITY_TOTAL_LIST'//商品总数
-export const ORDERVAL_LIST='ORDERVAL_LIST'//订单评价
-export const SHOPEVAL_LIST='SHOPEVAL_LIST'//商品评价
+export const ADDGOOD_TYPE='ADDGOOD_TYPE'//获取所有商品分类
+export const GOOD_TYPE_LIST='GOOD_TYPE_LIST'//添加商品分类
+export const GETALLGOOD_UNITL='GETALLGOOD_UNITL'//获取所有商品单位
+export const UNDATE_GOOD_TYPE='UNDATE_GOOD_TYPE'//修改商品分类
 //系统管理
 export const ADMIN_ROLE_LIST='ADMIN_ROLE_LIST'//角色管理
 export const PERMISION_LIST='PERMISION_LIST'//权限管理
