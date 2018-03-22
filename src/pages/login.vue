@@ -42,7 +42,6 @@
                                   </el-input>
                                 </el-col>
                              </el-row>
-                            
                              <el-row>
                                 <el-col :span="4">
                                    <label for="">密码</label>
@@ -64,7 +63,7 @@
                                  </el-col>
                               </el-row>
                               <el-row>
-                                 <button @click.prevent.stop="login()" class="input">登录</button>
+                                <button @click.prevent.stop="login()" class="input">登录</button>
                               </el-row>    
                            </form>
                            <div class="other">
@@ -101,6 +100,11 @@
                </div>
             </div>
           </footer>
+          <!--扩展s-->
+          <div class="take">
+             <img src="../assets/img/QQ-weixin.png" alt="">
+          </div>
+          <!--扩展e-->
    </div>
 
 </template>
@@ -224,6 +228,17 @@ export default {
 
                   }  
             }
+            .tips{
+                font-size: 12px;
+                color: gray;
+                margin-left: 51px;
+                position: relative;
+                top: -16px;
+                color: #c91a21;
+            }
+            .tips.colol{
+              color:#33ca39;
+            }
             .other{
                line-height: 40px;
                height: 40px;
@@ -301,6 +316,19 @@ export default {
             color: #666;  
           }
         }
+      }
+      //扩展
+      .take{
+        width: 80px;
+        height:60px;
+        position: absolute;
+        top: 0;
+        left: 100px;
+        animation: frist 15s infinite alternate;
+      }
+      @keyframes frist {
+        from{top:0; left: 100px}
+        to{top:92%; left:1200px}
       }
     }
 </style>

@@ -1,0 +1,11 @@
+{
+    "problems":[
+        {
+            "id":1,
+            "problem_name":"异步请求问题，账号登录，需要点击登录两次路由才正常跳转",
+            "problem_time":"2018/03/12",
+            "problem_Location":"后台账号登录",
+            "solve_methods":"采用async await方法解决"
+        }
+    ]
+}

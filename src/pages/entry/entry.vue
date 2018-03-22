@@ -11,38 +11,52 @@
                      <tr>
                         <th>序号</th>
                         <th>商户id</th>
-                        <th>商户编号</th>
-                        <th>商户名称</th>                      
-                        <th>区域</th>
-                        <th>状态</th>
+                        <th>商户名称</th>
+                        <th>商户区域</th>                      
+                        <th>商户拥有者</th>
+                        <th>商户类型</th>
+                        <th>商铺状态描述</th>
+                        <th>商户注册时间</th>
+                        <th>上线时间</th>
+                        <th>租用时间</th>
+                        <th>商户状态</th>
+                        <th>描述</th>
                      </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(i,index) in shopList.slice((currentPage-1)*pagesize,currentPage*pagesize) ">
+                    <tr v-for="(i,index) in shopList">
                       <td>{{index+1}}</td>
-                      <td>{{i.id}}</td>
-                      <td> <i class="el-icon-time"></i>{{i.seller_id}}</td>
+                      <td>{{i.shopId}}</td>
+                      <td>{{i.shopName}}</td>
                       <td>
-                          <router-link to="/main/shopinfo" class="accunt" >{{i.company_name}}</router-link>
+                          shopArea
                       </td>
-                      <td>{{i.company_registry_address}}</td>
                       <td>
-                         <a href="#" style="color:#409EFF">{{i.shop_status}}</a> 
+                          <router-link to="/main/shopinfo" class="accunt" >shopOwner</router-link>
+                       </td>
+                      <td>
+                         <a href="#" style="color:#409EFF">{{i.shopType}}</a> 
                      </td>
+                     <td>{{i.shopDesc}}</td>
+                     <td>{{i.shopRegisterTime}}</td>
+                     <td>{{i.shopOnlineTime}}</td>
+                     <td>{{i.shopRentTime}}</td>
+                     <td>{{i.shopStatus}}</td>
+                     <td>{{i.shopStatusDesc}}</td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="6">
+                      <td colspan="12">
                         <div class="block">
                           <el-pagination
                               @size-change="handleSizeChange"
                               @current-change="handleCurrentChange"
-                              :current-page="currentPage"
+                              :current-page="param.page"
                               :page-sizes="[10, 15, 25, 50]"
-                              :page-size="pagesize"
+                              :page-size="param.offset"
                               layout="total, sizes, prev, pager, next, jumper"
-                              :total="shopList.length">
+                              :total="shopTotal">
                           </el-pagination>
                         </div>
                       </td>
@@ -59,18 +73,23 @@
         name:"entry",
         data(){
             return {
-                currentPage: 1,
-                pagesize: 15,
+               param:{
+                    "page": 1,
+                    "offset": 10
+                } 
             }
         },
         created() {
-                
                 if (this.shopList.length == 0) {
-                    this.$store.dispatch('shop')
+                    this.$store.dispatch('getShopByPage',{"page":(this.param.page-1)*this.param.offset,"offset":this.param.offset})
                 }
+                if (this.shopTotal == null) {
+                    this.$store.dispatch('getTotalShopSize')
+                }
+                this.change()  
             },
         computed:mapGetters([
-                'shopList'
+                'shopList','shopTotal'
             ]),
         methods:{
             filterTag(value, row) {
@@ -82,11 +101,16 @@
                 return row[property] === value;
             },
              handleSizeChange: function(size) {
-            this.pagesize = size;
+                this.param.offset = size;
+                this.change() 
             },
             handleCurrentChange: function(currentPage) {
-            this.currentPage = currentPage;
+                this.param.page = currentPage;
+                this.change() 
             },
+            change:function(){
+                this.$store.dispatch('getShopByPage',{"page":(this.param.page-1)*this.param.offset,"offset":this.param.offset})
+            }
         }
     }
 </script>
@@ -125,6 +149,7 @@
           border: 1px solid #ddd;
           color: rgb(144, 147, 153);
           font-weight: 500;
+          background-color: rgb(246, 246, 246);
         }
       }
     }

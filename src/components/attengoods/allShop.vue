@@ -4,7 +4,7 @@
           <el-col :span="8">
              <!--搜索开始-->
                 <div class="search-attention">
-                    <el-input placeholder="请输入活动类别" class="input-with-select">
+                    <el-input placeholder="请输入商品名称或别名" class="input-with-select">
                         <el-button slot="append" icon="el-icon-search"></el-button>
                     </el-input>
                 </div>
@@ -21,28 +21,40 @@
                   <thead>
                      <tr>
                         <th>序号</th>
-                        <th>活动id</th>
+                        <th>商品id</th>
+                        <th>商品类型</th>
+                        <th>商品店铺</th>
                         <th>商品名称</th>
-                        <th>商品分类</th>
-                        <th>商铺</th>
-                        <th>价格区间</th>
-                        <th>商铺销量</th>
+                        <th>商品别名</th>
+                        <th>商品单位</th>
+                        <th>商品价格</th>
+                        <th>商品折扣</th>
                         <th>商品状态</th>
-                        <th>活动类别</th>
-                        <th width="160">操作</th>
+                        <th>商品品牌</th>
+                        <th>商品评论</th>
+                        <th>商品有效期限</th>
+                        <th>商品生产地</th>
+                        <th>商品制造</th>
+                        <th>操作</th>
                      </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(i,index) in Commodity.slice((currentPage-1)*pagesize,currentPage*pagesize) ">
+                    <tr v-for="(i,index) in Commodity">
                       <td>{{index+1}}</td>
-                      <td>{{i.id}}</td>
-                      <td>{{i.Commodity_name}}</td>
-                      <td>{{i.Commodity_classify}}</td>
-                      <td>{{i.Commodity_Shops}}</td>
-                      <td>{{i.Commodity_Price_range}}</td>
-                      <td>{{i.Commodity_Sales}}</td>
-                      <td>{{i.Commodity_state}}</td>
-                      <td>{{i.Commodity_type}}</td>
+                      <td>{{i.goodId}}</td>
+                      <td>{{i.goodType}}</td>
+                      <td>{{i.goodShop}}</td>
+                      <td>{{i.goodName}}</td>
+                      <td>{{i.goodOtherName}}</td>
+                      <td>{{i.goodUnit}}</td>
+                      <td>{{i.goodPrice}}</td>
+                      <td>{{i.goodDiscount}}</td>
+                      <td>{{i.goodStatus}}</td>
+                      <td>{{i.goodBrand}}</td>
+                      <td>{{i.goodRemark}}</td>
+                      <td>{{i.goodValidityPeriod}}</td>
+                      <td>{{i.goodGrowPlace}}</td>
+                      <td>{{i.goodManufacture}}</td>
                       <td>
                           <el-button type="default" size="mini" @click="bjperson">编辑</el-button>
                     <el-button type="danger" size="mini" @click="deDialogVisible = true">强制下架</el-button>
@@ -51,16 +63,16 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="10">
+                      <td colspan="16">
                         <div class="block">
                           <el-pagination
                               @size-change="handleSizeChange"
                               @current-change="handleCurrentChange"
-                              :current-page="currentPage"
+                              :current-page="page"
                               :page-sizes="[10, 15, 25, 50]"
-                              :page-size="pagesize"
+                              :page-size="offset"
                               layout="total, sizes, prev, pager, next, jumper"
-                              :total="Commodity.length">
+                              :total="goodsTotal">
                           </el-pagination>
                         </div>
                       </td>
@@ -76,34 +88,58 @@
                     <div>
                         <el-row>
                             <el-col :span="4">
-                                商品名称
+                                商品店铺
                             </el-col>
                             <el-col :span="10">
-                                 <el-input :placeholder="Commodity[0]&&Commodity[0].Commodity_name" ></el-input>
+                                 <el-input :placeholder="Commodity[0]&&Commodity[0].goodType" ></el-input>
                             </el-col>
                         </el-row>
                         <el-row>
                             <el-col :span="4">
-                                商品分类
+                                商品店铺
                             </el-col>
                             <el-col :span="10">
-                                 <el-input  :placeholder="Commodity[0]&&Commodity[0].Commodity_classify"  ></el-input>
+                                 <el-input :placeholder="Commodity[0]&&Commodity[0].goodShop" ></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="4">
+                                商品名称
+                            </el-col>
+                            <el-col :span="10">
+                                 <el-input :placeholder="Commodity[0]&&Commodity[0].goodName" ></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="4">
+                                商品别名
+                            </el-col>
+                            <el-col :span="10">
+                                 <el-input :placeholder="Commodity[0]&&Commodity[0].goodOtherName" ></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="4">
+                                商品单位
+                            </el-col>
+                            <el-col :span="10">
+                                 <el-input :placeholder="Commodity[0]&&Commodity[0].goodUnit" ></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="4">
+                                商品价格
+                            </el-col>
+                            <el-col :span="10">
+                                 <el-input  :placeholder="Commodity[0]&&Commodity[0].goodPrice"  ></el-input>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
                             <el-col :span="4">
-                                商铺
+                                商品折扣
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="Commodity[0]&&Commodity[0].Commodity_Shops" ></el-input>
-                            </el-col>
-                        </el-row>
-                        <el-row :gutter="20">
-                            <el-col :span="4">
-                                价格区间
-                            </el-col>
-                            <el-col :span="10">
-                                <el-input :placeholder="Commodity[0]&&Commodity[0].Commodity_Price_range" ></el-input>
+                                <el-input :placeholder="Commodity[0]&&Commodity[0].goodDiscount" ></el-input>
                             </el-col>
                         </el-row>
                         <el-row :gutter="20">
@@ -111,7 +147,15 @@
                                 商品状态
                             </el-col>
                             <el-col :span="10">
-                                <el-input :placeholder="Commodity[0]&&Commodity[0].Commodity_state" ></el-input>
+                                <el-input :placeholder="Commodity[0]&&Commodity[0].goodStatus" ></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row :gutter="20">
+                            <el-col :span="4">
+                                商品评论
+                            </el-col>
+                            <el-col :span="10">
+                                <el-input :placeholder="Commodity[0]&&Commodity[0].goodRemark" ></el-input>
                             </el-col>
                         </el-row>
                     </div>
@@ -143,8 +187,8 @@ import { mapGetters } from "vuex";
 export default {
   data: function() {
     return {
-      currentPage: 1,
-      pagesize: 10,
+      page: 1,
+      offset: 10,
       centerDialogVisible: false,
       deDialogVisible: false,
       message: "编辑信息"
@@ -152,18 +196,27 @@ export default {
   },
   created() {
     if (this.Commodity.length == 0) {
-      this.$store.dispatch("Commodity");
+      this.$store.dispatch("getGoodSByPage",{"page":(this.page-1)*this.offset,"offset":this.offset});
     }
+    if(this.goodsTotal==null){
+      this.$store.dispatch("getTotalGoodSize")
+    }
+    this.change()
   },
   computed: {
-    ...mapGetters(["Commodity"])
+    ...mapGetters(["Commodity","goodsTotal"])
   },
   methods: {
     handleSizeChange: function(size) {
-      this.pagesize = size;
+      this.offset = size;
+      this.change()
     },
     handleCurrentChange: function(currentPage) {
-      this.currentPage = currentPage;
+      this.page = currentPage;
+      this.change()
+    },
+    change:function(){
+       this.$store.dispatch("getGoodSByPage",{"page":(this.page-1)*this.offset,"offset":this.offset});
     },
     bjperson: function() {
       this.centerDialogVisible = true;
@@ -208,6 +261,7 @@ export default {
           vertical-align: bottom;
           color: rgb(144, 147, 153);
           font-weight: 500;
+           background-color: rgb(246, 246, 246);
         }
       }
     }

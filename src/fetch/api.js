@@ -31,9 +31,21 @@ export default {
     async addGood(params){
         return  await request.post('/good/addGood',params)
     },
+    /*按页获取店铺信息*/
+    async getShopByPage(params) {
+        return  await request.get('/shop/getShopByPage',params)
+    },
+     /*按页获取店铺总数*/
+     async getTotalShopSize() {
+        return  await request.get('/shop/getTotalShopSize')
+    },
     /*商品信息*/
-    shopList() {
-        return fetch('/api/shop')
+    async getGoodSByPage(params){
+        return  await request.get('/good/getGoodSByPage',params)
+    },
+    /*商品总数*/
+    async getTotalGoodSize(){
+        return await request.get('/good/getTotalGoodSize')
     },
     /*会员信息*/
     userList() {
@@ -48,10 +60,6 @@ export default {
     },
     permission(){
         return fetch('/api/permission')
-    },
-    /*商品信息*/
-    Commodity(){
-        return fetch('/api/Commodity')
     },
     /*促销/公告*/
     docclass(){

@@ -1,5 +1,4 @@
 
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import shoping from './modules/shop'
