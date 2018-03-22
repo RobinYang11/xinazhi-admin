@@ -3,6 +3,6 @@
 </template>
 <script>
 export default {
-  name :"t1"
+  name :"devPlan"
 }
 </script>

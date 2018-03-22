@@ -140,7 +140,7 @@ export default {
                 console.log(this.$store.state.token)
                 if( this.$store.state.token)
                 { 
-                  this.$router.push({ path: '/main' })  
+                  this.$router.push({ path: '/main/devPlan' })  
                 }
           })
        }
@@ -259,7 +259,7 @@ export default {
                       width: 19px;
                       height: 18px;
                       display: block;
-                      background: url(../../static/img/QQ-weixin.png) no-repeat;
+                      background: url(/static/img/QQ-weixin.png) no-repeat;
                       margin: 0 auto;
                       position: absolute;
                       float: left;
