@@ -3,8 +3,9 @@ import qs from 'qs'
 import store from '../vuex/store'
 
 
+let apiUrl= 'http://localhost:8080/api'
+//let apiUrl= 'http://47.104.69.226:8080/api'
 axios.interceptors.request.use(config => {
-
   if (store.state.token) { 
      // 判断是否存在token，如果存在的话，则每个http header都加上token
             config.headers.Authorization = `token ${store.state.token}`;
@@ -54,7 +55,7 @@ export default {
   post (url, data) {
     return axios({
       method: 'post',
-      baseURL: 'http://localhost:8080/api',
+      baseURL:apiUrl,
       url,
       data:qs.stringify(data),
       timeout: 10000,
@@ -75,7 +76,7 @@ export default {
   get (url, params) {
     return axios({
       method: 'get',
-      baseURL: 'http://localhost:8080/api',
+      baseURL:apiUrl,
       url,
       params, // get 请求时带的参数
       timeout: 10000,
