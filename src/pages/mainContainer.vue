@@ -64,7 +64,7 @@
                     <li>消息提示</li>
                     <li>账户信息</li>
                     <li>
-                        <button @click.prevent.stop="logout()">退出</button> 
+                        <button @click.prevent.stop="logout()" style="padding:2px 8px; border-radius:3px; color:#e6a23c;">退出</button> 
                     </li>
                   </ul>
               </el-col>

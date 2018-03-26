@@ -7,7 +7,7 @@
                    <th width="32">序号</th>
                    <th>序号id</th>
                    <th>单位</th>
-                   <th width="180">操作</th>
+                   <th width="100">操&nbsp作</th>
                </tr>
            </thead>
            <tbody>
@@ -16,8 +16,8 @@
                    <td>{{until.goodUnitId}}</td>
                    <td>{{until.goodUnitName}}</td>
                    <td>
-                       <el-button type="default" size="mini" @click="xgperson">修改</el-button>
-                       <el-button type="danger" size="mini" @click="dleperson">删除</el-button>
+                       <el-button type="default" size="mini" @click="xgperson(until.goodUnitId,until.goodUnitName)">修改</el-button>
+                       <!-- <el-button type="danger" size="mini" @click="dleperson">删除</el-button> -->
                    </td>
                </tr>
            </tbody>
@@ -34,13 +34,13 @@
                                {{message}}
                             </el-col>
                             <el-col :span="10">
-                                 <el-input ></el-input>
+                                 <el-input v-model="goodUnit"></el-input>
                             </el-col>
                         </el-row>
                     </div>
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="centerDialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @click="centerDialogVisible=false">确 定</el-button>
+                        <el-button type="primary" @click="zjSubmit()">确 定</el-button>
                     </span>
                 </el-dialog>
         <!--添加弹框E-->
@@ -51,44 +51,21 @@
                     width="30%"
                     >
                     <div>
-                        <el-row :gutter="15">
-                            <el-col :span="5" style="line-height:40px;">
-                               商品单位ID
-                            </el-col>
-                            <el-col :span="10">
-                                 <el-input ></el-input>
-                            </el-col>
-                        </el-row>
                         <el-row style="margin-top:20px;">
                             <el-col :span="5" style="line-height:40px;">
                                {{message}}
                             </el-col>
                             <el-col :span="10">
-                                 <el-input ></el-input>
+                                 <el-input v-model="unitName"></el-input>
                             </el-col>
                         </el-row>
                     </div>
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="xgDialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @click="xgDialogVisible=false">确 定</el-button>
+                        <el-button type="primary" @click="xgSubmit()">确 定</el-button>
                     </span>
                 </el-dialog>
         <!--修改弹框E-->
-          <!--删除S-->
-            <el-dialog
-                    :title="message"
-                    :visible.sync="deDialogVisible"
-                    width="30%"
-                    >
-                    <div>
-                       是否确定删除此单位？
-                    </div>
-                    <span slot="footer" class="dialog-footer">
-                        <el-button @click="deDialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @click="deDialogVisible = false">确 定</el-button>
-                    </span>
-                </el-dialog>
-        <!--删除E-->
    </div>
 </template>
 
@@ -100,11 +77,16 @@ export default {
       message: "",
       xgDialogVisible: false,
       centerDialogVisible: false,
-      deDialogVisible: false
+      deDialogVisible: false,
+      unitId:"",
+      unitName:"",
+      goodUnit:""
     };
   },
   methods: {
-    xgperson: function() {
+    xgperson: function(id,name) {
+      this.unitId=id
+      this.unitName=name
       this.xgDialogVisible = true;
       this.message = "修改商品单位";
     },
@@ -112,9 +94,26 @@ export default {
       this.centerDialogVisible = true;
       this.message = "增加商品单位";
     },
-    dleperson: function() {
-      this.deDialogVisible = true;
-      this.message = "删除单位";
+    xgSubmit:function(){
+        let param={
+           id: this.unitId,
+           goodUnitName:this.unitName
+        };
+        this.$store.dispatch("updateGoodUnitById",param);
+        setTimeout(()=>{
+            this.$store.dispatch("getAllGoodUnit")
+        },1000);
+        this.xgDialogVisible=false;
+    },
+    zjSubmit:function(){
+        let param={
+            goodUnitName:this.goodUnit
+        };
+        this.$store.dispatch("addGoodUtil",param);
+        setTimeout(()=>{
+            this.$store.dispatch("getAllGoodUnit",param)
+        },1000);
+         this.centerDialogVisible = false;
     }
   },
   created() {
