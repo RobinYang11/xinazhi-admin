@@ -101,7 +101,8 @@ router.beforeEach(function(to,from,next){
    {
     console.log("需要校验")
     //判断有没有令牌token
-    if(store.state.token){
+    let token=window.localStorage.getItem("token")
+    if(token && undefined !=token){
       next();
     }
     //如果没有令牌,强制跳转到登录页面

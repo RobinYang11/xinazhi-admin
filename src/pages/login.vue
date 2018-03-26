@@ -140,6 +140,7 @@ export default {
                 console.log(this.$store.state.token)
                 if( this.$store.state.token)
                 { 
+                 
                   this.$router.push({ path: '/main/devPlan' })  
                 }
           })

@@ -33,7 +33,7 @@ export default new Vuex.Store({
     actions:{
         async login({ commit,state },param){
            await api.login(param).then(res => {
-           
+                window.localStorage.setItem("token",res.data.token)
                 this.state.token=res.data.token 
             })
         },
