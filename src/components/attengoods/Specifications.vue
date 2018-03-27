@@ -1,12 +1,12 @@
 <template>
-   <div class="addGoodUtil">
-       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加商品单位</el-button>
+   <div class="Specifications">
+       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加规格</el-button>
        <table class="table">
            <thead>
                <tr>
                    <th width="32">序号</th>
-                   <th>序号id</th>
-                   <th>单位</th>
+                   <th width="100">规格id</th>
+                   <th>规格名称</th>
                    <th width="100">操&nbsp作</th>
                </tr>
            </thead>
@@ -127,7 +127,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.addGoodUtil {
+.Specifications {
   .mb15 {
     margin-bottom: 15px;
   }

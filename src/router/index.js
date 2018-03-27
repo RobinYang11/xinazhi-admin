@@ -21,6 +21,7 @@ import merchant from '@/pages/merchant/merchant'
 import merchantinfo from '@/pages/merchant/merchantinfo'
 import merchantzt from '@/pages/merchant/merchantzt'
 import goodsatten from '@/pages/goodsmerchant/goodsatten'
+import addGood from '@/pages/goodsmerchant/addGood'
 import service from '@/pages/service/service'
 import system from '@/pages/system/system'
 import notice from '@/pages/notice/notice'
@@ -71,6 +72,7 @@ const router = new Router({
         {path:'merchantzt',name:'merchant',component:merchantzt,meta:{ requireAuth: true}},
         //商品管理模块
         {path:'goodsatten',name:'goodsatten',component:goodsatten,meta:{ requireAuth: true}},
+        {path:'addGood',name:'addGood',component:addGood,meta:{ requireAuth: true}},
         //客户服务模块
         {path:'service',name:'service',component:service,meta:{ requireAuth: true}},
         //系统管理模块

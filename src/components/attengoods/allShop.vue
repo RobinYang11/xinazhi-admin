@@ -21,20 +21,20 @@
                   <thead>
                      <tr>
                         <th>序号</th>
-                        <th>商品id</th>
-                        <th>商品类型</th>
-                        <th>商品店铺</th>
-                        <th>商品名称</th>
-                        <th>商品别名</th>
-                        <th>商品单位</th>
-                        <th>商品价格</th>
-                        <th>商品折扣</th>
-                        <th>商品状态</th>
-                        <th>商品品牌</th>
-                        <th>商品评论</th>
-                        <th>商品有效期限</th>
-                        <th>商品生产地</th>
-                        <th>商品制造</th>
+                        <th>id</th>
+                        <th>类型</th>
+                        <th>店铺</th>
+                        <th>名称</th>
+                        <th>别名</th>
+                        <th>单位</th>
+                        <th>价格</th>
+                        <th>折扣</th>
+                        <th>状态</th>
+                        <th>品牌</th>
+                        <th>评论</th>
+                        <th>有效期限</th>
+                        <th>生产地</th>
+                        <th>制造</th>
                         <th width="180">操作</th>
                      </tr>
                   </thead>
@@ -79,7 +79,7 @@
                     </tr>
                   </tfoot>
                </table>
-               <!--查看弹框S-->
+               <!--编辑信息S-->
         <el-dialog
                     :title="message"
                     :visible.sync="centerDialogVisible"
@@ -164,7 +164,7 @@
                         <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
                     </span>
                 </el-dialog>
-        <!--查看弹框E-->
+        <!--编辑信息E-->
         <!--删除S-->
             <el-dialog
                     title="下架商品"
@@ -221,12 +221,9 @@ export default {
     bjperson: function() {
       this.centerDialogVisible = true;
       this.message = "编辑商品信息";
-      this.isedit = false;
     },
     addperson: function() {
-      this.centerDialogVisible = true;
-      this.message = "增加商品";
-      this.isedit = false;
+      this.$router.push({path:'/main/addGood'})
     }
   }
 };

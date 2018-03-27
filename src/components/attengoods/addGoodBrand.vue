@@ -1,12 +1,13 @@
 <template>
-   <div class="addGoodUtil">
-       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加商品单位</el-button>
+   <div class="addGoodBrand">
+       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加品牌</el-button>
        <table class="table">
            <thead>
                <tr>
                    <th width="32">序号</th>
-                   <th>序号id</th>
-                   <th>单位</th>
+                   <th width="100">品牌id</th>
+                   <th>品牌名称</th>
+                   <th width="70">品牌LOGO</th>
                    <th width="100">操&nbsp作</th>
                </tr>
            </thead>
@@ -15,6 +16,9 @@
                    <td>{{index+1}}</td>
                    <td>{{until.goodUnitId}}</td>
                    <td>{{until.goodUnitName}}</td>
+                   <td>
+                       <img src="" alt="" width="60" height="60">
+                   </td>
                    <td>
                        <el-button type="success" size="mini" @click="xgperson(until.goodUnitId,until.goodUnitName)">修改</el-button>
                        <!-- <el-button type="danger" size="mini" @click="dleperson">删除</el-button> -->
@@ -127,7 +131,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.addGoodUtil {
+.addGoodBrand {
   .mb15 {
     margin-bottom: 15px;
   }

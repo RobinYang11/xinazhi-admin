@@ -31,7 +31,7 @@
 
         <!--无缝滚动-->
         <div id="box">
-                <ul id="con1" ref="con1" :class="{anim:animate==true}" >
+                <ul id="con1" ref="con1" >
                     <li v-for="item in items" @mouseover="stopscroll">{{item.name}}</li>
                 </ul>
         </div>
@@ -44,6 +44,13 @@
             <li><a href=""></a></li>
             <li><a href="#firstAnchor">跳至第一个锚点</a></li>
         </ul>
+        <!--display格式-->
+        <div class="table" style="display:table">
+            <div class="table-row" style="display:table-row;">
+                <div class="table-cell" style="display:table-cell; vertical-align:middle; height:150px; width:150px;">处我是一个例子一个测试第三批辣条、display的属性</div>
+                <div class="table-cell" style="color:red">display样式中的display:table,display:table-row以及display:table-cell属性</div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -76,7 +83,7 @@ export default {
     }
   },
   created() {
-    this.scrollTop();
+    // this.scrollTop();
     setInterval(this.scrollo, 1000);
   },
   methods: {
@@ -96,25 +103,25 @@ export default {
       }
       return status_label;
     },
-    scrollTop: function() {
-      setInterval(() => {
-        this.scroll();
-        console.log(25);
-      }, 5000);
-    },
-    scroll: function() {
-      console.log(123);
-    },
+    // scrollTop: function() {
+    //   setInterval(() => {
+    //     this.scroll();
+       
+    //   }, 5000);
+    // },
+    // scroll: function() {
+    //   console.log("这是时间模拟函数")
+    // },
     scrollo: function() {
       let con1 = this.$refs.con1;
-      con1.style.marginTop = "-30px;";
-      this.animate = !this.animate;
+      // con1.style.marginTop = "-30px;";
+      // this.animate = !this.animate;
       var that = this; // 在异步函数中会出现this的偏移问题，此处一定要先保存好this的指向
       setTimeout(function() {
         that.items.push(that.items[0]);
         that.items.shift();
-        con1.style.marginTop = "0px";
-        that.animate = !that.animate;
+        // con1.style.marginTop = "0px";
+        // that.animate = !that.animate;
       }, 500);
     },
     stopscroll:function(){

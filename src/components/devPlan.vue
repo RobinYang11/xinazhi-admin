@@ -5,7 +5,9 @@
               <el-tab-pane label="总开发计划图" name="first">
                  <devPlanMap/>
               </el-tab-pane>
-              <el-tab-pane label="开发资料" name="second">开发资料</el-tab-pane>
+              <el-tab-pane label="开发资料" name="second">
+                 <devPlanData/>
+              </el-tab-pane>
               <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
               <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
             </el-tabs>
@@ -15,11 +17,11 @@
 <script>
 
 import devPlanMap from "@/components/devPlan/devPlanMap";
-
+import devPlanData from "@/components/devPlan/devPlanData";
 export default {
   name :"devPlan",
   components:{
-    devPlanMap
+    devPlanMap,devPlanData
   },
   data() {
       return {
