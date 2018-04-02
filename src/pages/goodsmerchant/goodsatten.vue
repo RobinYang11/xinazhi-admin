@@ -16,9 +16,9 @@
                             <el-tab-pane label="品牌管理" name="fourth">
                                 <addGoodBrand></addGoodBrand>
                             </el-tab-pane>
-                            <el-tab-pane label="规格管理" name="five">
+                            <!-- <el-tab-pane label="规格管理" name="five">
                                 <Specifications></Specifications>
-                            </el-tab-pane>
+                            </el-tab-pane> -->
                             <el-tab-pane label="标签管理" name="six">
                                 <addGoodLabel></addGoodLabel>
                             </el-tab-pane>
@@ -34,7 +34,7 @@ import allShop from "../../components/attengoods/allShop.vue"
 import addGoodType from "../../components/attengoods/addGoodType.vue"
 import addGoodUtil from "../../components/attengoods/addGoodUtil.vue"
 import addGoodBrand from "../../components/attengoods/addGoodBrand.vue"
-import Specifications from "../../components/attengoods/Specifications.vue"
+// import Specifications from "../../components/attengoods/Specifications.vue"
 import addGoodLabel from "../../components/attengoods/addGoodLabel.vue"
 export default {
     name:"goodsatten",
@@ -49,7 +49,7 @@ export default {
     }
   },
     components:{
-        allShop,addGoodType,addGoodUtil,addGoodBrand,Specifications,addGoodLabel
+        allShop,addGoodType,addGoodUtil,addGoodBrand,addGoodLabel
     }
 }
 </script>

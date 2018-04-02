@@ -96,7 +96,6 @@ const actions={
       /*修改商品单位*/
       updateGoodUnitById({commit,state},param){
         if(state.scroll){
-            debugger;
             api.updateGoodUnitById(param)
             .then(res=>{
                 console.log(res.data)
