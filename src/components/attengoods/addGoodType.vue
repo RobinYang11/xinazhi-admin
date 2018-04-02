@@ -71,7 +71,7 @@
                 </el-dialog>
         <!--修改弹框E-->
           <!--删除S-->
-            <el-dialog
+            <!-- <el-dialog
                     :title="message"
                     :visible.sync="deDialogVisible"
                     width="30%"
@@ -83,7 +83,7 @@
                         <el-button @click="deDialogVisible = false">取 消</el-button>
                         <el-button type="primary" @click="deleteSubmit">确 定</el-button>
                     </span>
-                </el-dialog>
+                </el-dialog> -->
         <!--删除E-->
     </div>
 </template>
@@ -119,11 +119,11 @@ export default {
       this.centerDialogVisible = true;
       this.message = "添加商品分类";
     },
-    dleperson: function(id) {
-      this.message = "删除分类";
+    // dleperson: function(id) {
+    //   this.message = "删除分类";
     //   this.goodTypeId=id
-      this.deDialogVisible = true;
-    },
+    //   this.deDialogVisible = true;
+    // },
     typeSubmit() {
       let param = {
         goodTypeName: this.goodType

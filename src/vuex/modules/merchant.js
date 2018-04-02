@@ -84,6 +84,25 @@ const actions={
             })
         }
     },
+    /*增加商品单位*/
+    addGoodUtil({commit,state},param){
+        if(state.scroll){
+            api.addGoodUtil(param)
+            .then(res=>{
+                commit(types.GETALLGOOD_UNITL,res)
+            })
+        }
+    },
+      /*修改商品单位*/
+      updateGoodUnitById({commit,state},param){
+        if(state.scroll){
+            api.updateGoodUnitById(param)
+            .then(res=>{
+                console.log(res.data)
+                commit(types.GETALLGOOD_UNITL,res)
+            })
+        }
+    },
     //商品信息分页总数
     getTotalGoodSize({commit,state}){
         if(state.scroll) {

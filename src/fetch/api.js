@@ -55,6 +55,14 @@ export default {
     async getAllGoodUnit(){
         return await request.get('/good/getAllGoodUnit')
     },
+    /*添加商品单位*/
+    async addGoodUtil(params){
+        return await request.post('/good/addGoodUtil',params)
+    },
+    /*修改商品单位*/
+    async updateGoodUnitById(params){
+        return await request.post('/good/updateGoodUnitById',params)
+    },
     /*修改商品分类*/
     async updateGoodType(params){
         return await request.post('/good/updateGoodType',params)

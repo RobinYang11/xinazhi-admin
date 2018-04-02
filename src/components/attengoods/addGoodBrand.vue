@@ -1,12 +1,13 @@
 <template>
-   <div class="addGoodUtil">
-       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加商品单位</el-button>
+   <div class="addGoodBrand">
+       <el-button type="primary" size="medium" class="fr mb15" @click="zjperson">添加品牌</el-button>
        <table class="table">
            <thead>
                <tr>
                    <th width="32">序号</th>
-                   <th>序号id</th>
-                   <th>单位</th>
+                   <th width="100">品牌id</th>
+                   <th>品牌名称</th>
+                   <th width="70">品牌LOGO</th>
                    <th width="100">操&nbsp作</th>
                </tr>
            </thead>
@@ -15,6 +16,9 @@
                    <td>{{index+1}}</td>
                    <td>{{until.goodUnitId}}</td>
                    <td>{{until.goodUnitName}}</td>
+                   <td>
+                       <img src="" alt="" width="60" height="60">
+                   </td>
                    <td>
                        <el-button type="success" size="mini" @click="xgperson(until.goodUnitId,until.goodUnitName)">修改</el-button>
                        <!-- <el-button type="danger" size="mini" @click="dleperson">删除</el-button> -->
@@ -35,6 +39,22 @@
                             </el-col>
                             <el-col :span="10">
                                  <el-input v-model="goodUnit"></el-input>
+                            </el-col>
+                        </el-row>
+                        <el-row class="mt15">
+                            <el-col :span="4" style="line-height:40px;">
+                               上传logo
+                            </el-col>
+                            <el-col :span="10" style="dispaly:flex">
+                                <el-upload
+                                class="avatar-uploader"
+                                action="https://jsonplaceholder.typicode.com/posts/"
+                                :show-file-list="false"
+                                :on-success="handleAvatarSuccess"
+                                :before-upload="beforeAvatarUpload">
+                                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                                </el-upload>
                             </el-col>
                         </el-row>
                     </div>
@@ -80,7 +100,8 @@ export default {
       deDialogVisible: false,
       unitId:"",
       unitName:"",
-      goodUnit:""
+      goodUnit:"",
+      imageUrl: ''
     };
   },
   methods: {
@@ -114,7 +135,23 @@ export default {
             this.$store.dispatch("getAllGoodUnit",param)
         },1000);
          this.centerDialogVisible = false;
-    }
+    },
+    //上传图片logo
+   handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/png';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 PNG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      }
   },
   created() {
     if (this.getALLGoodUnit.length == 0) {
@@ -122,14 +159,40 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getALLGoodUnit"])
+    ...mapGetters(["getALLGoodUnit"]),
   }
 };
 </script>
-<style lang="less" scoped>
-.addGoodUtil {
+<style lang="less">
+.addGoodBrand {
   .mb15 {
     margin-bottom: 15px;
+  }
+  .mt15{
+      margin-top:15px;
+  }
+   .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    display: block;
   }
 }
 </style>
