@@ -33,30 +33,14 @@
                     width="30%"
                     >
                     <div>
-                        <el-row>
-                            <el-col :span="4" style="line-height:40px;">
-                               {{message}}
-                            </el-col>
-                            <el-col :span="10">
-                                 <el-input v-model="goodUnit"></el-input>
-                            </el-col>
-                        </el-row>
-                        <el-row class="mt15">
-                            <el-col :span="4" style="line-height:40px;">
-                               上传logo
-                            </el-col>
-                            <el-col :span="10" style="dispaly:flex">
-                                <el-upload
-                                class="avatar-uploader"
-                                action="https://jsonplaceholder.typicode.com/posts/"
-                                :show-file-list="false"
-                                :on-success="handleAvatarSuccess"
-                                :before-upload="beforeAvatarUpload">
-                                <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                                </el-upload>
-                            </el-col>
-                        </el-row>
+                        <el-form ref="form" label-width="120px">
+                            <el-form-item label="增加商品单位">
+                                <el-input v-model="goodUnit"></el-input>
+                            </el-form-item>
+                            <el-form-item label="上传LOGO图片">
+                                <el-input type="file"></el-input>
+                            </el-form-item>
+                        </el-form>
                     </div>
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="centerDialogVisible = false">取 消</el-button>
@@ -101,7 +85,10 @@ export default {
       unitId:"",
       unitName:"",
       goodUnit:"",
-      imageUrl: ''
+      imageUrl: '',
+      form:{
+
+      }
     };
   },
   methods: {

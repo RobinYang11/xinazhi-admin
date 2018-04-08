@@ -3,8 +3,8 @@ import qs from 'qs'
 import store from '../vuex/store'
 
 
-//let apiUrl= 'http://localhost:8080/api'
-let apiUrl= 'http://47.104.69.226:8080/api'
+let apiUrl= 'http://localhost:8080/api'
+// let apiUrl= 'http://47.104.69.226:8080/api'
 axios.interceptors.request.use(config => {
   if (store.state.token) { 
      // 判断是否存在token，如果存在的话，则每个http header都加上token
