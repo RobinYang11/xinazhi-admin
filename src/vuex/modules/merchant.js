@@ -8,6 +8,7 @@ const state={
     addGoodType:[],
     getALLGoodUnit:[],
     updateGoodType:[],
+    getALLGoodBrand:[],
     goodsTotal:null,
     scroll: true
 }
@@ -103,6 +104,33 @@ const actions={
             })
         }
     },
+    //增加商品品牌
+    addGoodBrand({commit,state},param){
+        if(state.scroll){
+            api.addGoodBrand(param)
+           .then(res=>{
+            console.log(param)
+            // commit(types.GETALLGOOD_UNITL,res)
+           })
+        }
+    },
+    //获取商品品牌
+    getAllGoodBrand({commit,state}){
+        if(state.scroll){
+            api.getAllGoodBrand()
+            .then(res=>{
+                commit(types.Get_ALLGOOD_BRAND,res)
+            })
+        }
+    },
+    updateGoodBrandById({commit,state}){
+        if(state.scroll){
+            api.updateGoodBrandById()
+            .then(res=>{
+
+            })
+        }
+    },
     //商品信息分页总数
     getTotalGoodSize({commit,state}){
         if(state.scroll) {
@@ -132,6 +160,9 @@ const mutations={
     },
     [types.UNDATE_GOOD_TYPE](state,res){
         state.updateGoodType=res.data
+    },
+    [types.Get_ALLGOOD_BRAND](state,res){
+        state.getALLGoodBrand=res.data
     }
 }
 
@@ -141,7 +172,8 @@ const getters={
     GoodTypeList:state=>state.GoodTypeList,
     addGoodType:state=>state.addGoodType,
     getALLGoodUnit:state=>state.getALLGoodUnit,
-    updateGoodType:state=>state.updateGoodType
+    updateGoodType:state=>state.updateGoodType,
+    getALLGoodBrand:state=>state.getALLGoodBrand
 }
 
 export default{

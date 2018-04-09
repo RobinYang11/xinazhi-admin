@@ -57,7 +57,7 @@ export default {
       method: 'post',
       baseURL:apiUrl,
       url,
-      data:qs.stringify(data),
+      data:data instanceof FormData ? data:qs.stringify(data),
       timeout: 10000,
       headers: {
         'X-Requested-With': 'Authorization',
