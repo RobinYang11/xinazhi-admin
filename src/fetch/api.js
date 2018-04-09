@@ -71,6 +71,18 @@ export default {
     async deleteGoodTypeById(params){
         return await request.post('/good/deleteGoodTypeById',params)
     },
+    /*增加商品品牌*/
+    async addGoodBrand(params){
+        return await request.post('/good/addGoodBrand',params)
+    },
+    /*获取所有商品品牌*/
+    async getAllGoodBrand(){
+        return await request.get('/good/getAllGoodBrand')
+    },
+    /*修改商品品牌*/
+    async updateGoodBrandById(params){
+        return await request.post('/good/updateGoodBrandById',params)
+    },
     /*商品总数*/
     async getTotalGoodSize(){
         return await request.get('/good/getTotalGoodSize')
