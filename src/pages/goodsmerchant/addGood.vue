@@ -7,8 +7,8 @@
                         <el-input v-model="form.name"></el-input>
                     </el-form-item>
                     <el-form-item label="商品类别">
-                        <el-select placeholder="请选择类别">
-                            <el-option label=""></el-option>
+                        <el-select v-model="form.region" placeholder="请选择类别">
+                            <el-option label="奶制品"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="商品编码" required>
@@ -146,6 +146,73 @@
                     <el-form-item label="活动形式">
                         <el-input type="textarea" v-model="form.desc"></el-input>
                     </el-form-item>
+                    <el-form-item label="上传图片">
+                        <el-upload
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            list-type="picture-card"
+                            :on-preview="handlePictureCardPreview"
+                            :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                            </el-upload>
+                            <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt="">
+                        </el-dialog>
+                    </el-form-item>
+                    <el-form-item label="商品图片" style="width:100%">
+                        <el-row :gutter="10">
+                            <el-col :span="4" style="display:flex">
+                                <a href="javascript:;" class="upload">上传文件
+                                    <input type="file" ref="upload" @change="onChangeo($event)" multiple="multiple">
+                                </a>
+                                <span class="span">{{fileNameo}}</span>
+                            </el-col>
+                            <el-col :span="4" style="display:flex">
+                                <a href="javascript:;" class="upload">上传文件
+                                    <input type="file" ref="upload" @change="onChanget($event)" multiple="multiple">
+                                </a>
+                                <span class="span">{{fileNamet}}</span>
+                            </el-col>
+                             <el-col :span="4" style="display:flex">
+                                <a href="javascript:;" class="upload">上传文件
+                                    <input type="file" ref="upload" @change="onChangetr($event)" multiple="multiple">
+                                </a>
+                                <span class="span">{{fileNametr}}</span>
+                            </el-col>
+                             <el-col :span="4" style="display:flex">
+                                <a href="javascript:;" class="upload">上传文件
+                                    <input type="file" ref="upload" @change="onChangef($event)" multiple="multiple">
+                                </a>
+                                <span class="span">{{fileNamef}}</span>
+                            </el-col>
+                            <el-col :span="4" style="display:flex">
+                                <a href="javascript:;" class="upload">上传文件
+                                    <input type="file" ref="upload" @change="onChangefiv($event)" multiple="multiple">
+                                </a>
+                                <span class="span">{{fileNamefiv}}</span>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            
+                        </el-row>
+                        <table class="table" v-show="fileHidden" style="margin-top:10px; margin-bottom:0;">
+                            <thead>
+                                <tr>
+                                    <th>上传日期</th>
+                                    <th>文件名称</th>
+                                    <th>图片大小</th>
+                                    <th>图片类型</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(file,index) in files">
+                                    <td>{{file.lastModifiedDate}}</td>
+                                    <td>{{file.name}}</td>
+                                    <td>{{file.size}}</td>
+                                    <td>{{file.type}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </el-form-item>
                     <el-form-item label="简介" style="width:90%">
                         <quillEditor></quillEditor>
                     </el-form-item>
@@ -181,6 +248,14 @@ export default {
       list:[
           
       ],
+      files:[],
+      fileNameo:"未选择文件",
+      fileNamet:"未选择文件",
+      fileNametr:"未选择文件",
+      fileNamef:"未选择文件",
+      fileNamefiv:"未选择文件",
+      dialogImageUrl: '',
+      dialogVisible: false
     };
   },
   methods: {
@@ -200,14 +275,36 @@ export default {
         this.list.push(obj)
         this.isHidden=true
         this.isTrue=false
-    }
+    },
+    onChangeo:function(e){
+        this.fileNameo=e.target.files[0].name;
+    },
+    onChanget:function(e){
+        this.fileNamet=e.target.files[0].name;
+    },
+    onChangetr:function(e){
+        this.fileNametr=e.target.files[0].name;
+    },
+    onChangef:function(e){
+        this.fileNamef=e.target.files[0].name;
+    },
+    onChangefiv:function(e){
+        this.fileNamefiv=e.target.files[0].name;
+    },
+     handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePictureCardPreview(file) {
+        this.dialogImageUrl = file.url;
+        this.dialogVisible = true;
+      }
   },
   components:{
       quillEditor
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
     .addGood{
         width:100%;
         background: #fff;
@@ -218,7 +315,31 @@ export default {
                         margin-bottom: 22px;
                         width: 40%;
                         float: left;
-                        margin: 10px 5%;
+                        margin: 10px 5%;  
+                        .upload{
+                            padding: 6px 12px;
+                            height: 24px;
+                            line-height: 24px;
+                            position: relative;
+                            border: 1px solid rgb(153, 153, 153);
+                            text-decoration: none;
+                            color: #666;
+
+                            input{
+                                position: absolute;
+                                overflow: hidden;
+                                right: 0;
+                                top: 0;
+                                opacity: 0;
+                                width:100%;
+                            }
+                        } 
+                        .span{
+                            font-size: 14px;
+                            color:#2ec748;
+                            overflow: hidden;
+                            text-overflow: ellipsis; 
+                        } 
                     }
                 }   
                 .el-form::after{
@@ -229,6 +350,15 @@ export default {
                     } 
             }
         }
+    }
+    .el-upload-list--picture-card .el-upload-list__item{
+        width:60px;
+        height: 60px;
+    }
+    .el-upload--picture-card{
+        width:60px;
+        height: 60px;
+        line-height:66px;
     }
 </style>
 

@@ -5,20 +5,20 @@
 <thead>
 <tr>
 <th width="32">序号</th>
-<th width="100">品牌id</th>
-<th>品牌名称</th>
+<th width="180">品牌名称</th>
 <th width="70">品牌LOGO</th>
+<th>品牌描述</th>
 <th width="100">操&nbsp作</th>
 </tr>
 </thead>
 <tbody>
 <tr v-for="(brand,index) in getALLGoodBrand">
 <td>{{index+1}}</td>
-<td></td>
 <td>{{brand.goodBrandName}}</td>
 <td>
     <img :src="brand.goodBrandLogo" alt="" width="60" height="60">
 </td>
+<td>{{brand.goodBrandDesc}}</td>
 <td>
 <el-button type="success" size="mini" @click="xgperson(brand.goodBrandId,brand.goodBrandName)">修改</el-button>
 <!-- <el-button type="danger" size="mini" @click="dleperson">删除</el-button> -->
@@ -37,10 +37,18 @@ width="30%"
     <el-form-item label="增加品牌名称">
         <el-input v-model="goodBrandName"></el-input>
     </el-form-item>
+    <el-form-item label="增加品牌描述">
+        <el-input type="textarea" v-model="goodBrandDesc"></el-input>
+    </el-form-item>
     <el-form-item label="上传LOGO图片">
-        <input ref="logo" type="file" @change="onChange($event)" />
+        <input ref="logo" type="file"/>
     </el-form-item>
 </el-form>
+<el-alert
+    :title="tips"
+    type="warning"
+    :closable="false">
+</el-alert>
 </div>
 <span slot="footer" class="dialog-footer">
 <el-button @click="centerDialogVisible = false">取 消</el-button>
@@ -61,6 +69,14 @@ width="30%"
         </el-col>       
         <el-col :span="10">
             <el-input v-model="goodBrandName"></el-input>
+        </el-col>
+    </el-row>
+    <el-row style="margin-top:20px;">
+        <el-col :span="5" style="line-height:40px;">
+            品牌描述
+        </el-col>       
+        <el-col :span="10">
+            <el-input v-model="goodBrandDesc"></el-input>
         </el-col>
     </el-row>
 </div>
@@ -87,15 +103,13 @@ export default {
       goodUnit: "",
       imageUrl: "",
       goodBrandName: "",
-      goodBrandLogo: null,
+      goodBrandDesc:"",
+      tips:"图片只能上传png格式",
+      goodBrandLogo: null
 
     };
   },
   methods: {
-    onChange: function(event) {
-      this.goodBrandLogo = event;
-      console.log(event.target);
-    },
     xgperson: function(id, name) {
       this.goodBrandId = id;
       this.goodBrandName = name;
@@ -105,6 +119,7 @@ export default {
     zjperson: function() {
       this.centerDialogVisible = true;
       this.message = "增加品牌名称";
+      this.tips="图片只能上传png格式"
     },
     xgSubmit: function() {
       let param={
@@ -120,12 +135,20 @@ export default {
     zjSubmit: function() {
       let fd = new FormData();
       let file = this.$refs.logo.files[0];
+      if(file.type!='image/png'){
+        this.tips="您的上传图片格式有误"
+        return false;
+      }else{
+        this.tips="图片格式正确"
+      }
       fd.append("file", file);
+      fd.append("goodBrandDesc",this.goodBrandDesc);
       fd.append("goodBrandName", this.goodBrandName);
       this.$store.dispatch("addGoodBrand", fd);
        setTimeout(()=>{
             this.$store.dispatch("getAllGoodBrand")
         },1000);
+
       this.centerDialogVisible = false;
     },
     //上传图片logo
