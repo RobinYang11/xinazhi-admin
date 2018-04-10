@@ -123,9 +123,9 @@ const actions={
             })
         }
     },
-    updateGoodBrandById({commit,state}){
+    updateGoodBrandById({commit,state},param){
         if(state.scroll){
-            api.updateGoodBrandById()
+            api.updateGoodBrandById(param)
             .then(res=>{
 
             })
