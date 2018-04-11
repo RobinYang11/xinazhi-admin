@@ -83,6 +83,22 @@ export default {
     async updateGoodBrandById(params){
         return await request.post('/good/updateGoodBrandById',params)
     },
+    /*获取商品标签*/
+    async getAllGoodLabel(){
+        return await request.get('/good/getAllGoodLabel')
+    },
+    /*添加商品标签*/
+    async addGoodLabel(params){
+        return await request.post('/good/addGoodLabel',params)
+    },
+    /*修改商品标签*/
+    async updateGoodLabel(params){
+        return await request.post('/good/updateGoodLabel',params)
+    },
+    /*删除商品标签*/
+    async deleteGoodLabel(params){
+        return await request.get('/good/deleteGoodLabel',params)
+    },
     /*商品总数*/
     async getTotalGoodSize(){
         return await request.get('/good/getTotalGoodSize')
