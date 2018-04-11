@@ -35,7 +35,10 @@ width="30%"
 <div>
 <el-form ref="form" label-width="120px">
     <el-form-item label="增加品牌名称">
-        <el-input v-model="goodBrandName"></el-input>
+        <el-input v-model="goodBrandName" @blur="changeTip($event)" :class="{error:isError}"></el-input>
+        <div class="el-form-item__error" :class="{error:isError}">
+          请输入活动名称
+        </div>
     </el-form-item>
     <el-form-item label="增加品牌描述">
         <el-input type="textarea" v-model="goodBrandDesc"></el-input>
@@ -46,7 +49,7 @@ width="30%"
 </el-form>
 <el-alert
     :title="tips"
-    type="warning"
+    :type="bgColor"
     :closable="false">
 </el-alert>
 </div>
@@ -90,6 +93,7 @@ width="30%"
 </template>
 
 <script>
+import constant from "../../until/const"
 import { mapGetters } from "vuex";
 export default {
   data: function() {
@@ -105,6 +109,8 @@ export default {
       goodBrandName: "",
       goodBrandDesc:"",
       tips:"图片只能上传png格式",
+      bgColor:"warning",
+      isError:false,
       goodBrandLogo: null
 
     };
@@ -120,6 +126,7 @@ export default {
       this.centerDialogVisible = true;
       this.message = "增加品牌名称";
       this.tips="图片只能上传png格式"
+      this.bgColor="warning"
     },
     xgSubmit: function() {
       let param={
@@ -133,13 +140,20 @@ export default {
       this.xgDialogVisible = false;
     },
     zjSubmit: function() {
+        if(this.goodBrandName ==null || this.goodBrandName==''){
+           this.isError=true
+          return false;
+      }
       let fd = new FormData();
-      let file = this.$refs.logo.files[0];
-      if(file.type!='image/png'){
-        this.tips="您的上传图片格式有误"
-        return false;
-      }else{
-        this.tips="图片格式正确"
+      let file = this.$refs.logo.files[constant.FIlE];
+      if(file!==null&&file!==undefined){
+         if(file.type!='image/png'){
+          this.bgColor="error"
+          this.tips="您的上传图片格式有误"
+          return false;
+        }else{
+          this.tips="图片格式正确"
+        }
       }
       fd.append("file", file);
       fd.append("goodBrandDesc",this.goodBrandDesc);
@@ -151,6 +165,11 @@ export default {
 
       this.centerDialogVisible = false;
     },
+    changeTip:function(e){
+      if(e.target.text!==""){
+        this.isError=false
+      }
+    }
     //上传图片logo
     // handleAvatarSuccess(res, file) {
     //   this.imageUrl = URL.createObjectURL(file.raw);
@@ -208,6 +227,15 @@ export default {
     width: 80px;
     height: 80px;
     display: block;
+  }
+  .error .el-input__inner{
+    border-color: #f56c6c;
+  }
+  .el-form-item__error{
+    opacity: 0;
+  }
+  .el-form-item__error.error{
+    opacity: 1;
   }
 }
 </style>

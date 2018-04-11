@@ -15,6 +15,7 @@ export const GOOD_TYPE_LIST='GOOD_TYPE_LIST'//添加商品分类
 export const GETALLGOOD_UNITL='GETALLGOOD_UNITL'//获取所有商品单位
 export const UNDATE_GOOD_TYPE='UNDATE_GOOD_TYPE'//修改商品分类
 export const Get_ALLGOOD_BRAND='Get_ALLGOOD_BRAND'//获取所有商品品牌
+export const GET_ALLGOOD_LABEL='GET_ALLGOOD_LABEL'//获取所有商品标签
 //系统管理
 export const ADMIN_ROLE_LIST='ADMIN_ROLE_LIST'//角色管理
 export const PERMISION_LIST='PERMISION_LIST'//权限管理

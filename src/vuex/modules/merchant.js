@@ -9,6 +9,7 @@ const state={
     getALLGoodUnit:[],
     updateGoodType:[],
     getALLGoodBrand:[],
+    getAllGoodLabel:[],
     goodsTotal:null,
     scroll: true
 }
@@ -123,9 +124,46 @@ const actions={
             })
         }
     },
+    //修改商品品牌
     updateGoodBrandById({commit,state},param){
         if(state.scroll){
             api.updateGoodBrandById(param)
+            .then(res=>{
+
+            })
+        }
+    },
+    //获取所有商品标签
+    getAllGoodLabel({commit,state}){
+        if(state.scroll){
+            api.getAllGoodLabel()
+            .then(res=>{
+                commit(types.GET_ALLGOOD_LABEL,res)
+            })
+        }
+    },
+    //添加商品标签
+    addGoodLabel({commit,state},param){
+        if(state.scroll){
+            api.addGoodLabel(param)
+            .then(res=>{
+
+            })
+        }
+    },
+    //修改商品标签
+    updateGoodLabel({commit,state},param){
+        if(state.scroll){
+            api.updateGoodLabel(param)
+            .then(res=>{
+
+            })
+        }
+    },
+    //删除商品标签
+    deleteGoodLabel({commit,state},param){
+        if(state.scroll){
+            api.deleteGoodLabel(param)
             .then(res=>{
 
             })
@@ -163,6 +201,9 @@ const mutations={
     },
     [types.Get_ALLGOOD_BRAND](state,res){
         state.getALLGoodBrand=res.data
+    },
+    [types.GET_ALLGOOD_LABEL](state,res){
+        state.getAllGoodLabel=res.data
     }
 }
 
@@ -173,7 +214,8 @@ const getters={
     addGoodType:state=>state.addGoodType,
     getALLGoodUnit:state=>state.getALLGoodUnit,
     updateGoodType:state=>state.updateGoodType,
-    getALLGoodBrand:state=>state.getALLGoodBrand
+    getALLGoodBrand:state=>state.getALLGoodBrand,
+    getAllGoodLabel:state=>state.getAllGoodLabel
 }
 
 export default{
