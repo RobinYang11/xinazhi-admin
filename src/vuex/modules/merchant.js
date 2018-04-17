@@ -169,6 +169,25 @@ const actions={
             })
         }
     },
+    //增加商品规格
+    addGoodSize({commit,state},param){
+        if(state.scroll){
+            api.addGoodSize(param)
+            .then(res=>{
+                
+            })
+        }
+    },
+    //删除商品图片
+    deleteGoodImg({commit,state},param){
+        if(state.scroll){
+            debugger
+            api.deleteGoodImg(param)
+            .then(res=>{
+
+            })
+        }
+    },
     //商品信息分页总数
     getTotalGoodSize({commit,state}){
         if(state.scroll) {
