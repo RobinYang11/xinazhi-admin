@@ -21,40 +21,26 @@
                   <thead>
                      <tr>
                         <th>序号</th>
-                        <th>id</th>
-                        <th>类型</th>
-                        <th>店铺</th>
-                        <th>名称</th>
+                        <th>商品图片</th>
+                        <th>所属店铺</th>
+                        <th>商品名称</th>
                         <th>别名</th>
-                        <th>单位</th>
                         <th>价格</th>
-                        <th>折扣</th>
                         <th>状态</th>
                         <th>品牌</th>
-                        <th>评论</th>
-                        <th>有效期限</th>
-                        <th>生产地</th>
-                        <th>制造</th>
                         <th width="180">操作</th>
                      </tr>
                   </thead>
                   <tbody>
                     <tr v-for="(i,index) in Commodity">
-                      <td>{{index+1}}</td>
-                      <td>{{i.goodId}}</td>
+                      <td :id="i.goodId">{{index+1}}</td>
                       <td>{{i.goodType}}</td>
                       <td>{{i.goodShop}}</td>
                       <td>{{i.goodName}}</td>
                       <td>{{i.goodOtherName}}</td>
-                      <td>{{i.goodUnit}}</td>
                       <td>{{i.goodPrice}}</td>
-                      <td>{{i.goodDiscount}}</td>
                       <td>{{i.goodStatus}}</td>
                       <td>{{i.goodBrand}}</td>
-                      <td>{{i.goodRemark}}</td>
-                      <td>{{i.goodValidityPeriod}}</td>
-                      <td>{{i.goodGrowPlace}}</td>
-                      <td>{{i.goodManufacture}}</td>
                       <td>
                           <el-button type="default" size="mini" @click="bjperson">编辑</el-button>
                     <el-button type="danger" size="mini" @click="deDialogVisible = true">强制下架</el-button>

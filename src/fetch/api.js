@@ -99,6 +99,19 @@ export default {
     async deleteGoodLabel(params){
         return await request.get('/good/deleteGoodLabel',params)
     },
+    /*增加商品*/
+    async addGood(params){
+        return await request.post('/good/addGood',params)
+    },
+    /*增加规格*/
+    async addGoodSize(params){
+        debugger
+        return await request.post('/good/addGoodSize',params)
+    },
+    /*删除商品图片*/
+    async deleteGoodImg(params){
+        return await request.post('/good/deleteGoodImg',params)
+    },
     /*商品总数*/
     async getTotalGoodSize(){
         return await request.get('/good/getTotalGoodSize')

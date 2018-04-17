@@ -3,19 +3,19 @@ import * as types from '../types.js'
 
 const state={
     //用户数据信息
-    goods:null
+    goods:null,
 }
 
 const actions={
      /**
-     * 请求用户信息
+     * 请求用户信息,增加商品
      */
     addGood({ commit,state },params) {
         
-        debugger;
         api.addGood(params)
             .then(res => {
-                console.log(res)
+                window.localStorage.setItem("newGood",res.data) 
+                console.log(res.data)//返回id值
                 // commit(types.GET_SHOP_LIST, res)
             })
     }
