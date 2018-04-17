@@ -41,16 +41,18 @@
                             <el-input v-model="goods.goodManufacture"></el-input>
                         </el-form-item>
                         <el-form-item label="价格" required>
-                            <el-input v-model="goods.goodPrice" @blur="changePrice" :class="{isPrice}"></el-input>
+                            <el-input v-model="goods.goodPrice" @blur="changePrice" :class="{isPrice}" class="label_left"></el-input>
+                            <span class="label_right">千克/元</span>
                             <div class="el-form-item__error" :class="{isPrice}">
-                                价格不能为空必须为浮点数
+                                价格不能为空必须为数字
                             </div>
                         </el-form-item>
                         <el-form-item label="折扣">
                             <el-input v-model="goods.goodDiscount"></el-input>
                         </el-form-item>
                         <el-form-item label="有效期">
-                            <el-input v-model="goods.goodValidityPeriod"></el-input>
+                            <el-input v-model="goods.goodValidityPeriod" class="label_left"></el-input>
+                            <span class="label_right">月</span>
                         </el-form-item>
                         <el-form-item label="商品状态">
                             <el-input v-model="goods.goodStatus"></el-input>
@@ -262,6 +264,7 @@ export default {
   methods: {
     onSubmit() {
       console.log("submit!");
+      this.goods.goodPrice=parseFloat(this.goods.goodPrice)
       let goods=this.goods;
       this.$store.dispatch("addGood",goods);
       if(window.localStorage.getItem("newGood")){
@@ -313,7 +316,7 @@ export default {
         }
     },
     changePrice:function(){
-        if(this.goods.goodPrice==""||/.*\..*/.test(this.goods.goodPrice)!==true){
+        if(this.goods.goodPrice==""||isNaN(this.goods.goodPrice)==true){
             this.isPrice=true
         }else{
             this.isPrice=false
@@ -359,6 +362,16 @@ export default {
                             overflow: hidden;
                             text-overflow: ellipsis; 
                         } 
+                        .label_left.el-input{
+                            width:60%;
+                            float: left;
+                        }
+                        .label_right{
+                            width:40%;
+                            float:left;
+                            box-sizing: border-box;
+                            padding-left:10px;
+                        }
                         .el-form-item__error{
                             opacity: 0;
                         }
