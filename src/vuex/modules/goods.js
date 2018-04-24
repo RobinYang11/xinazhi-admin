@@ -11,7 +11,6 @@ const actions={
      * 请求用户信息,增加商品
      */
     addGood({ commit,state },params) {
-        
         api.addGood(params)
             .then(res => {
                 window.localStorage.setItem("newGood",res.data) 

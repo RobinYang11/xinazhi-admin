@@ -71,19 +71,19 @@
             </el-row>
             </el-header>
           <el-main>
-               <div style="margin-bottom:10px;">
+               <!-- <div style="margin-bottom:10px;">
                  <el-breadcrumb separator="/">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{listo}}</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{listt}}</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{listtr}}</el-breadcrumb-item>
                   </el-breadcrumb>
-               </div>
+               </div> --> 
               <el-row :gutter="10">
                  <el-col :class="styleo">
                     <router-view></router-view>&nbsp
                  </el-col>
-                 <el-col :class="stylet">
+                 <el-col :class="stylet" style="margin-top:23px">
                      <el-card class="box-card sold-count">
                       <div slot="header" class="clearfix">
                           <span :class="styletr">鲜致开发任务进展图</span>
@@ -146,6 +146,8 @@ export default {
   },
   components: {
     leftNav
+  },
+  created: function(){
   },
   methods: {
     logout(){

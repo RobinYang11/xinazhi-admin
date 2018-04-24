@@ -1,5 +1,11 @@
 <template>
     <div>
+        <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>商品管理</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
         <div class="panel">
             <div class="panel-body" style=" background:#fff; padding: 15px;"> 
                  <div class="attengooodsContent">
