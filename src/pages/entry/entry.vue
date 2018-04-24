@@ -1,5 +1,11 @@
 <template>
    <div class="entry">
+       <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>商品管理</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <span>商家入驻</span>

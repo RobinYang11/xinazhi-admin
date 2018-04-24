@@ -1,5 +1,5 @@
 <template>
-    <div class="test">
+    <div class="test" style="margin-top:23px">
         <a name="firstAnchor">这就跳转的位置</a>
         <div class="circle">
             <div class="wrap"></div>
@@ -118,8 +118,9 @@ export default {
       // this.animate = !this.animate;
       var that = this; // 在异步函数中会出现this的偏移问题，此处一定要先保存好this的指向
       setTimeout(function() {
-        that.items.push(that.items[0]);
-        that.items.shift();
+        that.items.push(that.items[0]);//给数组末尾添加当前数组第一个元素
+        // alert(that.items)
+        that.items.shift();//删除数组第一个元素
         // con1.style.marginTop = "0px";
         // that.animate = !that.animate;
       }, 500);

@@ -1,5 +1,11 @@
 <template>
     <div class="service">
+        <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>客户服务</el-breadcrumb-item>
+            </el-breadcrumb>
+       </div>
         <!--常见问题-->
         <div class="panel">
             <div class="panel-body">

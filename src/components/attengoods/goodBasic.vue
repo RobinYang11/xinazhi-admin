@@ -24,6 +24,16 @@
                                 请输入存货编码
                             </div>
                         </el-form-item>
+                        <el-form-item label="单位">
+                           <el-select v-model="goods.unit" placeholder="请选择" >
+                                <el-option
+                                    v-for="(until,index) in getALLGoodUnit"
+                                    :key="index" 
+                                    :label="until.goodUnitName"
+                                    :value="until.goodUnitId">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
                         <el-form-item label="商品类别">
                             <el-select v-model="goods.goodType" placeholder="请选择" @change="change">
                                 <el-option
@@ -48,7 +58,10 @@
                             </div>
                         </el-form-item>
                         <el-form-item label="折扣">
-                            <el-input v-model="goods.goodDiscount"></el-input>
+                            <el-input v-model="goods.goodDiscount" @blur="changeDiscount" :class="{isDiscount}" ></el-input>
+                            <div class="el-form-item__error" :class="{isDiscount}">
+                                折扣不能为空并且只能在0-10之间
+                            </div>
                         </el-form-item>
                         <el-form-item label="有效期">
                             <el-input v-model="goods.goodValidityPeriod" class="label_left"></el-input>
@@ -72,126 +85,14 @@
                         <el-form-item label="备注">
                             <el-input type="textarea" v-model="goods.goodBak"></el-input>
                         </el-form-item>
-                        <el-form-item label="单位">
-                           <el-select v-model="goods.unit" placeholder="请选择" >
-                                <el-option
-                                    v-for="(until,index) in getALLGoodUnit"
-                                    :key="index" 
-                                    :label="until.goodUnitName"
-                                    :value="until.goodUnitId">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                        <el-form-item label="规格">
-                            <el-row v-show="!isTrue">
-                                <el-button @click="tjSpe" type="primary">添加规格</el-button>
-                            </el-row>
-                            <el-row v-show="isTrue" style="margin-bottom:15px;">
-                                <el-col :span="5">
-                                    规格名称
-                                </el-col>
-                                <el-col :span="6">
-                                    <el-input v-model="specName"></el-input>
-                                </el-col>
-                                <el-col :span="1">&nbsp</el-col>
-                                <el-col :span="5">
-                                    规格价格
-                                </el-col>
-                                <el-col :span="6">
-                                    <el-input v-model="specPrice"></el-input>
-                                </el-col>  
-                            </el-row>
-                            <el-row v-show="isTrue" style="margin-bottom:15px;">
-                                <el-col :span="7">&nbsp</el-col>
-                                <el-col :span="3">
-                                    <el-button @click="qdSpe" type="success">确定</el-button>
-                                </el-col>
-                                <el-col :span="2">&nbsp</el-col>
-                                <el-col :span="3">
-                                    <el-button @click="qxSpe" type="danger">取消</el-button>
-                                </el-col>
-                            </el-row>
-                            <table class="table" v-show="isHidden" style="margin-top:10px; margin-bottom:0;">
-                                <thead>
-                                    <tr>
-                                        <th>规格名称</th>
-                                        <th>规格价格</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="i in list">
-                                        <td>{{i.name}}</td>
-                                        <td>{{i.price}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <el-form-item label="品牌">
+                            <el-input v-model="goods.goodBrand"></el-input>
                         </el-form-item>
                         <el-form-item label="生产厂家">
                             <el-input></el-input>
                         </el-form-item>
-                        <el-form-item label="品牌">
-                            <el-input v-model="goods.goodBrand"></el-input>
-                        </el-form-item>
                         <el-form-item label="安全认证">
                             <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="食用方式">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="存储方式">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="拆分方式">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="驰名商标">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="有效期">
-                            <el-col :span="11">
-                                <el-input></el-input>
-                            </el-col>
-                            <el-col :span="2">
-                                天
-                            </el-col>
-                        </el-form-item>
-                        <el-form-item label="产地">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="积分比例">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="销售单位">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="销售提点">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="主要配料">
-                            <el-input></el-input>
-                        </el-form-item>
-                        <el-form-item label="即时配送">
-                            <el-switch v-model="form.isBlue"></el-switch>
-                        </el-form-item>
-                        <el-form-item label="所属餐厅类型">
-                            <el-checkbox-group v-model="form.type">
-                                <el-checkbox :label="kkk" name="type1"></el-checkbox>
-                                <el-checkbox label="机关单位" name="type"></el-checkbox>
-                                <el-checkbox label="大型餐厅" name="type"></el-checkbox>
-                                <el-checkbox label="学校餐厅" name="type"></el-checkbox>
-                                <el-checkbox label="街道餐馆" name="type"></el-checkbox>
-                                <el-checkbox label="员工食堂" name="type"></el-checkbox>
-                                <el-checkbox label="路边摊烧烤类" name="type"></el-checkbox>
-                            </el-checkbox-group>
-                        </el-form-item>
-                        <el-form-item label="标签">
-                            <el-radio-group v-model="form.radio">
-                                <el-radio label="进口型"></el-radio>
-                                <el-radio label="自产地"></el-radio>
-                            </el-radio-group>
-                        </el-form-item>
-                        <el-form-item label="活动形式">
-                            <el-input type="textarea"></el-input>
                         </el-form-item>
                         <el-form-item style="width:100%">
                             <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -217,6 +118,7 @@ export default {
       isNumber:false,
       isSortNum:false,
       isPrice:false,
+      isDiscount:false,
       goods:{
           	goodId:1,
             goodType:1,
@@ -265,6 +167,7 @@ export default {
     onSubmit() {
       console.log("submit!");
       this.goods.goodPrice=parseFloat(this.goods.goodPrice)
+      this.goods.goodDiscount=parseFloat(this.goods.goodDiscount)
       let goods=this.goods;
       this.$store.dispatch("addGood",goods);
       if(window.localStorage.getItem("newGood")){
@@ -321,6 +224,13 @@ export default {
         }else{
             this.isPrice=false
         }
+    },
+    changeDiscount:function(){
+        if(this.goods.goodDiscount==""||isNaN(this.goods.goodDiscount)==true|| (/^(0\.\d{1,2}|[1-9](\.\d{1,2})?)$/).test(this.goods.goodDiscount)==false){
+            this.isDiscount=true
+        }else{
+            this.isDiscount=false
+        }
     }
   },
 };
@@ -375,11 +285,14 @@ export default {
                         .el-form-item__error{
                             opacity: 0;
                         }
-                        .el-form-item__error.isOpacity,.el-form-item__error.isNumber,.el-form-item__error.isSortNum,.el-form-item__error.isPrice{
+                        .el-form-item__error.isOpacity,.el-form-item__error.isNumber,.el-form-item__error.isSortNum,.el-form-item__error.isPrice,.el-form-item__error.isDiscount{
                             opacity: 1;
                         }
-                        .isOpacity .el-input__inner,.isNumber .el-input__inner,.isSortNum .el-input__inner,.isPrice .el-input__inner{
+                        .isOpacity .el-input__inner,.isNumber .el-input__inner,.isSortNum .el-input__inner,.isPrice .el-input__inner,.isDiscount .el-input__inner {
                             border-color: #f56c6c;
+                        }
+                        .el-textarea__inner{
+                            height:100px;
                         }
                     }
                 }   

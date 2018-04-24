@@ -1,5 +1,11 @@
 <template>
     <div class="system">
+        <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>评价管理</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <span>评价管理</span>

@@ -1,16 +1,24 @@
 <template>
-   <div class="panel">
-       <div class="panel-header">
-           <div class="panel-title">
-               <h4>我的订单</h4>
-           </div>
-       </div>
-       <div class="panel-body">
-           <div>
-               <orderManager></orderManager>
-           </div>
-       </div>
-   </div>
+    <div>
+        <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>订单管理</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <h4>我的订单</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <orderManager></orderManager>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import orderManager from "../../components/order/orderManager"

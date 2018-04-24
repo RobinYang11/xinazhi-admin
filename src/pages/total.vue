@@ -1,5 +1,11 @@
 <template>
    <div>
+       <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>销售统计</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
        <el-row :gutter="10">
             <el-col :span="24">
                  <el-card class="box-card sold-count">
