@@ -22,14 +22,17 @@
                     <goodspecification></goodspecification>
                 </el-tab-pane>
             </el-tabs> -->
-            <el-row :gutter="20" style="padding:20px;">
-                <el-steps :active="active" finish-status="success">
-                    <el-step title="基本信息"></el-step>
-                    <el-step title="上传图片"></el-step>
-                    <el-step title="添加规格"></el-step>
+            <el-row :gutter="20" style="padding:10px;"  >
+                <el-steps :active="active" finish-status="success" align-center style="padding:30px;border-bottom:1px solid #e8e8e8;" >
+                    <el-step title="第一步"   description="基本信息" ></el-step>
+                    <el-step title="第二步"  description="上传图片" ></el-step>
+                    <el-step title="第三步"  description="添加规格" ></el-step>
                 </el-steps>
-                <router-view></router-view>
-                <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+                <router-view style="padding:0px 20px;"></router-view>
+                <div style="text-align:center;margin-bottom:10px;">
+                    <el-button type="primary" style="margin-top: 12px;" @click="next">上一步</el-button>
+                    <el-button type="primary" style="margin-top: 12px;" @click="next">下一步</el-button>
+                </div>
             </el-row>
         </el-card>
         
@@ -72,6 +75,9 @@ export default {
 </script>
 <style lang="less">
     .addGood{
+        .el-step__title {
+          font-size: 14px;
+          }
         .el-card__body{
             padding:0 10px;
         }
@@ -81,6 +87,9 @@ export default {
         }
         .el-step__title.is-success{
             color: #66b1ff;
+        }
+        .el-step__description.is-success{
+             color: #66b1ff;
         }
     }
 </style>

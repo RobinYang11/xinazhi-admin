@@ -248,6 +248,20 @@ export default {
                         width: 40%;
                         float: left;
                         margin: 10px 5%;  
+                        .el-input{
+                           input{
+                                border-radius:0;
+                                border: 1px solid #c8c8c8;
+                                height: 35px;
+                           }
+                        }
+                        .el-textarea{
+                            textarea{
+                                border-radius:0;
+                                border: 1px solid #c8c8c8;
+                            }
+
+                        }
                         .upload{
                             padding: 6px 12px;
                             height: 24px;

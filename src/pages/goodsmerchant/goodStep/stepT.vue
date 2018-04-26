@@ -1,5 +1,11 @@
 <template>
    <div class="goodImage">
+      <div>
+        <input type="file" @change="preview($event)" />
+        <div ref="file">
+           <img :src="imgPath" alt="">
+        </div>
+      </div>     
       <el-form ref="form" label-width="80px">
           <el-form-item style="width:90%">
             <table class="table">
@@ -10,6 +16,7 @@
               </thead>
               <tbody>
                 <tr>  
+                
                   <td>
                     <el-upload :class="{disp:isTrue}"
                       action="http://localhost:8080/api/good/addGoodImg"
@@ -51,12 +58,27 @@ export default {
        dialogVisible: false,
        num:5,
        isTrue:false,
+       imgPath:"",
        param:{
          goodId:window.localStorage.getItem("newGood")
        }
     };
   },
   methods: {
+     preview:function(e){
+       if(e.target.files && e.target.files[0]){   
+         console.log("robin")           
+         var reader=new FileReader();
+         let $this=this 
+         reader.onload=function(){
+           console.log("robin")
+            console.log(this)
+            $this.imgPath=this.result;
+         }
+         reader.readAsDataURL(e.target.files[0])
+        //  console.log(e.target.result)
+       }
+     },
      onSubmit(){
        if(window.localStorage.getItem("newGood")){
         //   this.$store.state.activeName="three" 
