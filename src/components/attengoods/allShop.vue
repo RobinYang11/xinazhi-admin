@@ -209,7 +209,7 @@ export default {
       this.message = "编辑商品信息";
     },
     addperson: function() {
-      this.$router.push({path:'/main/addGood'})
+      this.$router.push({path:'/main/addGood/stepO'})
     }
   }
 };
