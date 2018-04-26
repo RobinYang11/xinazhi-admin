@@ -26,8 +26,7 @@
                       :before-upload="beforeAvatarUpload"
                       :on-preview="handlePictureCardPreview"
                       :on-remove="handleRemove"
-                      :on-success="uploadSuc"
-                      >
+                      :on-success="uploadSuc">
                       <i class="el-icon-plus"></i>
                     </el-upload>
                     <el-dialog :visible.sync="dialogVisible">
