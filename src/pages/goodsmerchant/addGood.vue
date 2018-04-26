@@ -60,7 +60,7 @@ export default {
           this.$router.push({path:"/main/addGood/stepTr"})
           this.active=3
         }else{
-          alert("步骤完成请求数据")
+          alert("步骤完成请求数据123git")
           
         }
       }
