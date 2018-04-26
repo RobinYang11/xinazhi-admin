@@ -1,59 +1,75 @@
 <template>
     <div class="test" style="margin-top:23px">
-        <a name="firstAnchor">这就跳转的位置</a>
-        <div class="circle">
-            <div class="wrap"></div>
-            <div class="photo">
-                <img src="../../static/img/modeo03.jpg" alt="美女">
+      <el-row :gutter="20">
+        <el-col :span="12">
+           <a name="firstAnchor">这就跳转的位置</a>
+            <div class="circle">
+                <div class="wrap"></div>
+                <div class="photo">
+                    <img src="../../static/img/modeo03.jpg" alt="美女">
+                </div>
+                <div class="text">
+                    <h3 style="text-shadow:black 5px 3px 3px;">欢迎来到鲜致，美女为你服务</h3>
+                </div>
             </div>
-            <div class="text">
-                <h3 style="text-shadow:black 5px 3px 3px;">欢迎来到鲜致，美女为你服务</h3>
-            </div>
-        </div>
-        <div class="text">
+        </el-col>
+        <el-col :span="12">
+          <div class="text">
             <img src="../../static/img/modeo03.jpg" alt="2">
-            <div class="posi">
-                <h4>125</h4>
-                <p>22555555</p>
+              <div class="posi">
+                  <h4>125</h4>
+                  <p>22555555</p>
+              </div>
+            </div> 
+            <!--computed计算属性-->
+            <div class="com">
+                <h5>本店外卖起送价格￥30</h5>
+                <p>您购买了{{good.name}}共{{good.count}}份===￥{{good.price}}/份</p>
+                <p>总价:{{totalprice}}</p>
             </div>
-        </div> 
-        <!--computed计算属性-->
-        <div class="com">
-            <h5>本店外卖起送价格￥30</h5>
-            <p>您购买了{{good.name}}共{{good.count}}份===￥{{good.price}}/份</p>
-            <p>总价:{{totalprice}}</p>
-        </div>
-        <!--computed计算属性结束-->
-        <div v-for="(item,index) in peoples">
+            <!--computed计算属性结束-->
+            <div v-for="(item,index) in peoples">
             {{index}}---{{item.name}}
             <span>{{facedstatus(item)}}</span>
         </div> 
 
-        <!--无缝滚动-->
-        <div id="box">
-                <ul id="con1" ref="con1" >
-                    <li v-for="item in items" @mouseover="stopscroll">{{item.name}}</li>
-                </ul>
-        </div>
-        <!--无缝滚动结束--> 
-        <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href="#firstAnchor">跳至第一个锚点</a></li>
-        </ul>
-        <!--display格式-->
+          <!--无缝滚动-->
+          <div id="box">
+                  <ul id="con1" ref="con1" >
+                      <li v-for="item in items" @mouseover="stopscroll">{{item.name}}</li>
+                  </ul>
+          </div>
+          <!--无缝滚动结束--> 
+          <ul> 
+              <li><a href="#firstAnchor">跳至第一个锚点</a></li>
+          </ul>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+         <!--display格式-->
         <div class="table" style="display:table">
             <div class="table-row" style="display:table-row;">
                 <div class="table-cell" style="display:table-cell; vertical-align:middle; height:150px; width:150px;">处我是一个例子一个测试第三批辣条、display的属性</div>
                 <div class="table-cell" style="color:red">display样式中的display:table,display:table-row以及display:table-cell属性</div>
             </div>
         </div>
+      </el-row>
+      <el-row :gutter="20">
+         <el-col :span="12">
+             <input type="file" @change="upLoad" ref="upload">
+         </el-col>
+         <el-col :span="12">
+           <el-steps :active="active" finish-status="success">
+              <el-step title="步骤 1"></el-step>
+              <el-step title="步骤 2"></el-step>
+              <el-step title="步骤 3"></el-step>
+           </el-steps>
+            <router-view></router-view>
+            <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+         </el-col>
+      </el-row>
     </div>
 </template>
-
 <script>
 export default {   
   name: "test",
@@ -74,7 +90,8 @@ export default {
       items: [{ name: "马云" }, { name: "雷军" }, { name: "王勤" }],
       animate: false,
       dilver: 0.8,
-      lwf: 5
+      lwf: 5,
+      active: 1
     };
   },
   computed: {
@@ -127,7 +144,25 @@ export default {
     },
     stopscroll:function(){
          clearInterval(this.scrollo);
-    }
+    },
+    upLoad:function(){
+      let files=this.$refs.upload.files
+       console.log(files[0])
+    },
+     next() {
+        let router=this.$route.path
+        alert(router)
+        if(router=="/main/test/testo"){
+          this.$router.push({path:"/main/test/testt"})
+          this.active=2
+        }else if(router=="/main/test/testt"){
+          this.$router.push({path:"/main/test/testr"})
+          this.active=3
+        }else{
+          alert("步骤完成请求数据")
+          
+        }
+      }
   }
 };
 </script>

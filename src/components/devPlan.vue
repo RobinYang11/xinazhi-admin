@@ -1,5 +1,11 @@
 <template>
   <div> 
+      <div style="margin-bottom:10px;">
+            <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>计划图表</el-breadcrumb-item>
+            </el-breadcrumb>
+      </div>
       <el-card class="box-card">
              <el-tabs v-model="activeName" @tab-click="handleClick">
               <el-tab-pane label="总开发计划图" name="first">

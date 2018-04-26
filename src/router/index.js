@@ -30,6 +30,15 @@ import docmanclass from '@/pages/notice/docmanclass'
 import newsnotice from '@/pages/notice/newsnotice'
 import activity from '@/pages/campaignadv/activity'
 import messpush from '@/pages/message/messpush'
+//test子路由
+import testo from '@/pages/test/testo'
+import testt from '@/pages/test/testt'
+import testr from '@/pages/test/testr'
+//增加商品步骤路由
+import stepO from '@/pages/goodsmerchant/goodStep/stepO'
+import stepTr from '@/pages/goodsmerchant/goodStep/stepTr'
+import stepT from '@/pages/goodsmerchant/goodStep/stepT'
+
 
 import store from '../vuex/store'
 
@@ -51,7 +60,13 @@ const router = new Router({
       children:[
         {path: 'devPlan',name: 'devPlan',component:devPlan,  meta:{ requireAuth: true}},
         {path: 'total', name:'total',meta:{ requireAuth: true},component:total},
-        {path: 'test', name:'test',meta:{ requireAuth: true},component:test},
+        {path: 'test', name:'test',meta:{ requireAuth: true},component:test,
+        children:[
+          {path:'testo',name:'testo',component:testo,meta:{requireAuth:true}},
+          {path:'testt',name:'testt',component:testt,meta:{requireAuth:true}},
+          {path:'testr',name:'testr',component:testr,meta:{requireAuth:true}}
+        ]
+      },
         //商家入驻路由
         {path: 'entry', name:'entry',component:entry,  meta:{ requireAuth: true}},
         {path: 'shopinfo', name:'shopinfo',meta:{ requireAuth: true},component:shopinfo},
@@ -72,7 +87,13 @@ const router = new Router({
         {path:'merchantzt',name:'merchant',component:merchantzt,meta:{ requireAuth: true}},
         //商品管理模块
         {path:'goodsatten',name:'goodsatten',component:goodsatten,meta:{ requireAuth: true}},
-        {path:'addGood',name:'addGood',component:addGood,meta:{ requireAuth: true}},
+        {path:'addGood',name:'addGood',component:addGood,meta:{ requireAuth: true},
+        children:[
+          {path:'stepO',name:'stepO',component:stepO,meta:{requireAuth:true}},
+          {path:'stepT',name:'stepT',component:stepT,meta:{requireAuth:true}},
+          {path:'stepTr',name:'stepTr',component:stepTr,meta:{requireAuth:true}}
+        ]
+      },
         //客户服务模块
         {path:'service',name:'service',component:service,meta:{ requireAuth: true}},
         //系统管理模块
