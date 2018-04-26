@@ -4,7 +4,7 @@ import store from '../vuex/store'
 
 
 let apiUrl= 'http://localhost:8080/api'
-// let apiUrl= 'http://47.104.69.226:8080/api'
+//let apiUrl= 'http://47.104.69.226:8080/api'
 axios.interceptors.request.use(config => {
   if (store.state.token) { 
      // 判断是否存在token，如果存在的话，则每个http header都加上token
@@ -42,7 +42,7 @@ function checkStatus (response) {
 function checkCode (res) {
   // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
   if (res.status === -404) {
-    alert(res.msg)
+    // alert(res.msg)
   }
   if (res.data && (!res.data.token)) {
     console.log("no result!")
